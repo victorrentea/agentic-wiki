@@ -1,0 +1,48 @@
+name: Deploy Quartz site to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment, don't cancel in-progress runs
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # fetch all history so Quartz can show "last edited" dates
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Quartz
+        uses: konstfish/quartz-build-action@v7
+        with:
+          source: . # repo root: includes wiki/ and raw/ so [[wikilinks]] resolve
+          page_title: "Agentic Engineering Wiki"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -14,6 +14,6 @@ Created 33 concept pages spanning five clusters (see [[overview]]):
 - **tools** — [[spring-ai]], [[ollama]], [[embabel]], [[code-graph]], [[context7]], [[pgvector]], [[claude-code-router]], [[grill-me]], [[llm-wiki]]
 - **patterns** — [[ralph-loop]], [[token-economy]], [[profiling-agents]]
 
-Created navigation: [[index]], [[overview]]. Lint passed: no broken wikilinks, no orphan pages, no markdown tilde hazards.
+Created navigation: [[wiki/index|index]], [[overview]]. Lint passed: no broken wikilinks, no orphan pages, no markdown tilde hazards.
 
 Note: the wiki itself instantiates the [[llm-wiki]] pattern it documents — fitting, since the pattern was discussed live during this very session.
