@@ -68,7 +68,7 @@ The chatbot receives a [JWT](https://jwt.io/introduction) access token in the `A
 
 **Hardening parameters:** add a regex check on the email subject (must look like `[TICKET-123] …`) that **throws an exception back into the agent**. The agent, ever eager to please, *iterates* — invents `ticket 1`, you tighten to `TICKET-<number>`, it invents `TICKET-1`. *"Why ticket 1? Why not 42?"* The only real fix: validate the ticket **actually exists in Jira** before sending — then the agent physically cannot proceed without creating a real ticket.
 
-🤖 This is the single most transferable security lesson of the day: **anything the model fills in is attacker-influenced.** Trust boundary = *transport metadata you set in code* (headers, tool-context, security principal), never *JSON the model authored*. Treat tool parameters like untrusted user input: validate, constrain, and authorize server-side — the model's "intent" is not authorization.
+🤖 This is the single most transferable security lesson of the day: **anything the model fills in is attacker-influenced.** Carry identity on a channel the model can't author — an HTTP **header** across MCP, or `ToolContext`/`SecurityContextHolder` in-process — never in the tool-call arguments (the JSON-RPC `params`) it fills in. Treat tool parameters like untrusted user input: validate, constrain, and authorize server-side — the model's "intent" is not authorization.
 
 ---
 
@@ -197,7 +197,7 @@ The afternoon got cut by an **internet outage** (≈14:18–15:10) and ran long.
 20. The LLM **invents tool parameters** — convince it and it spams emails.
 21. Pass sensitive identity **out-of-band** (tool-context / header / `SecurityContextHolder`), never as model-authored data.
 22. Harden tool params with regex + throw the error back; the agent retries and invents values ("ticket 1") — real fix: verify the ticket exists in Jira.
-23. Trust boundary = transport metadata you set in code, never JSON the model wrote.
+23. Carry identity on a channel the model can't author — a header across MCP, ToolContext/SecurityContextHolder in-process — never in the tool-call arguments it fills in.
 
 ## MCP
 24. MCP exposes Resources (static), Tools (method), Prompts (≈ a skill); tools are self-describing → no Swagger.

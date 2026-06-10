@@ -11,7 +11,7 @@ Tool context is the mechanism for passing sensitive metadata (caller identity, a
 
 ## The trust boundary
 
-The fundamental rule from [[2026-06-10-spring-ai-itkonekt]]: **trust boundary = transport metadata you set in code, never JSON the model wrote.** The model controls tool argument values. It does not control HTTP headers, Spring Security's `SecurityContextHolder`, or sidecar context objects injected by the framework. These two channels are on different sides of the trust line.
+The fundamental rule from [[2026-06-10-spring-ai-itkonekt]]: **carry identity on a channel the model can't author — never in the tool-call arguments it fills in.** The model controls exactly one channel: the tool argument values (over MCP, the JSON-RPC `params`). It does *not* control HTTP headers, Spring Security's `SecurityContextHolder`, or framework-injected context objects — so authorization-bearing data belongs there. Concretely: a **header** across MCP, `ToolContext`/`SecurityContextHolder` in-process.
 
 **In-process (Spring AI local tools).** Pull identity from `SecurityContextHolder → Authentication → Principal` inside the tool implementation. The LLM never touches this path. When demonstrated live, this "just worked" without any additional wiring.
 
