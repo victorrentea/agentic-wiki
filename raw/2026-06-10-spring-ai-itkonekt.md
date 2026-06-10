@@ -155,7 +155,7 @@ Two "weird database" types agents love: **vector stores** (similarity of *meanin
 - **[Context7](https://github.com/upstash/context7):** an MCP that injects **up-to-date library docs** ("a Wikipedia for docs, made for LLMs") for libraries newer than the model's training cutoff.
 - **The big-picture data point** ([DX — "AI and Engineering Velocity"](https://getdx.com/report/ai-and-engineering-velocity-a-longitudinal-analysis/)): coding is **not** the bottleneck. Optimizing only code generation buys ≈15–20%; the real time sinks are meetings, incidents, debugging, and **social friction** between the "1000-hours-of-agentic" people and the "just-installed-Copilot" people. *"Optimize everything around the code."*
 
-🤖 The dual-leg agent-security rule from lunch deserves to be a poster: **an agent with access to confidential data must not also have the ability to send/receive externally — and vice versa. Cut one leg.** Give an agent *both* read-confidential and reach-the-internet and a single prompt-injection exfiltrates your secrets. Victor's friend's pattern: a tiny "payer" agent that can *only* reach the payment gateway and never reads card numbers, driven by an outer agent that has everything *except* the cards.
+🤖 The dual-leg agent-security rule from lunch is Victor's practical form of Simon Willison's [**lethal trifecta**](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) — three capabilities catastrophic in combination: (1) access to private data, (2) exposure to untrusted content, (3) the ability to communicate externally. Victor collapses (2)+(3) into one "external send/receive" leg: **an agent with access to confidential data must not also have it — cut one leg.** Give an agent *both* read-confidential and reach-the-internet and a single prompt-injection exfiltrates your secrets. Victor's friend's pattern: a tiny "payer" agent that can *only* reach the payment gateway and never reads card numbers, driven by an outer agent that has everything *except* the cards.
 
 ---
 
@@ -232,7 +232,7 @@ The afternoon got cut by an **internet outage** (≈14:18–15:10) and ran long.
 47. **Ralph loop**: 1h of markdown specs → overnight agent loop; each batch enters with clean low context.
 48. Agents read JFR, async-profiler flame graphs, and heap dumps (heap_mcp) — cut a build 45→25 min.
 49. grill-me skill: 10–20 probing questions; give browser-only access for business brainstorms.
-50. **Dual-leg rule**: an agent never gets *both* confidential data *and* external send/receive — cut one leg.
+50. **Dual-leg rule** = Victor's form of Simon Willison's [lethal trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/): an agent never gets *both* confidential data *and* external send/receive — cut one leg.
 
 ## Corecturi ❌
 51. Victor said the EU **"AI Act 2"** (Feb 2025) forbids processing customer GDPR data with US-owned LLMs ❌ → there is **no "AI Act 2"**; there's one **EU AI Act** (in force Aug 2024, prohibited-practice rules from 2 Feb 2025) that regulates AI by *risk tier* — the bar on sending personal data to US-controlled processors is a **GDPR / data-transfer** matter, not the AI Act.

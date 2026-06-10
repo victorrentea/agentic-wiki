@@ -1,17 +1,19 @@
 ---
 title: Dual-Leg Rule
 category: security
-tags: [security, agent-design, data-exfiltration, least-privilege, agentic]
+tags: [security, agent-design, data-exfiltration, least-privilege, lethal-trifecta]
 sources: ["[[2026-06-10-spring-ai-itkonekt]]"]
 created: 2026-06-10
 updated: 2026-06-10
 ---
 
-The dual-leg rule states that an agent must never simultaneously hold access to confidential data AND the ability to send or receive data externally — one of those two legs must be cut.
+The dual-leg rule is Victor's practical form of Simon Willison's **[lethal trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)**: an agent must never simultaneously hold access to confidential data AND the ability to send or receive data externally — cut one of those legs.
 
-## The threat it addresses
+## The lethal trifecta
 
-Give an agent both legs and a single [[prompt-injection]] is sufficient to exfiltrate your entire data store: the injected instruction reads the confidential data through one leg and ships it out through the other. No additional vulnerability is needed — the capability combination is the vulnerability.
+[Simon Willison's lethal trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) names three capabilities that are catastrophic *in combination*: (1) access to private data, (2) exposure to untrusted content (the [[prompt-injection]] vector), and (3) the ability to communicate externally. Hold all three and a single injected instruction reads your confidential data through one leg and exfiltrates it through another — no extra vulnerability needed; the capability combination *is* the vulnerability.
+
+Victor's "cut one leg" framing collapses the untrusted-input and external-output legs into a single *external send/receive* capability and gives the actionable rule: never pair it with confidential-data access.
 
 ## The rule, stated plainly
 
