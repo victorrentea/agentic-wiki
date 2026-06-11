@@ -2,9 +2,9 @@
 title: Context7
 category: tool
 tags: [context7, mcp, documentation, rag, library-docs]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-11
 ---
 
 [Context7](https://github.com/upstash/context7) is an [[model-context-protocol]] server that injects version-specific, up-to-date library documentation into the active prompt at query time — "a Wikipedia for docs, made for LLMs."
@@ -17,6 +17,8 @@ This is a form of on-demand [[rag]] applied to the documentation corpus rather t
 
 **Token cost awareness:** like all MCP tools, the tool schema occupies [[context-window]] space on every turn — see [[token-economy]] for the broader trade-off between tool breadth and context efficiency.
 
+<span style="color:red">**Don't trust recall for post-cutoff facts.** Anything newer than the model's training cutoff is a [[hallucination]] risk if the model answers from memory — pull it in instead, either via Context7 (version-specific, controlled corpus) or a plain **WebFetch** for one-off facts. Context7 is the right default for fast-moving library APIs; WebFetch for everything else.</span>
+
 ## See also
 - [[model-context-protocol]]
 - [[rag]]
@@ -24,4 +26,6 @@ This is a form of on-demand [[rag]] applied to the documentation corpus rather t
 - [[context-window]]
 - [[token-economy]]
 - [[prompt-injection]]
+- [[hallucination]]
 - [[2026-06-10-spring-ai-itkonekt]]
+- [[2026-06-11-ai-playtika]]

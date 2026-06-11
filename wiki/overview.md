@@ -2,8 +2,8 @@
 title: Overview — the map of the concepts
 category: source
 tags: [overview, map, synthesis]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]"]
-updated: 2026-06-10
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
+updated: 2026-06-11
 ---
 
 # Overview — the map of the concepts
@@ -29,6 +29,18 @@ To answer real questions the bot needs knowledge it can **pull** on demand: [[ra
 ## 5. Operate agents at scale
 
 The day's deeper theme: how to run agents responsibly and economically. [[token-economy]] treats context as a scarce resource (tool schemas are expensive; the CLI is often 10× cheaper than an MCP; [[claude-code-router]] swaps the backend provider). The [[ralph-loop]] front-loads a human hour of spec into six hours of overnight agent work, each batch entering with a clean context. [[profiling-agents]] hands flame graphs and heap dumps to the model for wins humans rarely have time for. And [[grill-me]] turns the agent on *your own thinking* before a meeting. The horizon — teed up via [[embabel]] — is structured, multi-stage agentic workflows you can trust in production.
+
+## 6. The agentic-engineering operating discipline
+
+The second source widens "operate agents at scale" into a full craft — [[agentic-engineering]], the deliberate opposite of [[vibe-coding]] (generating code you never read).
+
+**What reaches the model.** Before you type, the [[harness]] has already loaded the [[system-prompt]], your [[claude-md]] memory, every tool schema, and the front-matter of each [[agent-skill]] — visible via `/context`. Token discipline now spans [[prompt-caching]] (a 5-minute TTL trap), [[rtk]] and [[toon]] (compress what the model reads/writes; output is ≈5× input), the [[effort-setting]] (xhigh, never max), and refusing the [[caveman]] anti-pattern so you protect *attention*, not just tokens.
+
+**The dumb zone governs everything.** Past ≈65% full a model degrades ([[dumb-zone]]); a 1M window ≠ recall, and auto-compaction is a failure. You dodge it with a [[handover]] (die and be reborn from a file), [[sub-agents]] (fresh-context minions), or [[plan-mode]] (single-threaded thinking). The same overload causes most [[hallucination]] — alongside [[sycophancy]], vague prompts, missing context, and term confusion.
+
+**Knowledge is engineered, not dumped.** Curate the [[claude-md]] (it [[drift|drifts]]); prefer a [[tripwire]] to a hard rule; load on need via [[progressive-disclosure]]; and share across the studio with [[cross-repo-knowledge]] ("Dark Horses" central repo + symlinks).
+
+**Constrain the chaotic agent from both sides.** [[grill-me]] turns a four-line ticket into a war and ends in a [[handover]]; [[spec-driven-development]] (scaffolded and enforced by [[openspec]]) anticipates every decision; [[acceptance-test-bdd]] tests pin the outside. Then review with humans + a [[multi-model-review]] quorum, run agents safely in [[worktree|worktrees]] and a [[supply-chain-attack]]-hardened Docker sandbox, and keep diagrams honest with a [[field-reality-diagram]]. Throughout, guard the human against [[ai-addiction]] and [[skill-erosion]].
 
 ---
 
