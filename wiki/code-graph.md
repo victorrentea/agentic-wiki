@@ -22,6 +22,8 @@ It pairs naturally with [[rag]] for hybrid retrieval: exact symbol edges from th
 
 <span style="color:red">A symbol graph is also the "grep-for-reuse" defense against the agent reinventing what already exists — better to let the agent **discover in the code** than to paste a snippet into a chat that doesn't know your POM (a [[hallucination]] cause). Note the failure mode: past ≈600k tokens an agent in "context anxiety" *stops* checking for duplication ([[vibe-coding]]) — precisely when an exact reuse lookup matters most.</span>
 
+<span style="color:red">**Reuse hunting must be instructed explicitly.** Before writing new code a "reuse" agent should look for an existing implementation, but left alone an anxious agent YOLOs and skips the check. The durable technique in a big codebase: **grep the function/symbol names tied to the business concept**, plus **code-graph for syntax-level navigation** — and you must tell the agent, in so many words, to do it. This is part of [[code-review]]'s reuse/duplication concern in a [[multi-model-review]] quorum.</span>
+
 ## See also
 - [[rag]]
 - [[vector-search]]
@@ -31,5 +33,7 @@ It pairs naturally with [[rag]] for hybrid retrieval: exact symbol edges from th
 - [[llm-wiki]]
 - [[hallucination]]
 - [[vibe-coding]]
+- [[code-review]]
+- [[multi-model-review]]
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-11-ai-playtika]]

@@ -219,64 +219,93 @@ The proposal captured the grill: server-side pagination + sorting, **cap page si
 
 ---
 
+## 9. Multi-agent review & the tool gauntlet — team deep-dive (≈15:15–15:30)
+
+> A deeper exchange with the team (Adi, Răzvan, Teo) about making code review survivable once agents write most of the code. It happened in Romanian during the break; translated here because it's the heart of the day-2 review workflow.
+
+**The state-of-the-art review workflow** (Victor has seen it in three companies):
+- The coding agent implements via sub-agents, then hands off to a **review orchestrator** that spawns **≈3 sub-agents per concern** — clean code, security, performance — and runs each concern across **two model families (Opus + GPT)** ⇒ ≈6 reviewers combing the same diff. This is the **"quorum of mothers-in-law"**, and it's the cure for **attention dilution**: a single prompt asking for clean-code + duplication + performance + pen-testing + legal + ethics + UX dilutes the model — split each concern into its own agent.
+- **Review *sorted*, not top-to-bottom.** Whichever lines the reviewers **disagreed on** get surfaced **first** — because your reviewer brain dies halfway through a big PR, so spend it where the bots fought. "Review sorted, not selective" is the one trick that shrinks PR-review pain to ≈10% of the effort.
+- **"Done" includes "I watched it work."** The coder agent doesn't even *request* review until a sub-agent **drove the running app** — deployed to dev, clicked through with [Playwright](https://playwright.dev), screenshotted, wrote tests, ran the browser. Only then do the "stylist" review bots critique look-and-feel, performance, security and pen-testing. (Driving the app is common sense — it isn't the review.)
+
+**The PR-size sweet spot.** A 1000-line PR easily hides a bug; fifteen 200-line PRs don't. But granularity has two failure modes: **too big** (an end-of-sprint dump) and **too small** (six tiny parallel branches that collide on merge → rework and bugs when they fight, and you won't have the patience to babysit each). Aim for the middle; for the unavoidably-big ones, fall back to sorted review and assume your brain dies halfway.
+
+**The tool gauntlet — make the machine draw blood before a human looks.** "It's degrading for a human to say 'this method is too long' when a machine can detect it." So throw every static-analysis tool at the code until it **self-repairs** and reads "like an icon", *then* a human reviews — the human's job (the real battle at principal level, per PrepCon) is judgment, not counting parameters.
+- **[SonarQube](https://www.sonarsource.com/products/sonarqube/)** (strongest on Java, C#, TS/JS) with **tuned custom rules** — Victor overrode its "max parameters" rule from 7 down to **5** on the pet clinic ("I strangled Sonar") so it screams (major/minor/critical) earlier.
+- If you need pipeline tooling Sonar doesn't give you: **[CodeQL](https://codeql.github.com)** ("query your code as data") and **[Semgrep](https://github.com/semgrep/semgrep)** (fast pattern-based scanning — the one used at a recent course).
+- A **5,400-line `Participant.html`** from un-guarded vibe coding is exactly what should make "every weapon fire, the build fail, blood spill, escalate to the boss" — guardrails make that impossible to merge silently.
+
+🤖 Wire these as **build-failing CI gates / tripwires**, not advisory dashboards: a Sonar quality gate, a Semgrep rule, or a CodeQL query that *fails the build* is what forces the self-repair loop — a report the agent can ignore won't.
+
+**Reuse hunting.** Before writing new code, a "reuse" agent should look for an existing implementation — but in a big codebase the durable technique is **grep** for the function/symbol names tied to the business concept, plus **code-graph** for syntax-level navigation, and you must tell the agent *explicitly* to do it. Left alone, an agent with **context anxiety** YOLOs — it avoids reading more, so it skips the duplication check and the tests.
+
+**Front-load the analysis.** The reflex Victor keeps pushing against: teams rush to prompt before they've thought. A spec/plan **agglomerates ≈7 days of decisions into ≈1 hour** — if you can't *imagine* where the agent will go, you lose the thread after decision #4. The human rule underneath it all: **if you don't understand something, stop** — even when you're alone, never approve what you don't understand.
+
+---
+
 <!-- BRAIN-DEAD-START -->
 # Super-summary
 
 ## Token & context economy
 1. `/context` every sprint — a fresh chat already burns ≈20k tokens (MCP + skills + RTK).
-2. Output tokens ≈5× input; compress the input, not your reasoning.
-3. [RTK](https://github.com/rtk-ai/rtk) proxies dev commands to cut output tokens ≈30% (not the advertised 80%).
-4. TOON = compact CSV-for-AI; saves tokens on collections — but benchmark that it doesn't cost more reasoning.
+2. Output ≈5× input and reasoning tokens are largely uncontrollable — so cut what you *feed in* (RTK, TOON, summarised docs), don't suppress the model's thinking (that's the Caveman trap).
+3. RTK proxies dev commands to cut output tokens ≈30% (not the advertised 80%).
+4. TOON = compact CSV-for-AI; saves tokens on collections — but benchmark it doesn't cost more reasoning.
 5. Conversation is a stateless API: full prefix re-sent each turn; thinking is per-turn and discarded; tool outputs accumulate.
-6. Prompt cache = pay ≈10% for the prefix, but **5-minute TTL** — neglecting a fat terminal >5 min re-pays full price.
-7. Don't keep 4 idle terminals with 500k context — that's the canonical burn.
-8. Effort = **xhigh**, never **max** (max philosophizes and burns reasoning).
+6. Prompt cache = pay ≈10% for the prefix, but 5-minute TTL — neglecting a fat terminal >5 min re-pays full price.
+7. Don't keep 4 idle terminals with 500k context — the canonical burn.
+8. Effort = xhigh, never max (max philosophizes and burns reasoning).
 
 ## Pitfalls & the Dumb Zone
-9. Hallucination causes: sycophancy, vague/contradictory prompts, missing background, term confusion, dumb zone.
+9. Hallucination causes: sycophancy ("boss, all tests pass"), vague/contradictory prompts, missing background, term confusion, dumb zone.
 10. Dumb zone starts ≈65% full: ≈130k Sonnet, ≈300–400k Opus; 1M ≠ recall.
 11. Compaction is a failure — decisions made just before it were already bad.
 12. Escape the dumb zone via compact / handover-file / research sub-agents; Opus is impeccable under 300k.
-13. For post-cutoff facts use WebFetch or [Context7](https://github.com/upstash/context7); `/clear` between unrelated tasks.
-14. Don't insult the AI — it loses impartiality; use calm Socratic "how did you reach that?".
+13. For post-cutoff facts use WebFetch or Context7; `/clear` between unrelated tasks.
+14. Don't insult the AI ("you're stupid") — it loses impartiality; use calm Socratic "how did you reach that?".
 15. Don't use Haiku at the office; downgrade Opus→Sonnet only for simple work.
 
 ## CLAUDE.md, skills & knowledge
 16. Never hand-edit files mid-session — it invalidates agents' caches and trashes context (VS Code > IntelliJ for agents).
 17. CLAUDE.md retro line: "what's obvious from your training data that I can safely remove?"; an AI-generated CLAUDE.md performs worse and costs ≈20% more.
 18. Refresh drifted CLAUDE.md ≈monthly with `/init`; keep it on git.
-19. Progressive disclosure: skill / sub-folder CLAUDE.md / `@include`; a programmatic hook beats a skill the agent may forget to load.
-20. A skill is a tool; bundle knowledge files, scripts, and templates with it; keep the description short.
-21. When attacking a tool's fixed output, babysit once then **script it** (zero token burden) — intelligence only where needed.
-22. `disable-model-invocation: true` for expensive skills (Playwright pixel-compare) so they never auto-fire.
-23. Cross-repo: a `dark-horses-ai-central` git repo (CLAUDE.md + skills), symlinked in, PRs reviewed each sprint = knowledge engineering.
-24. Don't blindly adopt a downloaded skill — use it to learn the delta, then build your own.
+19. Progressive disclosure (skill / sub-folder CLAUDE.md / `@include`) — Matrix "I know Kung Fu"; a programmatic hook beats a skill the agent may forget to load.
+20. A skill is a tool; bundle knowledge files, scripts and templates with it; keep the description short.
+21. When attacking a tool's fixed, structured output — the JaCoCo coverage report — babysit once, then script it to emit only the uncovered lines (zero token burden).
+22. `disable-model-invocation: true` for expensive skills (the Playwright pixel-compare regen-manual) so they never auto-fire.
+23. Cross-repo: a central team git repo (CLAUDE.md + skills), symlinked into every repo, PRs reviewed each sprint = knowledge engineering.
+24. Don't blindly adopt a downloaded skill (the unread "Vercel best practices") — use it to learn the delta, then build your own.
 
 ## The grill & spec-driven development
-25. Treat a 4-line ticket as a war — grill out ≈10 hidden questions before coding.
-26. Don't sort phone numbers; sort name & city; always append `id` as the tiebreaker.
-27. Two grills: technical (with code) vs business (no code — only the staged app + Jira); "business + bot + code = death".
-28. Wrong question: "how fast?"; right question: "how much complexity/LoC will you maintain?".
-29. SDD artifacts: proposal→Jira, design→burn (it drifts; code is truth), tasks.md→for the AI.
-30. Tell the AI **what NOT to do** (no fuzzy search, only 2 sort states) — it over-delivers to burn tokens.
-31. Spec "Risks & trade-offs" surfaces hidden assumptions (e.g. "single consumer") so you can correct them.
-32. Whitelist sort keys (name, city) — blocks arbitrary `ORDER BY` injection; keyset pagination for deep pages.
-33. Don't type the fix — ask, so it propagates and so the AI can tell you you're wrong.
+25. Treat a 4-line ticket as a declaration of war — grill out the ≈10 hidden questions before coding.
+26. Two grills: technical (started in the code folder) vs business (no code — only the staged app + Jira); "business + bot + code = death".
+27. Wrong question "how fast?"; right question "how much complexity / lines-of-code will you maintain?".
+28. SDD artifacts: proposal→Jira, design→burn (it drifts; code is the truth), tasks.md→for the AI.
+29. Tell the AI what NOT to do (no fuzzy search, only 2 sort states not 3) — it over-delivers to burn tokens.
+30. A spec "Risks & trade-offs" section surfaces hidden assumptions (e.g. "single known consumer") so you can correct them.
+31. Whitelist the allowed sort keys — blocks arbitrary `ORDER BY` injection; use keyset pagination for deep pages.
+32. Don't type the fix yourself — ask, so it propagates and so the AI can tell you you're the one who's wrong.
 
 ## Tests, review & ops
-34. Acceptance/BDD tests (Playwright given-when-then; assertions in `then`; [Karate](https://github.com/karatelabs/karate) for REST) — review these, not AI's mock-coupled unit tests.
-35. AI cheats unit tests by shaping mocks to its own implementation — worthless to review.
-36. Worktrees give parallel agents isolated folders; sync only on push/pull; can't share a branch.
-37. Two agents in one folder = race condition → re-read → trashed context.
-38. Multi-model "quorum of mothers-in-law": split each review concern (clean code, perf, security, UX…) into its own sub-agent across Opus + GPT/codex — counters attention dilution.
-39. Visual-regression rules (button style, header color, no two-line labels) go into the frontend `CLAUDE.md`; method-param formatting into the backend one.
-40. Generate sequence diagrams from real Grafana traces ([PlantUML](https://plantuml.com)) — field reality that can't drift.
+33. Acceptance/BDD tests (Playwright given-when-then, assertions in the `then`; Karate for REST) — review these, not AI's mock-coupled unit tests.
+34. AI cheats unit tests by shaping the mock to its own implementation — worthless to review.
+35. Worktrees give parallel agents isolated folders; changes sync only on push/pull; can't share a branch.
+36. Two agents in one folder = race condition → forced re-read → trashed context.
+37. Multi-model "quorum of mothers-in-law": ≈3 sub-agents per concern (clean code, perf, security) across Opus + GPT — counters attention dilution.
+38. Review SORTED, not top-to-bottom: surface the lines the reviewers disagreed on first — your reviewer brain dies halfway through a big PR.
+39. "Done" includes "I watched it work" — a sub-agent drives the running app (Playwright on dev, screenshots) before review is even requested.
+40. PR-size sweet spot: too big hides bugs (1000 lines), too small collides on merge (6 tiny branches → rework).
+41. Run the full static-analysis gauntlet before a human reviews — Sonar (tuned, e.g. max 5 params not 7) / CodeQL / Semgrep as build-failing CI gates; "degrading for a human to flag what a machine detects".
+42. Reuse hunting = grep the business symbol names + code-graph, told explicitly — else context-anxiety makes the agent YOLO and skip dup-checks/tests.
+43. Front-load the analysis: a spec agglomerates ≈7 days of decisions into ≈1 hour; never approve what you don't understand.
+44. Recurring UX rules (button style, header color, no two-line labels) go into the frontend CLAUDE.md; param formatting into the backend one.
+45. Generate sequence diagrams from real e2e traces in Grafana (PlantUML) — field reality that can't drift.
 
 ## Supply chain & autonomy
-41. `npm install @latest` runs post-install scripts — the Axios/[Log4Shell](https://en.wikipedia.org/wiki/Log4Shell)-style S-BOM bomb; defend with `--ignore-scripts` + pinned lockfile (full fix day 2).
-42. Long autonomous runs ([RALPH loop](https://ghuntley.com/ralph/)) need a Docker sandbox without the Docker socket.
-43. Beware the dopamine/gambling loop — parallel terminals drain your tokens and your agency by 1pm.
-44. Plan mode is single-threaded — never run two deep-thinking tasks at once.
+46. `npm install @latest` runs post-install scripts — the Axios / Log4Shell-style S-BOM bomb; defend with `--ignore-scripts` + a pinned lockfile (full fix day 2).
+47. Long autonomous runs (the RALPH bash-loop) need a Docker sandbox without the Docker socket.
+48. Beware the dopamine / slot-machine loop — parallel terminals drain your tokens and your agency by 1pm.
+49. Plan mode is single-threaded — never run two deep-thinking tasks at once (Napoleon: horse, look ahead, fart — none deep thinking).
 <!-- BRAIN-DEAD-END -->
 
 <!-- SUMMARIZER: last_processed=2026-06-11T16:58 lines_through=2284 -->

@@ -40,7 +40,7 @@ The second source widens "operate agents at scale" into a full craft — [[agent
 
 **Knowledge is engineered, not dumped.** Curate the [[claude-md]] (it [[drift|drifts]]); prefer a [[tripwire]] to a hard rule; load on need via [[progressive-disclosure]]; and share across the studio with [[cross-repo-knowledge]] ("Dark Horses" central repo + symlinks).
 
-**Constrain the chaotic agent from both sides.** [[grill-me]] turns a four-line ticket into a war and ends in a [[handover]]; [[spec-driven-development]] (scaffolded and enforced by [[openspec]]) anticipates every decision; [[acceptance-test-bdd]] tests pin the outside. Then review with humans + a [[multi-model-review]] quorum, run agents safely in [[worktree|worktrees]] and a [[supply-chain-attack]]-hardened Docker sandbox, and keep diagrams honest with a [[field-reality-diagram]]. Throughout, guard the human against [[ai-addiction]] and [[skill-erosion]].
+**Constrain the chaotic agent from both sides.** [[grill-me]] turns a four-line ticket into a war and ends in a [[handover]]; [[spec-driven-development]] (scaffolded and enforced by [[openspec]]) anticipates every decision; [[acceptance-test-bdd]] tests pin the outside. <span style="color:red">Before a human looks, the [[static-analysis-gauntlet]] (Sonar / CodeQL / Semgrep as build-failing CI gates) makes the code self-repair;</span> then review with humans + a [[multi-model-review]] quorum <span style="color:red">— sorted, judgement-only [[code-review]] where attention is the scarce resource —</span> run agents safely in [[worktree|worktrees]] and a [[supply-chain-attack]]-hardened Docker sandbox, and keep diagrams honest with a [[field-reality-diagram]]. Throughout, guard the human against [[ai-addiction]] and [[skill-erosion]].
 
 ---
 

@@ -2,9 +2,9 @@
 title: Guardrails
 category: security
 tags: [security, defense-in-depth, advisor, classifier, spring-ai]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-11
 ---
 
 Guardrails are the layered defenses placed around an LLM chatbot to prevent harmful, off-topic, or adversarial output from reaching users.
@@ -24,10 +24,15 @@ A separate cheap classifier screens **both** the incoming prompt and the outgoin
 
 In [[spring-ai]], guardrails are wired as [[advisor]] beans that wrap the `ChatModel` call chain — before-advice for input filtering, after-advice for output filtering. Multiple advisors stack; order matters (cheap regex first, expensive judge last).
 
+<span style="color:red">The same layered-defence idea applies to an agent's *output code*, not just a chatbot's output text: the [[static-analysis-gauntlet]] (SonarQube / CodeQL / Semgrep as build-failing CI gates) and softer [[tripwire|tripwires]] are guardrails around what an agent writes, forcing self-repair before a human reviews.</span>
+
 ## See also
 - [[prompt-injection]]
 - [[judge-llm]]
 - [[system-prompt]]
 - [[advisor]]
 - [[tool-calling]]
+- [[static-analysis-gauntlet]]
+- [[tripwire]]
 - [[2026-06-10-spring-ai-itkonekt]]
+- [[2026-06-11-ai-playtika]]

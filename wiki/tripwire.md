@@ -26,4 +26,5 @@ Tripwires occupy the middle of the spectrum between a polite [[claude-md]] rule 
 - [[openspec]]
 - [[cross-repo-knowledge]]
 - [[guardrails]]
+- [[static-analysis-gauntlet]]
 - [[2026-06-11-ai-playtika]]

@@ -84,7 +84,9 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[sub-agents]] — orchestrator delegates to fresh-context research/review minions.
 - [[spec-driven-development]] — align your mental model with what the AI will build.
 - [[acceptance-test-bdd]] — given/when/then tests you review instead of mock-coupled unit tests.
-- [[multi-model-review]] — a "quorum of mothers-in-law"; split each concern across model families.
+- [[multi-model-review]] — a "quorum of mothers-in-law"; split each concern across model families; review *sorted*.
+- [[code-review]] — the human's last gate: judgement not mechanics, sorted review, the PR-size sweet spot.
+- [[static-analysis-gauntlet]] — Sonar / CodeQL / Semgrep as build-failing CI gates; make the machine draw blood first.
 - [[field-reality-diagram]] — sequence diagrams generated from real traces; can't drift.
 
 ## Sources
