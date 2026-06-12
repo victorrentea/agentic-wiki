@@ -5,10 +5,8 @@ tags: [token-economy, cli, output-tokens, hook, cost-optimization]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 RTK (Rust Token Killer) is a bash-command proxy that runs a shell command, polishes its output, and hands the model only what matters — cutting the output tokens that dominate agent cost.
 

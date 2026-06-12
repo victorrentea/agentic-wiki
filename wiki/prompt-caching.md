@@ -5,10 +5,8 @@ tags: [token-economy, cost-optimization, context-window, stateless-api, cache]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 Prompt caching is the provider-side mechanism that stores the conversation prefix you already sent so that re-sending it on the next turn costs a fraction of full input price — both the savior and the trap of the [[token-economy]].
 

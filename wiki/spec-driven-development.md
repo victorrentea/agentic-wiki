@@ -1,14 +1,12 @@
 ---
 title: Spec-Driven Development
 category: pattern
-tags: [spec-driven, planning, agent-workflow, handover, acceptance-tests]
+tags: [spec-driven, planning, agent-workflow, handover, acceptance-tests, three-amigos]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
-updated: 2026-06-11
-new_in: 2026-06-11
+updated: 2026-06-12
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 Spec-driven development (SDD) is the practice of **aligning your mental model with what the AI will build** by anticipating every decision point in a written spec *now*, then letting the agent execute later.
 
@@ -31,6 +29,8 @@ SDD is the longest and most complex of the ways to develop with an agent — a d
 
 Then constrain the agent from the other side with [[acceptance-test-bdd]] tests that must go green.
 
+<span style="color:red">**Cloud workflow integration:** In the [[cloud-review-workflow]], the SDD is built by a cloud bot (not the developer). The bot researches the codebase first (read-only phase), then generates proposal/design/tasks from the [[three-amigos]] acceptance tests. The `tasks.md` is explicitly broken down for a cheaper model (Sonnet). The developer's job shifts to reviewing and correcting the SDD from PR comments — not writing it.</span>
+
 ## See also
 - [[openspec]]
 - [[handover]]
@@ -38,4 +38,6 @@ Then constrain the agent from the other side with [[acceptance-test-bdd]] tests 
 - [[acceptance-test-bdd]]
 - [[ralph-loop]]
 - [[multi-model-review]]
+- [[cloud-review-workflow]]
+- [[three-amigos]]
 - [[2026-06-11-ai-playtika]]

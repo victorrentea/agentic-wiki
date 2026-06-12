@@ -5,10 +5,8 @@ tags: [context-window, skill, claude-md, hook, dumb-zone]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 Progressive disclosure is the practice of loading knowledge into the agent **only when it becomes relevant**, so the [[context-window]] stays lean and the model never drifts into the [[dumb-zone]].
 

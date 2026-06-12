@@ -5,10 +5,8 @@ tags: [reliability, sycophancy, dumb-zone, prompts, drift]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 Hallucination is when a model confidently asserts something false or invented — and in agentic work it has five recurring, mostly *fixable* root causes.
 

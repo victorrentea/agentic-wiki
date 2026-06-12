@@ -3,7 +3,7 @@ title: Overview — the map of the concepts
 category: source
 tags: [overview, map, synthesis]
 sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
-updated: 2026-06-11
+updated: 2026-06-12
 ---
 
 # Overview — the map of the concepts
@@ -40,7 +40,19 @@ The second source widens "operate agents at scale" into a full craft — [[agent
 
 **Knowledge is engineered, not dumped.** Curate the [[claude-md]] (it [[drift|drifts]]); prefer a [[tripwire]] to a hard rule; load on need via [[progressive-disclosure]]; and share across the studio with [[cross-repo-knowledge]] ("Dark Horses" central repo + symlinks).
 
-**Constrain the chaotic agent from both sides.** [[grill-me]] turns a four-line ticket into a war and ends in a [[handover]]; [[spec-driven-development]] (scaffolded and enforced by [[openspec]]) anticipates every decision; [[acceptance-test-bdd]] tests pin the outside. <span style="color:red">Before a human looks, the [[static-analysis-gauntlet]] (Sonar / CodeQL / Semgrep as build-failing CI gates) makes the code self-repair;</span> then review with humans + a [[multi-model-review]] quorum <span style="color:red">— sorted, judgement-only [[code-review]] where attention is the scarce resource —</span> run agents safely in [[worktree|worktrees]] and a [[supply-chain-attack]]-hardened Docker sandbox, and keep diagrams honest with a [[field-reality-diagram]]. Throughout, guard the human against [[ai-addiction]] and [[skill-erosion]].
+**Constrain the chaotic agent from both sides.** [[grill-me]] turns a four-line ticket into a war and ends in a [[handover]]; [[spec-driven-development]] (scaffolded and enforced by [[openspec]]) anticipates every decision; [[acceptance-test-bdd]] tests pin the outside. Before a human looks, the [[static-analysis-gauntlet]] (Sonar / CodeQL / Semgrep as build-failing CI gates) makes the code self-repair; then review with humans + a [[multi-model-review]] quorum — sorted, judgement-only [[code-review]] where attention is the scarce resource — run agents safely in [[worktree|worktrees]] and a [[supply-chain-attack]]-hardened Docker sandbox, and keep diagrams honest with a [[field-reality-diagram]]. Throughout, guard the human against [[ai-addiction]] and [[skill-erosion]].
+
+## 7. <span style="color:red">Secure and contain your agents (Day 2)</span>
+
+<span style="color:red">Day 2 expanded the security cluster from "how to break a chatbot" to "how to contain an agent at production scale."
+
+**The attack surface.** The [[jailbreak-ladder]] maps the escalating bypass for each [[guardrails|guardrail]] layer (RLHF → abliteration → regex → [[judge-llm]] → context accumulation); none are guarantees. Deeper: [[prompt-injection]] now includes fetched web pages, emails, and screenshots as vectors — see [[geo-steganography]] for invisible-text and GEO attacks. The architectural-level risk has a name: Simon Willison's [[lethal-trifecta]] (private data + untrusted content + external comms). [[openclaw]] is the canonical product that instantiates all three legs. The only structural fix is removing a leg — not filtering harder.
+
+**MCP under the hood.** [[mcp-transport]] now has two distinct shapes: remote SSE/HTTP (needs its own authz — outside the agent's sandbox) vs local stdio (spawned child → [[mcp-sandbox-inheritance]] — the sandbox applies automatically). [[dynamic-tool-discovery]] is the mechanism (no Swagger needed), but too many tools confuse the model; [[cli-vs-mcp-tradeoff]] quantifies the token cost difference. [[browser-mcp]] (Playwright + accessibility tree) lets agents drive browsers structurally rather than via costly screenshots. [[observability-mcp]] brings Grafana, DB, and log MCPs — with a hard PII access-review requirement. [[agent-auth]] gives the dual-credential model (service-account + on-behalf-of bearer).
+
+**Containment ladder.** [[agent-permissions]] maps the spectrum (ask → auto-mode → YOLO) and explains why denying part of bash is naïve. [[os-sandbox]] (Seatbelt / seccomp+Landlock / bubblewrap) is kernel-enforced; [[docker-sandboxing]] is the gold standard (mount only needed folders, egress allow-list, never mount the socket, burn-the-box). [[secret-zero]] ensures agents never hold long-lived credentials — the MCP-as-proxy and kernel-key-swap broker patterns. [[production-safety]] consolidates the lessons from two documented disasters (Railway: 3 months of data gone; Kiro: 13-hour AWS outage) into actionable posture: least-privilege keys, [[elicitation]] on destructive actions, and "kill all but one" for post-mortem.
+
+**The cloud review workflow.** [[cloud-review-workflow]] is the "no laptop" pipeline: business vibes UX → [[vibe-fixer]] cleans it → [[three-amigos]] (Business + Developer + Tester ninja) produce acceptance tests → PR auto-created → cloud bot researches code → SDD → review by role → tasks for a cheaper model. The [[headless-claude]] (`claude -p` + `--resume`) pattern lets teams fake multi-turn user interactions without building a harness.</span>
 
 ---
 

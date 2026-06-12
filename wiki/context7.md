@@ -17,7 +17,7 @@ This is a form of on-demand [[rag]] applied to the documentation corpus rather t
 
 **Token cost awareness:** like all MCP tools, the tool schema occupies [[context-window]] space on every turn — see [[token-economy]] for the broader trade-off between tool breadth and context efficiency.
 
-<span style="color:red">**Don't trust recall for post-cutoff facts.** Anything newer than the model's training cutoff is a [[hallucination]] risk if the model answers from memory — pull it in instead, either via Context7 (version-specific, controlled corpus) or a plain **WebFetch** for one-off facts. Context7 is the right default for fast-moving library APIs; WebFetch for everything else.</span>
+**Don't trust recall for post-cutoff facts.** Anything newer than the model's training cutoff is a [[hallucination]] risk if the model answers from memory — pull it in instead, either via Context7 (version-specific, controlled corpus) or a plain **WebFetch** for one-off facts. Context7 is the right default for fast-moving library APIs; WebFetch for everything else.
 
 ## See also
 - [[model-context-protocol]]

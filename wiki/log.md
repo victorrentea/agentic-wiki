@@ -44,3 +44,54 @@ Same delta, same red marks (untouched). Source [[2026-06-11-ai-playtika]] was ex
 - [[static-analysis-gauntlet]] — SonarQube (tuned, e.g. max-params 7→5) / CodeQL / Semgrep as **build-failing CI gates** (not advisory dashboards) so code self-repairs before a human reviews — "make the machine draw blood first".
 
 **Updated 6 pages** (new sentences red-`<span>`-wrapped): [[multi-model-review]] (review orchestrator spawning ≈3 sub-agents per concern across Opus+GPT ⇒ ≈6 reviewers; review-sorted section; "done includes I watched it work" section), [[code-graph]] (reuse hunting must be *instructed explicitly* — grep business symbols + code-graph, else context-anxiety YOLO), [[rag]] (vector find is the wrong tool for code reuse — grep + code-graph instead), [[guardrails]] (the layered-defence idea extends to an agent's output *code*; +day-1 source), [[skill-erosion]] (front-load the analysis — ≈7 days of decisions into ≈1 hour; never approve what you don't understand), plus hub cross-links in [[agentic-engineering]], [[tripwire]], [[wiki/index|index]], [[overview]].
+
+## [2026-06-12] ingest | AI@Playtika Day 2
+
+Second delta ingest from [[2026-06-11-ai-playtika]]. All Day-1 red marks (44 pages) promoted to normal text first. Day-2 source: §§10–16, the Super-summary, and the Day-2 header block.
+
+**Created 19 pages** (red 🆕 badge + `new_in: 2026-06-12`):
+
+*MCP & tooling:*
+- [[mcp-sandbox-inheritance]] — spawned (stdio) MCP inherits agent sandbox; remote MCPs do not.
+- [[dynamic-tool-discovery]] — `tools/list` at connect; pitfall of too many tools; bridge for unknown CLIs.
+- [[cli-vs-mcp-tradeoff]] — CLI ≈0 tokens if in training data vs MCP ≈300–600 eager; when each wins.
+- [[browser-mcp]] — Playwright MCP + accessibility tree (structure > screenshots); Lighthouse integration.
+- [[observability-mcp]] — Grafana / DB / log MCPs; anomaly detection; PII risk; volumetry pattern.
+- [[agent-auth]] — service-account API key + on-behalf-of bearer token; out-of-band identity.
+- [[headless-claude]] — `claude -p` + `--resume`; reuse CLI as harness instead of building your own.
+
+*Review workflow:*
+- [[cloud-review-workflow]] — "no laptop" pipeline: ticket → Three Amigos → PR bot → SDD → cloud review.
+- [[three-amigos]] — Business + Developer + Tester (ninja) session producing acceptance tests.
+- [[vibe-fixer]] — receives ≈10k vibe-coded lines; applies engineering judgement (keep/reuse/discard).
+
+*Security:*
+- [[jailbreak-ladder]] — RLHF → abliteration → regex → judge LLM → context accumulation; bypass for each.
+- [[lethal-trifecta]] — Simon Willison's three-way (private data + untrusted content + external comms).
+- [[openclaw]] — always-on PDA with payments; canonical lethal-trifecta product.
+- [[geo-steganography]] — GEO invisible-text injection; cross-platform encoded instructions.
+- [[agent-permissions]] — ask → auto-mode → YOLO spectrum; tripwires; why denying part of bash fails.
+- [[os-sandbox]] — Seatbelt / seccomp+Landlock / bubblewrap; kernel-enforced file+network allow-list.
+- [[docker-sandboxing]] — gold standard: mount-only-needed, egress allow-list, don't-mount-socket, burn-box.
+- [[secret-zero]] — MCP-as-proxy + kernel-key-swap broker; agent never holds long-lived credential.
+- [[production-safety]] — Railway (3 months gone) + Kiro (13h outage) lessons; kill-all-but-one autopsy.
+
+**Updated 14 existing pages** (red `<span>` on new sentences):
+- [[model-context-protocol]] — remote vs local MCP sections; dynamic discovery; agent auth; +source.
+- [[mcp-transport]] — local stdio section and security-relevant remote-vs-local distinction.
+- [[elicitation]] — "absence of elicitation causes disasters" (Railway incident cross-link).
+- [[prompt-injection]] — indirect injection via fetched content; quarantine pattern; +cross-links.
+- [[dual-leg-rule]] — "strengthened framing from Day 2"; lethal-trifecta canonical name; +cross-links; +source.
+- [[guardrails]] — jailbreak-ladder cross-link; "no layer is sufficient" framing; +lethal-trifecta link.
+- [[multi-model-review]] — cloud embedding; "weakest link" framing; +cloud-review-workflow link.
+- [[spec-driven-development]] — cloud workflow integration; bot-built SDD; tasks.md for cheaper model.
+- [[supply-chain-attack]] — Docker socket as supply-chain amplifier; +docker-sandboxing link.
+- [[vibe-coding]] — vibe-fixer role and cloud workflow connection; +links; updated.
+- [[profiling-agents]] — "kill all but one" corollary; +observability-mcp and production-safety links; +source.
+- [[ralph-loop]] — `/loop` as tamer cousin; token budget; Haiku guard warning.
+
+**Navigation:** [[wiki/index|index]] gained 3 new sections (MCP additions, new security cluster, new patterns); [[overview]] gained movement §7 (security + containment + cloud workflow). All red marks are today's Day-2 delta only.
+
+**Stripped:** all "today we…" phrasing, client names, participant anecdotes, and transient pricing/version trivia removed from new pages. No session-artifact-only pages created.
+
+**Addendum (same day):** [[secret-zero]] updated to name **Bromure** (the microVM locker that ships fake credential stubs swapped at egress) — the concrete product instantiating the kernel-key-swap broker pattern. [[os-sandbox]] recommendation ladder updated to include the Bromure tier.

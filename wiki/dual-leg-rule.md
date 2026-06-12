@@ -2,9 +2,9 @@
 title: Dual-Leg Rule
 category: security
 tags: [security, agent-design, data-exfiltration, least-privilege, lethal-trifecta]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-12
 ---
 
 The dual-leg rule is Victor's practical form of Simon Willison's **[lethal trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)**: an agent must never simultaneously hold access to confidential data AND the ability to send or receive data externally — cut one of those legs.
@@ -27,6 +27,8 @@ A practical architecture: an **outer orchestrator agent** has the full user cont
 
 This pattern composes: each specialized sub-agent gets exactly one leg, and orchestration logic lives in the agent that has neither sensitive data nor external reach — it only routes.
 
+<span style="color:red">**Strengthened framing from Day 2:** The [[lethal-trifecta]] page gives Simon Willison's canonical name and adds the third leg explicitly (untrusted content as the injection vector). The dual-leg rule is the actionable distillation — "cut one leg" — and is the entry point for practical architecture decisions. Neither the WebFetch summarizer nor any filter is a structural guarantee; only removing a capability is.</span>
+
 ## See also
 - [[prompt-injection]]
 - [[tool-calling]]
@@ -34,4 +36,9 @@ This pattern composes: each specialized sub-agent gets exactly one leg, and orch
 - [[supply-chain-attack]]
 - [[mcp-transport]]
 - [[elicitation]]
+- [[lethal-trifecta]]
+- [[openclaw]]
+- [[docker-sandboxing]]
+- [[secret-zero]]
 - [[2026-06-10-spring-ai-itkonekt]]
+- [[2026-06-11-ai-playtika]]

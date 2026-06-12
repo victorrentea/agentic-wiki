@@ -5,10 +5,8 @@ tags: [dictation, voice, productivity, human-bottleneck, input]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 Wispr Flow is a voice-dictation tool that transcribes speech into any text field, used to remove the human typing bottleneck when driving agents.
 

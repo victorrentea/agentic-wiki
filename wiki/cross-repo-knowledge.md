@@ -5,10 +5,8 @@ tags: [claude-md, skill, team, monorepo, knowledge-engineering, symlink]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 Cross-repo knowledge is the pattern of keeping a team's shared agent configuration — [[claude-md]] rules plus [[agent-skill|skills]] — in one central git repo that every project repo references, so knowledge lives on the team rather than on one laptop.
 

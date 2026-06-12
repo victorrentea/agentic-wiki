@@ -5,10 +5,8 @@ tags: [agent-harness, claude-code, tooling, knowledge, actions]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 The harness is everything wrapped around the raw model: a human interface plus a set of tools that give the LLM **knowledge** (CLAUDE.md, skills, wiki, code graph) and **actions** (run builds, deploy, git, restart prod).
 

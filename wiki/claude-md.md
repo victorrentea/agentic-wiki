@@ -5,10 +5,8 @@ tags: [claude-md, memory, drift, context-window, onboarding]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 `CLAUDE.md` is the project memory file loaded into every agent session from the current working directory — and because it costs [[context-window]] on turn 1, its hygiene matters more than its completeness.
 

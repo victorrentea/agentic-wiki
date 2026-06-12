@@ -1,10 +1,10 @@
 ---
 title: Profiling Agents
 category: pattern
-tags: [performance, java, flame-graphs, heap-analysis, build-optimization]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]"]
+tags: [performance, java, flame-graphs, heap-analysis, build-optimization, observability]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-12
 ---
 
 Using an LLM agent as a profiling analyst: feed it Java Flight Recorder traces, async-profiler flame graphs, or binary heap dumps and let it diagnose bottlenecks — without the human needing to read thousands of frames manually.
@@ -25,10 +25,15 @@ Victor cited a pen-test client engagement (the day before the session): the agen
 
 This pattern earns its keep on large, slow builds where humans have deferred profiling due to tooling friction. For small codebases (<50k lines) the agent often reads the source directly and rewrites the bottleneck — profiling tooling can introduce noise by expanding the [[tool-context]] surface (see [[token-economy]]). The agent should be given a tightly scoped tool set: the profiler MCP, read access to source, and nothing else. Pair with a [[ralph-loop]] overnight run for large analyses.
 
+<span style="color:red">**The "kill all but one" corollary:** when a fleet node misbehaves, keep one malfunctioning instance alive for the autopsy — thread dump, heap dump. A profiling MCP turns that from a specialist ritual into a one-prompt root-cause: *if* you preserved the body first. See [[production-safety]].</span>
+
 ## See also
 
 - [[token-economy]]
 - [[ralph-loop]]
 - [[tool-context]]
 - [[tool-calling]]
+- [[observability-mcp]]
+- [[production-safety]]
 - [[2026-06-10-spring-ai-itkonekt]]
+- [[2026-06-11-ai-playtika]]

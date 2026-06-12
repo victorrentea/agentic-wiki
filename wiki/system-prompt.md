@@ -20,7 +20,7 @@ LLMs reason over exactly four message roles:
 | **Assistant** | The model's own prior replies |
 | **Tool** | [[tool-calling]] invocations and their results |
 
-<span style="color:red">## What goes into the LLM on turn 1
+## What goes into the LLM on turn 1
 
 In an agent [[harness]], far more than your text reaches the model before you finish your first sentence — run `/context` to see it (a fresh chat can already burn ≈20k tokens). The turn-1 payload:
 
@@ -30,7 +30,7 @@ In an agent [[harness]], far more than your text reaches the model before you fi
 - **Memory** — `memory.md` in your home + the project [[claude-md|CLAUDE.md]] in the working directory.
 - **Skill front-matter** — the *description* of every installed [[agent-skill|skill]] is eager-loaded so the agent knows what it could pull on demand ([[progressive-disclosure]]).
 
-A bloated baseline (too many always-on MCP servers) silently shrinks your usable window and pushes you toward the [[dumb-zone]] faster — a core [[token-economy]] concern.</span>
+A bloated baseline (too many always-on MCP servers) silently shrinks your usable window and pushes you toward the [[dumb-zone]] faster — a core [[token-economy]] concern.
 
 ## "Pretty-please" guardrails
 

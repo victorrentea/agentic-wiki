@@ -5,10 +5,8 @@ tags: [human-factors, attention, parallel-agents, burnout, anti-pattern]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 AI addiction is the dopamine/gambling loop of agentic work — spinning up parallel terminals chasing the next spectacular result — that drains your tokens and your agency, often by 1pm.
 

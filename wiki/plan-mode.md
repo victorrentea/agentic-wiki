@@ -5,10 +5,8 @@ tags: [planning, claude-code, deep-thinking, context-management, single-threaded
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 Plan mode (Shift-Tab in Claude Code) is a read-only thinking phase where the agent brainstorms and designs an approach *before* touching any code — single-threaded deep thinking that must not be parallelized.
 

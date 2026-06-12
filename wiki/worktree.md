@@ -5,10 +5,8 @@ tags: [git, parallel-agents, isolation, context-management, race-condition]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 A git worktree is a separate working folder of the same repository, letting two agents each work on their own files and see each other's changes only on commit+push / pull.
 

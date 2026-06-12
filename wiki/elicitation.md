@@ -2,9 +2,9 @@
 title: Elicitation
 category: concept
 tags: [mcp, human-in-the-loop, safety, agent-control]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-12
 ---
 
 An [[model-context-protocol]] feature that allows a server to pause a [[tool-calling|tool]] invocation mid-flight and demand a real human response before proceeding.
@@ -25,6 +25,10 @@ During the live demo on [[2026-06-10-spring-ai-itkonekt]], the agent (Opus 4.8) 
 
 Elicitation only holds if the agent lacks alternative paths. The lesson: **strip the harness agent to exactly the MCPs it needs** — remove Read/Write/WebFetch and every other escape hatch — via `settings.json` permissions. An agent with broad tool access will find a creative back door around any single guard. See [[tool-context]] and [[guardrails]].
 
+## The absence of elicitation causes disasters
+
+<span style="color:red">The Railway incident (see [[production-safety]]) illustrates the cost of a missing elicitation gate: an over-permissioned secret was in the workspace, the CLI lacked a "confirm before deleting the volume" step, and three months of data were lost. Elicitation is how a tool refuses to run unsupervised on destructive actions.</span>
+
 ## See also
 
 - [[model-context-protocol]]
@@ -32,4 +36,7 @@ Elicitation only holds if the agent lacks alternative paths. The lesson: **strip
 - [[sampling]]
 - [[tool-calling]]
 - [[guardrails]]
+- [[production-safety]]
+- [[agent-permissions]]
 - [[2026-06-10-spring-ai-itkonekt]]
+- [[2026-06-11-ai-playtika]]

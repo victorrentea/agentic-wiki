@@ -2,7 +2,7 @@
 title: Index
 category: source
 tags: [index, catalog]
-updated: 2026-06-11
+updated: 2026-06-12
 ---
 
 # Index
@@ -19,7 +19,10 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 
 ## Concepts — MCP & knowledge
 - [[model-context-protocol]] — open protocol connecting agents to tools/data; resources, tools, prompts.
-- [[mcp-transport]] — SSE + POSTs, JSON-RPC correlation, Streamable HTTP.
+- [[mcp-transport]] — SSE + POSTs, JSON-RPC correlation, Streamable HTTP; local stdio transport and its sandbox inheritance.
+- [[mcp-sandbox-inheritance]] — spawned (stdio) MCP inherits the agent's OS sandbox; remote MCPs do not.
+- [[dynamic-tool-discovery]] — no Swagger: LLM asks server `tools/list` at connect; pitfall when too many tools.
+- [[cli-vs-mcp-tradeoff]] — CLI costs ≈0 tokens if in training data; MCP loads tool schemas eagerly (300–600 tokens).
 - [[elicitation]] — server forces human-in-the-loop approval mid-tool-call.
 - [[sampling]] — a tool calls back into the caller's LLM to condense data.
 - [[rag]] — retrieval-augmented generation: pull extra knowledge into the context (≈ approximate find).
@@ -44,7 +47,11 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[caveman]] — anti-pattern: decompressing terse AI output taxes your attention.
 
 ## Security
-- [[prompt-injection]] — jailbreaks, sycophancy, multi-turn drift.
+- [[prompt-injection]] — jailbreaks, sycophancy, multi-turn drift, indirect injection via fetched content.
+- [[jailbreak-ladder]] — RLHF → abliteration → regex → judge LLM → context accumulation; each rung's bypass.
+- [[lethal-trifecta]] — Simon Willison's three-way: private data + untrusted content + external comms = catastrophic.
+- [[openclaw]] — always-on personal assistant with payments: the canonical lethal-trifecta product.
+- [[geo-steganography]] — Generative Engine Optimization and invisible-text injection into fetched content.
 - [[judge-llm]] — a cheap classifier LLM screens prompt and response.
 - [[guardrails]] — the layered defense stack, weakest to strongest.
 - [[tool-calling]] — the model invents tool parameters; harden and validate them.
@@ -52,6 +59,11 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[jwt-identity]] — parse and validate the access token before trusting it.
 - [[supply-chain-attack]] — poisoned dependencies, the S-BOM bomb, and the agent-era twist.
 - [[dual-leg-rule]] — confidential data XOR external reach; cut one leg.
+- [[agent-permissions]] — permission spectrum: default ask → auto-mode → YOLO; tripwires as surgical overrides.
+- [[os-sandbox]] — Seatbelt / seccomp+Landlock / bubblewrap: kernel-enforced file+network allow-list.
+- [[docker-sandboxing]] — gold standard containment: mount only needed folders, egress allow-list, burn-the-box.
+- [[secret-zero]] — MCP-as-proxy / kernel-key-swap broker: agent never holds long-lived credentials.
+- [[production-safety]] — least-privilege keys, elicitation gates, kill-all-but-one for autopsy; Railway+Kiro lessons.
 
 ## Tools & frameworks
 - [[spring-ai]] — the Java framework the chatbot build is based on.
@@ -68,6 +80,9 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[wispr-flow]] — voice dictation to remove the human typing bottleneck.
 - [[openspec]] — scaffolds and enforces the spec-driven workflow in waves.
 - [[worktree]] — isolated repo folders so parallel agents don't collide.
+- [[browser-mcp]] — Playwright MCP + accessibility tree: structure-first browser automation.
+- [[observability-mcp]] — Grafana / DB / log MCPs; PII risks and the volumetry pattern.
+- [[headless-claude]] — `claude -p` / `--resume`: multi-turn user sessions without a custom harness.
 
 ## Concepts — skills & knowledge engineering
 - [[agent-skill]] — a markdown tool whose description is eager-loaded, body on demand.
@@ -78,17 +93,21 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 
 ## Patterns — operating agents
 - [[ralph-loop]] — spec by day, run agent loops overnight with clean context (in a Docker sandbox).
-- [[profiling-agents]] — feed JFR / flame graphs / heap dumps to agents.
+- [[profiling-agents]] — feed JFR / flame graphs / heap dumps to agents; "kill all but one" for post-mortem.
 - [[plan-mode]] — single-threaded deep thinking before touching code.
 - [[handover]] — write conclusions to a file; "die and be reborn" with clean context.
 - [[sub-agents]] — orchestrator delegates to fresh-context research/review minions.
 - [[spec-driven-development]] — align your mental model with what the AI will build.
 - [[acceptance-test-bdd]] — given/when/then tests you review instead of mock-coupled unit tests.
 - [[multi-model-review]] — a "quorum of mothers-in-law"; split each concern across model families; review *sorted*.
+- [[cloud-review-workflow]] — "no laptop" pipeline: ticket → Three Amigos → PR bot → cloud SDD → sorted review.
+- [[three-amigos]] — Business + Developer + Tester (ninja) session producing acceptance tests.
+- [[vibe-fixer]] — receives ≈10k lines of vibe-coded output; applies engineering judgement, not rewriting.
 - [[code-review]] — the human's last gate: judgement not mechanics, sorted review, the PR-size sweet spot.
 - [[static-analysis-gauntlet]] — Sonar / CodeQL / Semgrep as build-failing CI gates; make the machine draw blood first.
 - [[field-reality-diagram]] — sequence diagrams generated from real traces; can't drift.
+- [[agent-auth]] — service-account API key + on-behalf-of bearer; identity never as tool argument.
 
 ## Sources
 - [[2026-06-10-spring-ai-itkonekt]] — Spring AI @ ITKonekt workshop summary (seed source).
-- [[2026-06-11-ai-playtika]] — AI Agentic Engineering workshop, day 1 (delta ingest).
+- [[2026-06-11-ai-playtika]] — AI Agentic Engineering workshop, day 1 + day 2 (two delta ingests).

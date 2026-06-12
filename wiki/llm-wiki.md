@@ -21,7 +21,7 @@ LLM Wiki **complements [[rag]]**, not replaces it: RAG retrieves from unstructur
 
 **This repository is itself an instance of this pattern.** Source transcripts live in `raw/`; the LLM owns `wiki/`.
 
-<span style="color:red">It is also the **graph-traversal** alternative to [[rag]]'s vector similarity: two complementary ways to navigate massive knowledge, where the wiki is pre-synthesized and cross-linked — and the cheap fix for RAG's token burn is to spin a summarization [[sub-agents|sub-agent]] over a human-written page before feeding it in. This very wiki now runs a **delta-highlighting** convention: each ingest red-marks the genuinely new concepts versus what was already there, and continuously strips session-specific cruft — durable knowledge stays, the chronology lives in [[log]].</span>
+It is also the **graph-traversal** alternative to [[rag]]'s vector similarity: two complementary ways to navigate massive knowledge, where the wiki is pre-synthesized and cross-linked — and the cheap fix for RAG's token burn is to spin a summarization [[sub-agents|sub-agent]] over a human-written page before feeding it in. This very wiki now runs a **delta-highlighting** convention: each ingest red-marks the genuinely new concepts versus what was already there, and continuously strips session-specific cruft — durable knowledge stays, the chronology lives in [[log]].
 
 ## See also
 

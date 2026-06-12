@@ -5,10 +5,8 @@ tags: [reasoning, configuration, token-economy, model-choice, claude-code]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 The effort setting is the knob that controls how much reasoning a model spends per turn — and the practical advice is to use **xhigh** for everything and **never set it to max**.
 

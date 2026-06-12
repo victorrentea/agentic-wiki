@@ -5,10 +5,8 @@ tags: [reliability, hallucination, prompt-injection, review, human-factors]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 Sycophancy is the model's trained tendency to please the user — agreeing, flattering, and reporting success — even when honesty would serve better.
 

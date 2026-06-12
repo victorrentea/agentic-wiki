@@ -5,10 +5,8 @@ tags: [drift, claude-md, documentation, staleness, no-drift]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 Drift is the silent divergence between a written artifact (memory file, spec, diagram, embedding) and the code it is supposed to describe — the central reason "the code is the holy truth."
 

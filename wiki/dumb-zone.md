@@ -5,10 +5,8 @@ tags: [context-window, lost-in-the-middle, performance, compaction, recall]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 The dumb zone is the region of a [[context-window]] — roughly past **≈65% full** — where a model becomes "lost in the middle" and its reasoning quality visibly degrades, even on frontier models.
 
@@ -33,7 +31,7 @@ Three escapes, in order of preference:
 2. **[[sub-agents]]** — delegate research to fresh-context workers that report back a few compact paragraphs.
 3. **Compact** — the lossy last resort.
 
-This is the discipline behind [[token-economy]] and the [[ralph-loop]]: keep every task inside the model's comfort zone. Past ≈600k Opus even develops <span style="color:red">"context anxiety"</span> — see [[vibe-coding]].
+This is the discipline behind [[token-economy]] and the [[ralph-loop]]: keep every task inside the model's comfort zone. Past ≈600k Opus even develops "context anxiety" — see [[vibe-coding]].
 
 ## See also
 - [[context-window]]

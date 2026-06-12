@@ -5,10 +5,8 @@ tags: [testing, bdd, playwright, karate, spec-driven, review]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 Acceptance tests express behaviour as plain-English given/when/then scenarios (with assertions in the **`then`** step) so they constrain the agent from the *outside* while a [[spec-driven-development|spec]] constrains it from within.
 

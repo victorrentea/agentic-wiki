@@ -1,10 +1,10 @@
 ---
 title: MCP Transport
 category: concept
-tags: [mcp, transport, sse, http, json-rpc, streaming]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]"]
+tags: [mcp, transport, sse, http, json-rpc, streaming, stdio]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-12
 ---
 
 The wire layer that carries [[model-context-protocol]] messages between agent and server, built on HTTP and Server-Sent Events rather than a bidirectional socket.
@@ -26,6 +26,12 @@ SSE is unidirectional (server → client only), which is exactly the MCP pattern
 
 [Streamable HTTP](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports) is the newer MCP transport that supersedes the original HTTP+SSE design. It unifies the two-channel model into a single connection. The HTTP+SSE transport is still widely deployed but should be considered legacy for new implementations.
 
+## Local stdio transport
+
+The second major transport is **local stdio**: the MCP client (the agent harness) spawns the MCP server as a child process and communicates over stdin/stdout. This is the transport used by tools like Playwright MCP and code-graph. The key security property: a stdio MCP is a child process, so it inherits the agent's [[os-sandbox]] — see [[mcp-sandbox-inheritance]].
+
+<span style="color:red">Remote (SSE/HTTP) MCPs live outside the agent's sandbox and need their own authz and rate-limiting. Local stdio MCPs inherit the agent's sandbox automatically — this is the security-relevant distinction between the two transports.</span>
+
 ## See also
 
 - [[model-context-protocol]]
@@ -33,4 +39,7 @@ SSE is unidirectional (server → client only), which is exactly the MCP pattern
 - [[sampling]]
 - [[jwt-identity]]
 - [[tool-calling]]
+- [[mcp-sandbox-inheritance]]
+- [[agent-auth]]
 - [[2026-06-10-spring-ai-itkonekt]]
+- [[2026-06-11-ai-playtika]]

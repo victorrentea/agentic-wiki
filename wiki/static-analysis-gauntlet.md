@@ -5,10 +5,8 @@ tags: [static-analysis, ci-gate, sonarqube, codeql, semgrep, guardrails]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 The static-analysis gauntlet is the practice of throwing every static-analysis tool at agent-written code as **build-failing CI gates**, so the code self-repairs against the machines before a human ever reviews it — "make the machine draw blood before a human looks."
 

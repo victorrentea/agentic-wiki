@@ -5,10 +5,8 @@ tags: [spec-driven, skill, workflow-enforcement, scaffolding, handover]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 OpenSpec is a tool that scaffolds opinionated [[spec-driven-development]] markdown into `.claude/skills` and enforces the spec workflow in waves through a backing CLI.
 

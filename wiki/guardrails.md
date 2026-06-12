@@ -1,10 +1,10 @@
 ---
 title: Guardrails
 category: security
-tags: [security, defense-in-depth, advisor, classifier, spring-ai]
+tags: [security, defense-in-depth, advisor, classifier, spring-ai, jailbreak]
 sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
 created: 2026-06-10
-updated: 2026-06-11
+updated: 2026-06-12
 ---
 
 Guardrails are the layered defenses placed around an LLM chatbot to prevent harmful, off-topic, or adversarial output from reaching users.
@@ -24,7 +24,9 @@ A separate cheap classifier screens **both** the incoming prompt and the outgoin
 
 In [[spring-ai]], guardrails are wired as [[advisor]] beans that wrap the `ChatModel` call chain — before-advice for input filtering, after-advice for output filtering. Multiple advisors stack; order matters (cheap regex first, expensive judge last).
 
-<span style="color:red">The same layered-defence idea applies to an agent's *output code*, not just a chatbot's output text: the [[static-analysis-gauntlet]] (SonarQube / CodeQL / Semgrep as build-failing CI gates) and softer [[tripwire|tripwires]] are guardrails around what an agent writes, forcing self-repair before a human reviews.</span>
+The same layered-defence idea applies to an agent's *output code*, not just a chatbot's output text: the [[static-analysis-gauntlet]] (SonarQube / CodeQL / Semgrep as build-failing CI gates) and softer [[tripwire|tripwires]] are guardrails around what an agent writes, forcing self-repair before a human reviews.
+
+<span style="color:red">**Each layer has a documented bypass.** The [[jailbreak-ladder]] maps the full escalation path (RLHF → abliteration → regex → judge LLM → context accumulation) and the specific technique that defeats each rung. None are guarantees; they're defense-in-depth. The only structural defense is removing a capability (see [[lethal-trifecta]]).</span>
 
 ## See also
 - [[prompt-injection]]
@@ -34,5 +36,7 @@ In [[spring-ai]], guardrails are wired as [[advisor]] beans that wrap the `ChatM
 - [[tool-calling]]
 - [[static-analysis-gauntlet]]
 - [[tripwire]]
+- [[jailbreak-ladder]]
+- [[lethal-trifecta]]
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-11-ai-playtika]]

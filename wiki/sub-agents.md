@@ -5,10 +5,8 @@ tags: [orchestrator, multi-agent, context-management, research, delegation]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 Sub-agents ("babies") are fresh-context worker agents an orchestrator spawns to research or review in parallel, each reporting back a few compact paragraphs — so the orchestrator escapes the [[dumb-zone]] without reading hundreds of files itself.
 

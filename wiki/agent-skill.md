@@ -5,10 +5,8 @@ tags: [skill, progressive-disclosure, tool-calling, front-matter, claude-code]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 An agent skill is a markdown file with YAML front-matter whose *description* is eager-loaded into context while its *body* is pulled in on demand — a skill is itself a [[tool-calling|tool]] the agent invokes when it decides the skill is relevant.
 

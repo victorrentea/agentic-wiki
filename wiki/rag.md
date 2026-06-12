@@ -19,7 +19,7 @@ In [[spring-ai]], RAG is implemented as a `QuestionAnswerAdvisor` — an [[advis
 
 For richer retrieval, combine semantic similarity with fuzzy/exact signals: see [[vector-search]] for the hybrid approach.
 
-<span style="color:red">**RAG = approximate find** ("search for a shoe, find a slipper") — it is the AI's fuzzy search over company knowledge. But after it *finds* a document it tends to load a whole paragraph or wiki page → token burn, so spin a summarization [[sub-agents|sub-agent]] to extract the essence of a human-written Confluence/Jira page before feeding it in. The richer, pre-synthesized cousin is the [[llm-wiki]]: **graph traversal** of cross-linked concept pages versus RAG's **vector similarity** — two complementary ways to navigate massive knowledge. (For *code* reuse, fuzzy vector find is the wrong tool — grep the business symbol names and walk the [[code-graph]] instead.)</span>
+**RAG = approximate find** ("search for a shoe, find a slipper") — it is the AI's fuzzy search over company knowledge. But after it *finds* a document it tends to load a whole paragraph or wiki page → token burn, so spin a summarization [[sub-agents|sub-agent]] to extract the essence of a human-written Confluence/Jira page before feeding it in. The richer, pre-synthesized cousin is the [[llm-wiki]]: **graph traversal** of cross-linked concept pages versus RAG's **vector similarity** — two complementary ways to navigate massive knowledge. (For *code* reuse, fuzzy vector find is the wrong tool — grep the business symbol names and walk the [[code-graph]] instead.)
 
 ## See also
 - [[vector-search]]

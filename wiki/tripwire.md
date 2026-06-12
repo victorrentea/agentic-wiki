@@ -5,10 +5,8 @@ tags: [guardrails, claude-md, hook, soft-rule, onboarding]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 A tripwire is a scripted "kind requirement" — a booby-trap that *gently reminds* the agent when it does something you dislike, but lets the agent decide whether to comply — a softer, often better alternative to a [[claude-md]] hard rule.
 

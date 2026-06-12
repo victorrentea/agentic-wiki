@@ -5,10 +5,8 @@ tags: [token-economy, data-format, json, csv, cost-optimization]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 TOON (Token-Oriented Object Notation) is a "CSV-for-AI" data format that encodes structured data far more compactly than JSON by not repeating field names — saving input tokens on large collections.
 

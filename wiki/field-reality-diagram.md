@@ -5,10 +5,8 @@ tags: [observability, traces, plantuml, diagrams, drift, no-drift]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-11
 updated: 2026-06-11
-new_in: 2026-06-11
 ---
 
-<span style="color:red">🆕 New in AI @ Playtika (2026-06-11)</span>
 
 A field-reality diagram is a sequence diagram *generated from real execution traces* rather than hand-drawn — so it shows the actual flow of a system and **cannot [[drift]]**, because it is regenerated on every run.
 
