@@ -21,7 +21,7 @@ The human's role shifts radically: stop typing code, **dictate everything**. The
 
 Specs pair well with [[token-economy]] discipline: strip the agent to only the tools it needs, watch its first tool call, and [[profiling-agents|profile]] iteratively. [[llm-wiki]] pages make good durable spec anchors across loops.
 
-<span style="color:red">**`/loop` — the tamer cousin.** Claude Code's built-in `/loop` command re-runs until CI is green, retries flaky tests, and can be given a **token budget** that emails when exceeded. Unlike the bash `while` RALPH loop, `/loop` does not require `--dangerously-skip-permissions` — but it still needs a [[docker-sandboxing|Docker sandbox]] for any sensitive work. Avoid letting it fall back to Haiku as the judge model; Haiku's reliability is insufficient for autonomous guard decisions.</span>
+**`/loop` — the tamer cousin.** Claude Code's built-in `/loop` command re-runs until CI is green, retries flaky tests, and can be given a **token budget** that emails when exceeded. Unlike the bash `while` RALPH loop, `/loop` does not require `--dangerously-skip-permissions` — but it still needs a [[docker-sandboxing|Docker sandbox]] for any sensitive work. Avoid letting it fall back to Haiku as the judge model; Haiku's reliability is insufficient for autonomous guard decisions.
 
 ## See also
 

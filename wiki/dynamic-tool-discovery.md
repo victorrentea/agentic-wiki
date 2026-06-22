@@ -5,10 +5,7 @@ tags: [mcp, tool-calling, protocol, discoverability]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 [[model-context-protocol]] has no Swagger or WSDL — the LLM asks the server *"what tools do you have?"* at connection time and receives their names, descriptions, and JSON-schema parameters on the fly.
 

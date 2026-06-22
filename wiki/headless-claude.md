@@ -5,10 +5,7 @@ tags: [claude-code, headless, non-interactive, multi-turn, runtime]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 `claude -p` runs Claude Code in **non-interactive / headless mode**, enabling a product to fake multi-turn conversations without building a custom agent harness.
 

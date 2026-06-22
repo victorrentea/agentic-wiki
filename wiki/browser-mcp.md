@@ -5,10 +5,7 @@ tags: [mcp, playwright, browser-automation, accessibility-tree, testing]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 [Playwright MCP](https://github.com/microsoft/playwright-mcp) lets an agent drive a real browser headlessly via [[model-context-protocol]] — and, crucially, it reads the page through the **accessibility tree** rather than through screenshots, which is structurally cheaper and cross-browser.
 

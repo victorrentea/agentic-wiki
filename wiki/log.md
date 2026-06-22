@@ -95,3 +95,46 @@ Second delta ingest from [[2026-06-11-ai-playtika]]. All Day-1 red marks (44 pag
 **Stripped:** all "today we…" phrasing, client names, participant anecdotes, and transient pricing/version trivia removed from new pages. No session-artifact-only pages created.
 
 **Addendum (same day):** [[secret-zero]] updated to name **Bromure** (the microVM locker that ships fake credential stubs swapped at egress) — the concrete product instantiating the kernel-key-swap broker pattern. [[os-sandbox]] recommendation ladder updated to include the Bromure tier.
+
+## [2026-06-22] ingest | AI@Kambi (Day 1)
+
+Third delta ingest. Source: [[2026-06-22-ai-kambi]] (Day 1 of a 2-day AI-Assisted / Agentic Coding workshop). All Day-2 red marks (30 pages) promoted to normal text first.
+
+**Created 9 pages** (red 🆕 badge + `new_in: 2026-06-22`):
+
+- [[2026-06-22-ai-kambi]] — source page.
+- [[ci-green-loop]] — post-push hook vs `/loop fix ci`; two variants with different context postures.
+- [[reward-hacking]] — agent cheating (assert true, deleting tests); defenses must be out-of-band.
+- [[firefighter-agent]] — on-call incident-recovery agent gathering intel before human connects.
+- [[draft-only-email]] — OAuth scope discipline: `compose` not `send`; structural not model enforcement.
+- [[headroom]] — evolved CLI-output compression proxy, sibling of [[rtk]].
+- [[agents-md]] — cross-harness project memory standard; symlink AGENTS.md → CLAUDE.md.
+- [[pg-trgm]] — Postgres trigram extension for substring search; GIN/GiST indexes.
+- [[keyset-pagination]] — cursor-based pagination; OFFSET breaks at 100K+ rows; tie-breaker required.
+
+**Updated 18 existing pages** (new sentences/paragraphs red-`<span>`-wrapped):
+- [[harness]] — harness ≠ model definition sharpened; LLM-as-weights framing; AGENTS.md cross-link.
+- [[claude-md]] — three moves to shrink a bloated file; ≈100-line rule; per-folder split; skill extraction; AGENTS.md link.
+- [[agent-skill]] — skill activation is model-strength-dependent; strong models wait, weak local models trash context.
+- [[token-economy]] — most tokens in tool results, not messages; XML-noise framing; headroom added; "write yourself a script" pattern.
+- [[dumb-zone]] — "context rot" alias; compaction-as-failure-mode elaborated; hallucinated test results example.
+- [[prompt-caching]] — 8-minute test run trap; 1-hour TTL option via cache-control.
+- [[handover]] — compaction-is-inferior elaborated; manual plan.md review before /clear.
+- [[sub-agents]] — pure-router pattern; rate-limit outbound; prefer OpenAPI over hand-taught calls.
+- [[grill-me]] — grill spawns sub-agent into codebase to self-answer; one-question-at-a-time mode.
+- [[spec-driven-development]] — "never touch the files, only prompt" discipline; thinking-partner framing; keyset/pg-trgm cross-links.
+- [[supply-chain-attack]] — typosquatting vector added.
+- [[docker-sandboxing]] — `--dangerously-skip-permissions` only safe inside Docker.
+- [[sycophancy]] — "don't over-praise" corollary; cornfield-parable framing.
+- [[skill-erosion]] — quarter-sprint-hands-only; mob/pair programming as gold standard.
+- [[plan-mode]] — task-size table (trivial/day/multi-day); Shift-Tab Shift-Tab keybinding noted.
+- [[wispr-flow]] — alternatives (macOS Dictation, Claude mobile mic); dictation for grilling.
+- [[multi-model-review]] — push review rules to reviewer stage; encode-rule-then-run-it-now; fresh sub-agent to verify rule.
+- [[code-review]] — skip trivial diffs; stop reviewing unit tests; "option C" independent judgment.
+- [[agentic-engineering]] — every failure = enrich plan or context; sprint retro question; production horizon (firefighter, all-day-in-CC).
+- [[rtk]] — headroom cross-link added.
+- [[overview]] — Day-2 red span removed (promoted); new §8 added for AI@Kambi.
+
+**Navigation:** [[wiki/index|index]] gained 2 new sections (database & search; new tools headroom, pg-trgm), new patterns (ci-green-loop, firefighter-agent, reward-hacking), new security entry (draft-only-email), new knowledge-engineering entry (agents-md), and updated source list. [[overview]] gained §8.
+
+**Stripped:** "Claudette" client name removed and generalized to "a Slack bot" in [[sub-agents]]. No session-artifact-only pages created. All provenance in `sources:` frontmatter and this log entry.

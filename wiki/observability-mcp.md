@@ -5,10 +5,7 @@ tags: [mcp, grafana, observability, pii, logs, metrics, anomaly-detection]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 Observability MCPs (Grafana, OpenSearch/Kibana) give agents read access to metrics, dashboards, logs, and traces — letting them derive production facts without a human copy-pasting numbers into the chat.
 

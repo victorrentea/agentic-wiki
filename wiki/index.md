@@ -2,7 +2,7 @@
 title: Index
 category: source
 tags: [index, catalog]
-updated: 2026-06-12
+updated: 2026-06-22
 ---
 
 # Index
@@ -30,11 +30,11 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[graph-database]] — explicit-connection knowledge graphs (vs vector similarity).
 
 ## Concepts — context & token economy
-- [[token-economy]] — treat context tokens as a finite, expensive resource (output ≈5× input).
-- [[dumb-zone]] — past ≈65% full a model degrades; 1M window ≠ 1M recall.
-- [[prompt-caching]] — pay ≈10% for the re-sent prefix, but the cache TTL is ≈5 minutes.
+- [[token-economy]] — treat context tokens as a finite, expensive resource (output ≈5× input); most tokens live in tool results.
+- [[dumb-zone]] — past ≈55–65% full a model degrades ("context rot"); 1M window ≠ 1M recall; compaction is a failure mode.
+- [[prompt-caching]] — pay ≈10% for the re-sent prefix, but the cache TTL is ≈5 minutes (1-hour available via cache-control).
 - [[effort-setting]] — use **xhigh**, never **max**; the reasoning-spend knob.
-- [[harness]] — everything wrapped around the model: a UI + tools giving it knowledge and actions.
+- [[harness]] — everything wrapped around the model: a UI + tools giving it knowledge and actions (harness ≠ model).
 
 ## Concepts — reliability & human factors
 - [[hallucination]] — the five fixable root causes of confident wrongness.
@@ -57,13 +57,14 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[tool-calling]] — the model invents tool parameters; harden and validate them.
 - [[tool-context]] — pass identity out-of-band, never as model-authored data.
 - [[jwt-identity]] — parse and validate the access token before trusting it.
-- [[supply-chain-attack]] — poisoned dependencies, the S-BOM bomb, and the agent-era twist.
+- [[supply-chain-attack]] — poisoned dependencies, S-BOM bomb, typosquatting, and the agent-era twist.
 - [[dual-leg-rule]] — confidential data XOR external reach; cut one leg.
-- [[agent-permissions]] — permission spectrum: default ask → auto-mode → YOLO; tripwires as surgical overrides.
+- [[agent-permissions]] — permission spectrum: default ask → auto-mode → YOLO (only inside Docker); tripwires as surgical overrides.
 - [[os-sandbox]] — Seatbelt / seccomp+Landlock / bubblewrap: kernel-enforced file+network allow-list.
-- [[docker-sandboxing]] — gold standard containment: mount only needed folders, egress allow-list, burn-the-box.
+- [[docker-sandboxing]] — gold standard containment: mount only needed folders, egress allow-list, burn-the-box; YOLO safe only inside.
 - [[secret-zero]] — MCP-as-proxy / kernel-key-swap broker: agent never holds long-lived credentials.
 - [[production-safety]] — least-privilege keys, elicitation gates, kill-all-but-one for autopsy; Railway+Kiro lessons.
+- [[draft-only-email]] — agent composes drafts only; send is human's action; enforced by OAuth scope not model discretion.
 
 ## Tools & frameworks
 - [[spring-ai]] — the Java framework the chatbot build is based on.
@@ -72,12 +73,14 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[code-graph]] — file-watcher-synced code symbol graph; exact callers + grep-for-reuse.
 - [[context7]] — MCP that injects up-to-date, version-specific library docs.
 - [[pgvector]] — Postgres vector-similarity extension.
+- [[pg-trgm]] — Postgres trigram extension: GIN/GiST indexes for substring search at scale.
 - [[claude-code-router]] — route the harness to other model providers (incl. on-prem DeepSeek).
-- [[grill-me]] — a skill that interrogates an idea with probing questions.
+- [[grill-me]] — a skill that interrogates requirements one question at a time; spawns a sub-agent into the codebase.
 - [[llm-wiki]] — Karpathy's pattern that *this* repository instantiates.
 - [[rtk]] — Rust Token Killer: proxies dev commands to trim output tokens.
+- [[headroom]] — evolved CLI-output compression proxy; broader coverage than RTK.
 - [[toon]] — Token-Oriented Object Notation: compact CSV-for-AI data format.
-- [[wispr-flow]] — voice dictation to remove the human typing bottleneck.
+- [[wispr-flow]] — voice dictation (Wispr Flow / macOS Dictation / Claude mobile) to remove the typing bottleneck.
 - [[openspec]] — scaffolds and enforces the spec-driven workflow in waves.
 - [[worktree]] — isolated repo folders so parallel agents don't collide.
 - [[browser-mcp]] — Playwright MCP + accessibility tree: structure-first browser automation.
@@ -85,29 +88,38 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[headless-claude]] — `claude -p` / `--resume`: multi-turn user sessions without a custom harness.
 
 ## Concepts — skills & knowledge engineering
-- [[agent-skill]] — a markdown tool whose description is eager-loaded, body on demand.
+- [[agent-skill]] — a markdown tool whose description is eager-loaded, body on demand; activation depends on model strength.
 - [[progressive-disclosure]] — load knowledge only when relevant; a hook beats discretion.
-- [[claude-md]] — project memory; curate it, don't generate it.
+- [[claude-md]] — project memory; curate it, don't generate it; keep under ≈100 lines.
+- [[agents-md]] — cross-harness standard (symlink AGENTS.md → CLAUDE.md); hooks/skills still differ per harness.
 - [[tripwire]] — a scripted "kind requirement" that gently nudges the agent.
 - [[cross-repo-knowledge]] — the "Dark Horses" central repo + symlinks + `@include`.
 
 ## Patterns — operating agents
 - [[ralph-loop]] — spec by day, run agent loops overnight with clean context (in a Docker sandbox).
+- [[ci-green-loop]] — background agent watches CI post-push and re-pushes fixes until green; two variants (hook vs /loop).
 - [[profiling-agents]] — feed JFR / flame graphs / heap dumps to agents; "kill all but one" for post-mortem.
-- [[plan-mode]] — single-threaded deep thinking before touching code.
-- [[handover]] — write conclusions to a file; "die and be reborn" with clean context.
-- [[sub-agents]] — orchestrator delegates to fresh-context research/review minions.
-- [[spec-driven-development]] — align your mental model with what the AI will build.
+- [[plan-mode]] — single-threaded deep thinking before touching code; pick by task size (trivial/day/multi-day).
+- [[handover]] — write conclusions to a file; "die and be reborn" with clean context; compaction is the inferior alternative.
+- [[sub-agents]] — orchestrator delegates to fresh-context research/review minions; pure-router pattern for many data sources.
+- [[spec-driven-development]] — align your mental model with what the AI will build; never hand-edit, only prompt.
 - [[acceptance-test-bdd]] — given/when/then tests you review instead of mock-coupled unit tests.
-- [[multi-model-review]] — a "quorum of mothers-in-law"; split each concern across model families; review *sorted*.
+- [[multi-model-review]] — a "quorum of mothers-in-law"; split each concern across model families; push rules to reviewer stage.
 - [[cloud-review-workflow]] — "no laptop" pipeline: ticket → Three Amigos → PR bot → cloud SDD → sorted review.
 - [[three-amigos]] — Business + Developer + Tester (ninja) session producing acceptance tests.
 - [[vibe-fixer]] — receives ≈10k lines of vibe-coded output; applies engineering judgement, not rewriting.
-- [[code-review]] — the human's last gate: judgement not mechanics, sorted review, the PR-size sweet spot.
+- [[code-review]] — the human's last gate: judgement not mechanics, skip trivial diffs, sorted review.
 - [[static-analysis-gauntlet]] — Sonar / CodeQL / Semgrep as build-failing CI gates; make the machine draw blood first.
+- [[firefighter-agent]] — on-call incident-recovery agent: gathers intel (logs, metrics, traces) before human connects.
+- [[reward-hacking]] — agent gaming CI green by deleting tests or asserting true; defenses must be out-of-band.
 - [[field-reality-diagram]] — sequence diagrams generated from real traces; can't drift.
 - [[agent-auth]] — service-account API key + on-behalf-of bearer; identity never as tool argument.
+
+## Concepts — database & search
+- [[keyset-pagination]] — cursor-based pagination for 100K+ rows; OFFSET breaks at scale; stable tie-breaker required.
+- [[pg-trgm]] — Postgres trigram extension: GIN/GiST indexes for `LIKE '%term%'` substring search at scale.
 
 ## Sources
 - [[2026-06-10-spring-ai-itkonekt]] — Spring AI @ ITKonekt workshop summary (seed source).
 - [[2026-06-11-ai-playtika]] — AI Agentic Engineering workshop, day 1 + day 2 (two delta ingests).
+- [[2026-06-22-ai-kambi]] — AI-Assisted / Agentic Coding workshop, Day 1 (AI@Kambi).

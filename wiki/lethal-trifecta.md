@@ -5,10 +5,7 @@ tags: [security, prompt-injection, exfiltration, agent-design, simon-willison]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 The lethal trifecta is [Simon Willison's](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) name for the three agent capabilities that become catastrophic in combination: **private data + untrusted content + external communication**.
 

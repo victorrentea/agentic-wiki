@@ -5,10 +5,7 @@ tags: [agile, requirements, bdd, acceptance-tests, tester, planning]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 Three Amigos is an agile planning ceremony where a business representative, a developer, and a tester each interrogate a ticket from their own perspective until unambiguous [[acceptance-test-bdd|acceptance tests]] emerge.
 

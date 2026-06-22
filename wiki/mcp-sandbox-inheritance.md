@@ -5,10 +5,7 @@ tags: [mcp, security, sandbox, local-stdio, child-process]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 When an MCP server runs as a **local stdio** child process, it inherits the agent's OS sandbox — a meaningful security property that remote MCPs do not share.
 

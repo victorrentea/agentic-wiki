@@ -5,10 +5,7 @@ tags: [security, sandbox, seatbelt, seccomp, landlock, bubblewrap, macos, linux]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 An OS sandbox uses an **operating-system primitive** to restrict every process an agent spawns — including child processes and MCPs — to a declared file allow/deny list and a network allow-list, without the agent being able to change its own restrictions.
 
@@ -35,7 +32,7 @@ Every bash subprocess and locally-spawned MCP (stdio) runs inside the same sandb
 
 ## Recommended ladder
 
-<span style="color:red">**Auto-mode by default → OS sandbox for sensitive data → [[docker-sandboxing|Docker]] for remote/cloud runners → [[secret-zero|Bromure]] (microVM locker) for remote/other-machine runs → Bromure + remote for CI/prod-adjacent tasks.**</span>
+**Auto-mode by default → OS sandbox for sensitive data → [[docker-sandboxing|Docker]] for remote/cloud runners → [[secret-zero|Bromure]] (microVM locker) for remote/other-machine runs → Bromure + remote for CI/prod-adjacent tasks.**
 
 ## See also
 

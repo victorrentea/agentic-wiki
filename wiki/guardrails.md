@@ -26,7 +26,7 @@ In [[spring-ai]], guardrails are wired as [[advisor]] beans that wrap the `ChatM
 
 The same layered-defence idea applies to an agent's *output code*, not just a chatbot's output text: the [[static-analysis-gauntlet]] (SonarQube / CodeQL / Semgrep as build-failing CI gates) and softer [[tripwire|tripwires]] are guardrails around what an agent writes, forcing self-repair before a human reviews.
 
-<span style="color:red">**Each layer has a documented bypass.** The [[jailbreak-ladder]] maps the full escalation path (RLHF → abliteration → regex → judge LLM → context accumulation) and the specific technique that defeats each rung. None are guarantees; they're defense-in-depth. The only structural defense is removing a capability (see [[lethal-trifecta]]).</span>
+**Each layer has a documented bypass.** The [[jailbreak-ladder]] maps the full escalation path (RLHF → abliteration → regex → judge LLM → context accumulation) and the specific technique that defeats each rung. None are guarantees; they're defense-in-depth. The only structural defense is removing a capability (see [[lethal-trifecta]]).
 
 ## See also
 - [[prompt-injection]]

@@ -5,10 +5,7 @@ tags: [security, auth, service-account, bearer, on-behalf-of, mcp]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 An agent acting on behalf of a human user needs two credentials simultaneously: a **service-account API key** that identifies the application, and a **bearer token** that carries the human user's identity.
 

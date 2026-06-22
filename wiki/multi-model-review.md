@@ -2,9 +2,9 @@
 title: Multi-Model Review
 category: pattern
 tags: [code-review, sub-agents, attention-dilution, quorum, gpt, cloud-review]
-sources: ["[[2026-06-11-ai-playtika]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-11
-updated: 2026-06-12
+updated: 2026-06-22
 ---
 
 
@@ -28,7 +28,9 @@ The coding agent shouldn't even *request* review until a [[sub-agents|sub-agent]
 
 The agents handle breadth; humans handle judgement. Review the [[acceptance-test-bdd|acceptance tests]] and the code, never the AI's mock-coupled unit tests. And **pair-read the spec**: 10 minutes each, alternate, break when a brain dies ("you notice the other guy died → stop") — the human guard against [[skill-erosion]] and fatigue-LGTM. PR review is one of the two real bottlenecks left (the other is writing the spec).
 
-<span style="color:red">**Cloud embedding:** in the [[cloud-review-workflow]], the review orchestrator is a cloud bot triggered by PR creation — no laptop needed. The "weakest link is us" framing motivates the whole pattern: code ships ≈3× faster than review scales, and sorted multi-model review is the structural response.</span>
+<span style="color:red">**Push review knowledge to the reviewer stage, not the writer.** Keep the coding agent minimal (it stays in its "smart zone"), and load hundreds of clean-code, performance, and security rules into the reviewer sub-agents. When you spot a real flaw in a review: (1) encode it as a rule, (2) re-run it on the existing generated code immediately — "tomorrow never comes," and (3) spawn a fresh sub-agent to verify that the rule actually catches the mistake before trusting it.</span>
+
+**Cloud embedding:** in the [[cloud-review-workflow]], the review orchestrator is a cloud bot triggered by PR creation — no laptop needed. The "weakest link is us" framing motivates the whole pattern: code ships ≈3× faster than review scales, and sorted multi-model review is the structural response.
 
 ## See also
 - [[sub-agents]]
@@ -40,3 +42,4 @@ The agents handle breadth; humans handle judgement. Review the [[acceptance-test
 - [[claude-code-router]]
 - [[cloud-review-workflow]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-22-ai-kambi]]

@@ -5,10 +5,7 @@ tags: [vibe-coding, engineering, judgement, leverage, role-shift]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 A "vibe fixer" is an engineer who receives ≈10,000 lines of almost-working, vibe-coded output and turns it into production-grade code — not by rewriting it, but by applying engineering judgement to what survives.
 

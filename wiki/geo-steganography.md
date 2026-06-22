@@ -5,10 +5,7 @@ tags: [security, prompt-injection, steganography, geo, invisible-text, seo]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 Generative Engine Optimization (GEO) and hidden-text steganography are two [[prompt-injection]] vectors that exploit the fact that LLMs consume content invisible to human readers.
 

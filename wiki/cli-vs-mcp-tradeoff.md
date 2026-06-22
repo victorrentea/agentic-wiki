@@ -5,10 +5,7 @@ tags: [mcp, cli, token-economy, tooling, agent-design]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 When both a CLI and an MCP server exist for the same tool, prefer the CLI if the agent's base model already knows it from training — the CLI costs ≈0 context tokens whereas the MCP floods the context with tool schemas on every session start.
 

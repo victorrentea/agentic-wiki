@@ -5,10 +5,7 @@ tags: [security, jailbreak, rlhf, abliteration, adversarial, guardrails]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 The jailbreak ladder describes the escalating layers of guardrails applied to a deployed LLM chatbot and the corresponding bypass technique for each — illustrating why defense-in-depth is necessary and why no single layer is sufficient.
 

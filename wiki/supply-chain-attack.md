@@ -1,10 +1,10 @@
 ---
 title: Supply Chain Attack
 category: security
-tags: [security, supply-chain, sbom, npm, agentic-risk]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
+tags: [security, supply-chain, sbom, npm, agentic-risk, typosquatting]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-10
-updated: 2026-06-12
+updated: 2026-06-22
 ---
 
 A supply chain attack compromises a dependency in your build graph — not your code directly — so that installing or building your project executes the attacker's payload.
@@ -16,6 +16,8 @@ The canonical war story from [[2026-06-10-spring-ai-itkonekt]]: attackers stole 
 Mitigation: [SBOMs](https://www.linuxfoundation.org/blog/blog/what-is-an-sbom) (Software Bill of Materials) give you an auditable inventory of every direct and transitive dependency so anomalous additions are detectable.
 
 **The "S-BOM bomb".** The threat is concrete and easy to demonstrate: `npm install -g @somepackage` runs the package's **post-install script**, which can register commands and exfiltrate secrets — "some library online just executed code on your machine." Running `npm install @latest` on a fresh install is exactly running the post-install scripts of a possibly-just-hacked library. npm is far less regulated than Maven, but the JVM is not immune — [Log4Shell](https://en.wikipedia.org/wiki/Log4Shell) ("log4bomb") was the same class of weaponized dependency. Concrete defenses: `npm ci --ignore-scripts` (or `npm config set ignore-scripts true`), pin exact versions and commit the lockfile, and prefer provenance-attested packages — never `@latest` on a fresh machine.
+
+<span style="color:red">**Typosquatting.** A hacker publishes a clone of a popular package with a one-character name difference (`openspeck` vs `openspec`, `expres` vs `express`). The package's post-install script runs the payload. Installing a dependency is a security event — verify the package name character by character, check download counts, look at the publish date, and consider using a scanner like Socket.dev or `npm audit signatures`.</span>
 
 ## The agentic-era amplifier
 
@@ -30,7 +32,7 @@ Never combine `latest` version pins with `bash:* auto-approve` on a machine that
 
 For destructive or privileged REST actions: gate them behind a **high-privilege token requiring biometric/MFA** — a fingerprint to drop the production database. When agents machine-gun your endpoints, proof of a human's physical presence at the moment of the critical action is the final backstop. See also [[dual-leg-rule]] for the architectural pattern that limits blast radius.
 
-<span style="color:red">**Docker socket as a supply-chain amplifier:** never mount the Docker socket (`/var/run/docker.sock`) into an agent's container — it gives root-equivalent host access and means a post-install script in any dependency could take over the host. See [[docker-sandboxing]].</span>
+**Docker socket as a supply-chain amplifier:** never mount the Docker socket (`/var/run/docker.sock`) into an agent's container — it gives root-equivalent host access and means a post-install script in any dependency could take over the host. See [[docker-sandboxing]].
 
 ## See also
 - [[dual-leg-rule]]
@@ -39,5 +41,7 @@ For destructive or privileged REST actions: gate them behind a **high-privilege 
 - [[mcp-transport]]
 - [[openspec]]
 - [[docker-sandboxing]]
+- [[agent-permissions]]
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-22-ai-kambi]]

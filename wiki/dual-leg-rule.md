@@ -27,7 +27,7 @@ A practical architecture: an **outer orchestrator agent** has the full user cont
 
 This pattern composes: each specialized sub-agent gets exactly one leg, and orchestration logic lives in the agent that has neither sensitive data nor external reach — it only routes.
 
-<span style="color:red">**Strengthened framing from Day 2:** The [[lethal-trifecta]] page gives Simon Willison's canonical name and adds the third leg explicitly (untrusted content as the injection vector). The dual-leg rule is the actionable distillation — "cut one leg" — and is the entry point for practical architecture decisions. Neither the WebFetch summarizer nor any filter is a structural guarantee; only removing a capability is.</span>
+**Strengthened framing from Day 2:** The [[lethal-trifecta]] page gives Simon Willison's canonical name and adds the third leg explicitly (untrusted content as the injection vector). The dual-leg rule is the actionable distillation — "cut one leg" — and is the entry point for practical architecture decisions. Neither the WebFetch summarizer nor any filter is a structural guarantee; only removing a capability is.
 
 ## See also
 - [[prompt-injection]]

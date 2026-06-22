@@ -30,7 +30,7 @@ SSE is unidirectional (server → client only), which is exactly the MCP pattern
 
 The second major transport is **local stdio**: the MCP client (the agent harness) spawns the MCP server as a child process and communicates over stdin/stdout. This is the transport used by tools like Playwright MCP and code-graph. The key security property: a stdio MCP is a child process, so it inherits the agent's [[os-sandbox]] — see [[mcp-sandbox-inheritance]].
 
-<span style="color:red">Remote (SSE/HTTP) MCPs live outside the agent's sandbox and need their own authz and rate-limiting. Local stdio MCPs inherit the agent's sandbox automatically — this is the security-relevant distinction between the two transports.</span>
+Remote (SSE/HTTP) MCPs live outside the agent's sandbox and need their own authz and rate-limiting. Local stdio MCPs inherit the agent's sandbox automatically — this is the security-relevant distinction between the two transports.
 
 ## See also
 

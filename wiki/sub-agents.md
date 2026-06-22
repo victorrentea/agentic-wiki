@@ -1,10 +1,10 @@
 ---
 title: Sub-Agents
 category: pattern
-tags: [orchestrator, multi-agent, context-management, research, delegation]
-sources: ["[[2026-06-11-ai-playtika]]"]
+tags: [orchestrator, multi-agent, context-management, research, delegation, router]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-22
 ---
 
 
@@ -21,10 +21,16 @@ The pattern's origin is Anthropic's [multi-agent research system](https://www.an
 - **Read-only research** for legacy code: the go-to [research prompt](https://github.com/humanlayer/humanlayer/blob/main/.claude/commands/research_codebase.md) is strictly *"do not suggest, do not propose, do not critique — just read, and return where to look next."* A summarization baby can also distill a human-written Confluence/Jira page (found via [[rag]]) before it floods context.
 - **[[multi-model-review]]** — a "quorum of mothers-in-law", one sub-agent per review concern (clean code, performance, security, UX), split across model families to counter attention dilution.
 
+## The router pattern
+
+<span style="color:red">A pure-router main agent ("the perfect boss — just routing, doing nothing") dispatches specialized sub-agents instead of handling all domains itself. Example: a Slack bot that answers questions by calling 30 internal data APIs. Rather than making the main agent aware of all 30 APIs (context bloat), the main agent receives the query, selects the appropriate specialist sub-agent (sales data, bets, payments), and that sub-agent loads only the relevant API schema. Prefer the provider's OpenAPI/Swagger spec over hand-taught call instructions — hand-written ones drift from what is actually deployed at the next release. Rate-limit outbound calls from sub-agents (parallel spawning can machine-gun an API).</span>
+
 ## See also
 - [[dumb-zone]]
 - [[handover]]
 - [[multi-model-review]]
 - [[rag]]
 - [[token-economy]]
+- [[firefighter-agent]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-22-ai-kambi]]

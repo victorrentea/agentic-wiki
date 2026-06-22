@@ -5,10 +5,7 @@ tags: [security, production, least-privilege, elicitation, incident, post-mortem
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 Two documented incidents show the same failure pattern: an overprivileged credential + a missing human checkpoint + an agent eager to please = data loss at scale.
 

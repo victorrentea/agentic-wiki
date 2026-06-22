@@ -2,9 +2,9 @@
 title: Spec-Driven Development
 category: pattern
 tags: [spec-driven, planning, agent-workflow, handover, acceptance-tests, three-amigos]
-sources: ["[[2026-06-11-ai-playtika]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-11
-updated: 2026-06-12
+updated: 2026-06-22
 ---
 
 
@@ -26,10 +26,11 @@ SDD is the longest and most complex of the ways to develop with an agent — a d
 
 - **Tell the AI what NOT to do.** It over-delivers to burn tokens — so forbid scope creep explicitly (no fuzzy search, only two sort states, don't paginate other screens). Otherwise you find every screen paginated in the morning.
 - **Don't type the fix — ask.** A correction may need to propagate to `tasks.md`, and *maybe you're the one who's wrong* — let the agent challenge you and update the spec itself.
+- <span style="color:red">**Never touch the left side (the files) — only prompt.** Two reasons: (1) you may not see all the files that need changing, so a hand-edit desyncs the rest; (2) you want the AI's intelligence to counter you when you're wrong. The agent is a thinking partner, not a transcription service — find at least one thing you disagree with, fix it by prompting, and let the agent decide whether your correction is right.</span>
 
 Then constrain the agent from the other side with [[acceptance-test-bdd]] tests that must go green.
 
-<span style="color:red">**Cloud workflow integration:** In the [[cloud-review-workflow]], the SDD is built by a cloud bot (not the developer). The bot researches the codebase first (read-only phase), then generates proposal/design/tasks from the [[three-amigos]] acceptance tests. The `tasks.md` is explicitly broken down for a cheaper model (Sonnet). The developer's job shifts to reviewing and correcting the SDD from PR comments — not writing it.</span>
+**Cloud workflow integration:** In the [[cloud-review-workflow]], the SDD is built by a cloud bot (not the developer). The bot researches the codebase first (read-only phase), then generates proposal/design/tasks from the [[three-amigos]] acceptance tests. The `tasks.md` is explicitly broken down for a cheaper model (Sonnet). The developer's job shifts to reviewing and correcting the SDD from PR comments — not writing it.
 
 ## See also
 - [[openspec]]
@@ -40,4 +41,7 @@ Then constrain the agent from the other side with [[acceptance-test-bdd]] tests 
 - [[multi-model-review]]
 - [[cloud-review-workflow]]
 - [[three-amigos]]
+- [[keyset-pagination]]
+- [[pg-trgm]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-22-ai-kambi]]

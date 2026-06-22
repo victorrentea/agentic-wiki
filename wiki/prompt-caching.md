@@ -2,9 +2,9 @@
 title: Prompt Caching
 category: concept
 tags: [token-economy, cost-optimization, context-window, stateless-api, cache]
-sources: ["[[2026-06-11-ai-playtika]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-22
 ---
 
 
@@ -18,7 +18,7 @@ A conversation is a **stateless API**: every turn re-sends *everything before yo
 
 The cache has a short TTL. It was 1 hour until ≈April, then silently dropped to **5 minutes** — and people saw a 5× burn. If your agent asks a question and you reply more than 5 minutes later, the cache has expired and you **re-pay full price** for the entire prefix. Cache *writes* also cost ≈1.25× base (the opt-in 1-hour cache ≈2×), so caching only wins when you genuinely reuse the prefix soon.
 
-The canonical failure: **four terminals open**, two of them carrying 500k of accumulated context, all neglected past the cache window. Idle fat terminals are the worst case both for the cache *and* for the [[dumb-zone]] — *"you're not a 10× developer, you're a 10× sucker."*
+The canonical failure: **four terminals open**, two of them carrying 500k of accumulated context, all neglected past the cache window. Idle fat terminals are the worst case both for the cache *and* for the [[dumb-zone]] — *"you're not a 10× developer, you're a 10× sucker."* <span style="color:red">An especially brutal case: an 8-minute Spring test run blows the 5-minute budget, so you re-pay full input price on the entire accumulated context. A **1-hour cache TTL** is available via explicit `cache-control` headers in the API — useful for idle orchestrators that need to stay warm.</span>
 
 ## See also
 - [[token-economy]]
@@ -27,3 +27,4 @@ The canonical failure: **four terminals open**, two of them carrying 500k of acc
 - [[plan-mode]]
 - [[ai-addiction]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-22-ai-kambi]]

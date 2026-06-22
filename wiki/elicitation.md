@@ -27,7 +27,7 @@ Elicitation only holds if the agent lacks alternative paths. The lesson: **strip
 
 ## The absence of elicitation causes disasters
 
-<span style="color:red">The Railway incident (see [[production-safety]]) illustrates the cost of a missing elicitation gate: an over-permissioned secret was in the workspace, the CLI lacked a "confirm before deleting the volume" step, and three months of data were lost. Elicitation is how a tool refuses to run unsupervised on destructive actions.</span>
+The Railway incident (see [[production-safety]]) illustrates the cost of a missing elicitation gate: an over-permissioned secret was in the workspace, the CLI lacked a "confirm before deleting the volume" step, and three months of data were lost. Elicitation is how a tool refuses to run unsupervised on destructive actions.
 
 ## See also
 

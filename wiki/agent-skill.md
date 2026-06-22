@@ -2,9 +2,9 @@
 title: Agent Skill
 category: concept
 tags: [skill, progressive-disclosure, tool-calling, front-matter, claude-code]
-sources: ["[[2026-06-11-ai-playtika]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-22
 ---
 
 
@@ -14,8 +14,10 @@ An agent skill is a markdown file with YAML front-matter whose *description* is 
 
 The [agent-skills standard](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) is the cross-harness format; Claude Code currently exposes many more front-matter properties than the bare standard. The mechanism is pure [[progressive-disclosure]]:
 
-1. Only the **description** is eager-loaded so the agent knows what it *could* load. Keep it **short** — padding it so weaker models notice the skill is wasteful.
-2. When a prompt matches (ask "test myService in Java" and the agent sees "Java"), the agent calls the `skill` tool, which **pastes everything below the front-matter into context**. ("I know Kung Fu" — Neo loads the skill right before the fight.)
+1. Only the **description** is eager-loaded so the agent knows what it *could* load.
+2. When a prompt matches, the agent calls the `skill` tool, which **pastes everything below the front-matter into context**. ("I know Kung Fu" — Neo loads the skill right before the fight.)
+
+<span style="color:red">**Skill activation depends on model strength.** Strong models (Opus/Sonnet) exhibit "abstinence" — they wait to load a skill until they genuinely need it. Weak local models (Qwen, Llama) greedily load every referenced file and trash their own context. This is why local models are a poor fit for skill-heavy workflows. Write the description with concrete "Use when…" triggers — too thin a description and a capable model may not activate the skill at all. Activation is driven by semantic match between the trigger conditions and the current task, not raw word count.</span>
 
 ## What a skill can bundle
 
@@ -29,9 +31,11 @@ A skill is more than prose — it can carry **extra knowledge files** (a `testin
 ## See also
 - [[progressive-disclosure]]
 - [[claude-md]]
+- [[agents-md]]
 - [[harness]]
 - [[tool-calling]]
 - [[rtk]]
 - [[tripwire]]
 - [[grill-me]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-22-ai-kambi]]

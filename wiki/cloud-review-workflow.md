@@ -5,10 +5,7 @@ tags: [code-review, cloud-agents, pr-bot, three-amigos, spec-driven, automation]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 The cloud review workflow is a "no laptop" pipeline where every step from ticket to merged PR happens in the cloud — triggered by a Jira ticket, driven by bots in cloud runners, reviewed from a phone.
 

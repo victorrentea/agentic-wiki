@@ -2,13 +2,13 @@
 title: Dumb Zone
 category: concept
 tags: [context-window, lost-in-the-middle, performance, compaction, recall]
-sources: ["[[2026-06-11-ai-playtika]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-22
 ---
 
 
-The dumb zone is the region of a [[context-window]] — roughly past **≈65% full** — where a model becomes "lost in the middle" and its reasoning quality visibly degrades, even on frontier models.
+The dumb zone (also called "context rot") is the region of a [[context-window]] — roughly past **≈55–65% full** — where a model becomes "lost in the middle" and its reasoning quality visibly degrades, even on frontier models.
 
 ## Where it kicks in
 
@@ -21,7 +21,9 @@ A **1M-token window does not mean 1M-token recall**: the ability to recall a spe
 
 ## Why it bites
 
-A full window is one of the five root causes of [[hallucination]]: a model that can no longer attend to the middle of its context silently fills gaps. Worse, **auto-compaction is itself a failure mode** — when the harness hits ≈90% and summarizes history into a blurry one-page CV, the decisions the model made *just before* compacting were already made inside the dumb zone, so the summary preserves bad reasoning.
+A full window is one of the five root causes of [[hallucination]]: a model that can no longer attend to the middle of its context silently fills gaps — claiming all tests passed when they didn't, hallucinating that an API exists.
+
+<span style="color:red">**Compaction is a failure mode, not a feature.** When the harness hits ≈90% and summarizes history into a blurry one-page CV, the decisions the model made *just before* compacting were already made inside the dumb zone, so the summary preserves bad reasoning. The "blue part" (system prompt + CLAUDE.md + skill front-matter + tools) is never compacted anyway — compaction only summarizes the conversation, lossily. Replace it with an explicit [[handover]]: have the agent write a `plan.md`, review it yourself to confirm nothing critical dropped, then `/clear` and resume from the plan. Good agentic engineers are never compacted.</span>
 
 ## Staying out of it
 
@@ -41,3 +43,4 @@ This is the discipline behind [[token-economy]] and the [[ralph-loop]]: keep eve
 - [[token-economy]]
 - [[ralph-loop]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-22-ai-kambi]]

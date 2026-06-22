@@ -2,9 +2,9 @@
 title: Plan Mode
 category: pattern
 tags: [planning, claude-code, deep-thinking, context-management, single-threaded]
-sources: ["[[2026-06-11-ai-playtika]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-22
 ---
 
 
@@ -16,12 +16,15 @@ The hard rule: **don't open a second terminal while in plan mode.** Humans canno
 
 ## Where it fits
 
-Plan mode is the middle tier of the ways to develop with an agent:
+Pick the approach by task size:
 
-1. **Just prompt** — a few hours of work.
-2. **Plan mode** — up to a day; brainstorm with [[grill-me]] or Superpowers.
-3. **Jihad brainstorm** — a topic you've never touched or that is very vague.
-4. **[[spec-driven-development]]** — the longest, a day to a sprint.
+| Task size | Approach |
+|---|---|
+| Trivial change (you know the files) | Just prompt directly |
+| Up to a day | **Plan mode** (Shift-Tab Shift-Tab in Claude Code) |
+| Multi-day | [[spec-driven-development]] with a markdown spec |
+
+Plan mode is the middle tier — Shift-Tab Shift-Tab activates it in Claude Code. Its output is a [[handover]]; the distilled conclusions you restart from.
 
 The output of a plan-mode session is a [[handover]] — the distilled conclusions you restart from, keeping the agent out of the [[dumb-zone]]. Pair it with [[prompt-caching]] awareness: deep thinking is slow, so don't let an idle planning terminal blow past the 5-minute cache window.
 
@@ -33,3 +36,4 @@ The output of a plan-mode session is a [[handover]] — the distilled conclusion
 - [[ai-addiction]]
 - [[prompt-caching]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-22-ai-kambi]]

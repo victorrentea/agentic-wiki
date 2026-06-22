@@ -5,10 +5,7 @@ tags: [security, personal-agent, lethal-trifecta, payments, always-on]
 sources: ["[[2026-06-11-ai-playtika]]"]
 created: 2026-06-12
 updated: 2026-06-12
-new_in: 2026-06-12
 ---
-
-<span style="color:red">🆕 New in AI@Playtika Day 2 (2026-06-12)</span>
 
 OpenClaw is an always-on personal digital assistant that integrates WhatsApp, email, calendar, social media, and payments — the canonical example of an agent that instantiates the [[lethal-trifecta]] by design.
 

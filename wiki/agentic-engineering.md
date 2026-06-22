@@ -2,9 +2,9 @@
 title: Agentic Engineering
 category: concept
 tags: [agentic-engineering, discipline, autonomy, spec-driven, overview]
-sources: ["[[2026-06-11-ai-playtika]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-22
 ---
 
 
@@ -26,6 +26,10 @@ The day's whole arc is the toolkit:
 
 The engineer becomes a "manager of agents", not a viper — see [[vibe-coding]] for the contrast.
 
+<span style="color:red">**Every AI failure is an opportunity to enrich the plan or the context.** If the agent gets it wrong, the first question is: what did the agent not know (context), or what was the spec unclear about (plan)? Make "what did the agent learn this sprint?" the first item in every sprint retro — congratulate whoever added good insight to [[claude-md]]. Treat the agent like a junior who just joined: pair, babysit, show the way.
+
+As agents take on more, the human role shifts toward: specifying intent clearly, reviewing the result judiciously, and maintaining the judgment and craft that machines cannot supply. The production horizon includes [[firefighter-agent|firefighter agents]] recovering incidents autonomously before the human connects, and "all day in Claude Code" workflows where scoped MCP access to GitHub, Jira, CI, deploy tools, and Slack replaces the manual tool-switching. The discomfort with this is emotional, not technical.</span>
+
 ## See also
 - [[vibe-coding]]
 - [[spec-driven-development]]
@@ -33,4 +37,7 @@ The engineer becomes a "manager of agents", not a viper — see [[vibe-coding]] 
 - [[token-economy]]
 - [[multi-model-review]]
 - [[skill-erosion]]
+- [[firefighter-agent]]
+- [[ci-green-loop]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-22-ai-kambi]]
