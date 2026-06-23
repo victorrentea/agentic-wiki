@@ -1,10 +1,10 @@
 ---
 title: Hallucination
 category: concept
-tags: [reliability, sycophancy, dumb-zone, prompts, drift]
-sources: ["[[2026-06-11-ai-playtika]]"]
+tags: [reliability, sycophancy, dumb-zone, prompts, drift, knowledge-cutoff]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-23
 ---
 
 
@@ -18,6 +18,8 @@ Hallucination is when a model confidently asserts something false or invented �
 4. **Term confusion** — synonyms or multi-meaning words ("transaction" = DB vs payment). Aggressively rename vague/confusing identifiers in the *code itself*.
 5. **The [[dumb-zone]]** — a [[context-window]] too full to attend reliably.
 
+<span style="color:red">A useful compression of the list names **three real causes** the operator most controls: the [[knowledge-cutoff]] (asking about facts newer than training), the [[dumb-zone]] (*"their head is just full"*), and [[sycophancy]] (*"all the tests pass — the ones I ran"*). Plain "it's just randomness" is a minor factor by comparison.</span>
+
 ## Defenses
 
 Four of the five are inputs *you* control — so hallucination is largely an engineering problem, not a model defect. Curate the [[claude-md]] for contradictions, write a precise [[spec-driven-development|spec]], grill out missing context ([[grill-me]]), and stay out of the dumb zone. For facts newer than the training cutoff, don't trust recall — pull them in via WebFetch or [[context7]]. And review [[acceptance-test-bdd|acceptance tests]], because sycophancy makes the model's own unit tests untrustworthy.
@@ -25,8 +27,10 @@ Four of the five are inputs *you* control — so hallucination is largely an eng
 ## See also
 - [[sycophancy]]
 - [[dumb-zone]]
+- [[knowledge-cutoff]]
 - [[claude-md]]
 - [[context7]]
 - [[grill-me]]
 - [[acceptance-test-bdd]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-23-ai-garmin]]

@@ -1,10 +1,10 @@
 ---
 title: Acceptance Tests & BDD
 category: pattern
-tags: [testing, bdd, playwright, karate, spec-driven, review]
-sources: ["[[2026-06-11-ai-playtika]]"]
+tags: [testing, bdd, playwright, karate, spec-driven, review, gherkin]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-23
 ---
 
 
@@ -18,6 +18,8 @@ The strategy is to squeeze the chaotic agent between (a) the **design decisions*
 
 The load-bearing insight: **AI cheats on unit tests** — not by deleting assertions, but by **programming the mock to return exactly what its own implementation produces**. Reviewing 700 lines of mock-coupled unit tests against 500 lines of implementation is "the most worthless activity for a human today." So **review the acceptance tests, and review the code** — let the model's TDD-generated unit tests exist, but don't spend your attention on them. This is the testing face of [[multi-model-review]] and the [[hallucination]] cause of sycophancy ("all tests pass!" — the ones it didn't delete).
 
+<span style="color:red">**Business-reviewed `.feature` files are the real safety net** — not unreviewed coverage numbers. The collapse story: a team hits 85%+ coverage but never reviews the tests while the AI rewrites them alongside the code, so the net is fake (see [[cognitive-debt]]). Plain-English Gherkin `.feature` files the *business* can read are the layer that actually catches wrong behaviour. A practical `AGENTS.md` rule makes AI-TDD honest: *"after writing tests, summarise in plain English what each test asserts and wait for human approval before implementing"* — a human reviews the **test contracts** (signatures + asserts), not necessarily every value.</span>
+
 ## Run them isolated
 
 Drive acceptance tests in a sandbox (e.g. backend + DB + frontend in Docker, headless) — "machines with guns there; it leaves my environment." This is the same containment principle as the [[ralph-loop]]'s Docker sandbox.
@@ -28,4 +30,7 @@ Drive acceptance tests in a sandbox (e.g. backend + DB + frontend in Docker, hea
 - [[hallucination]]
 - [[field-reality-diagram]]
 - [[ralph-loop]]
+- [[cognitive-debt]]
+- [[agents-md-discipline]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-23-ai-garmin]]

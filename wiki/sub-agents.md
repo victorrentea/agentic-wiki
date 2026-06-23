@@ -23,7 +23,7 @@ The pattern's origin is Anthropic's [multi-agent research system](https://www.an
 
 ## The router pattern
 
-<span style="color:red">A pure-router main agent ("the perfect boss — just routing, doing nothing") dispatches specialized sub-agents instead of handling all domains itself. Example: a Slack bot that answers questions by calling 30 internal data APIs. Rather than making the main agent aware of all 30 APIs (context bloat), the main agent receives the query, selects the appropriate specialist sub-agent (sales data, bets, payments), and that sub-agent loads only the relevant API schema. Prefer the provider's OpenAPI/Swagger spec over hand-taught call instructions — hand-written ones drift from what is actually deployed at the next release. Rate-limit outbound calls from sub-agents (parallel spawning can machine-gun an API).</span>
+A pure-router main agent ("the perfect boss — just routing, doing nothing") dispatches specialized sub-agents instead of handling all domains itself. Example: a Slack bot that answers questions by calling 30 internal data APIs. Rather than making the main agent aware of all 30 APIs (context bloat), the main agent receives the query, selects the appropriate specialist sub-agent (sales data, bets, payments), and that sub-agent loads only the relevant API schema. Prefer the provider's OpenAPI/Swagger spec over hand-taught call instructions — hand-written ones drift from what is actually deployed at the next release. Rate-limit outbound calls from sub-agents (parallel spawning can machine-gun an API).
 
 ## See also
 - [[dumb-zone]]

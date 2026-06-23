@@ -5,10 +5,7 @@ tags: [production, incident-recovery, orchestrator, observability, human-in-the-
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-22
 updated: 2026-06-22
-new_in: 2026-06-22
 ---
-
-<span style="color:red">🆕 New in AI@Kambi (2026-06-22)</span>
 
 A firefighter agent is an on-call incident-recovery agent that gathers diagnostic intelligence before a human even connects — cutting mean-time-to-recover to minutes by doing the slow, mechanical work (log triage, metric correlation, root-cause hypothesis) autonomously, then handing a human the button for any mutating action.
 

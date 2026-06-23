@@ -1,10 +1,10 @@
 ---
 title: Agent Permissions
 category: concept
-tags: [security, permissions, auto-mode, yolo, tripwires, claude-code]
-sources: ["[[2026-06-11-ai-playtika]]"]
+tags: [security, permissions, auto-mode, yolo, tripwires, claude-code, api-key-scope]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-12
-updated: 2026-06-12
+updated: 2026-06-23
 ---
 
 Agent permissions form a spectrum from fully supervised to fully autonomous, with each mode trading safety for throughput — and with [[tripwire|tripwires]] as a surgical override at any level.
@@ -34,6 +34,8 @@ For a production-facing agent, the correct posture is:
 - No generic read/write/web/restart.
 - Gradually expand permissions as reliability is demonstrated (*"in three months you'll allow one restart before it must call a human"*).
 
+<span style="color:red">**Mind the API-key scopes you mint for the agent.** When you create the token an agent uses to reach Jira, CI, or a deploy tool, the checkboxes you tick *are* the blast radius — don't hand it the power to delete a project or take down prod. This is the same external-control-plane principle as [[draft-only-email]]: scope is technical enforcement, not a social contract. The `/yolo` (all-permissions) demo is only sane inside a [[docker-sandboxing|Docker sandbox]] — *"my agent can delete my drive right now."*</span>
+
 ## See also
 
 - [[os-sandbox]]
@@ -41,4 +43,7 @@ For a production-facing agent, the correct posture is:
 - [[tripwire]]
 - [[harness]]
 - [[headless-claude]]
+- [[draft-only-email]]
+- [[adb-automation]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-23-ai-garmin]]

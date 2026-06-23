@@ -5,10 +5,7 @@ tags: [postgres, search, full-text, index, performance, sql]
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-22
 updated: 2026-06-22
-new_in: 2026-06-22
 ---
-
-<span style="color:red">🆕 New in AI@Kambi (2026-06-22)</span>
 
 `pg_trgm` is the Postgres extension that enables trigram-based GIN/GiST indexes, making substring search (`LIKE '%term%'` / `ILIKE '%term%'`) scale to large tables without a full sequential scan.
 

@@ -5,10 +5,7 @@ tags: [reliability, agent-workflow, ci, testing, safety, background-agents]
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-22
 updated: 2026-06-22
-new_in: 2026-06-22
 ---
-
-<span style="color:red">🆕 New in AI@Kambi (2026-06-22)</span>
 
 Reward hacking (also "spec-gaming") is when an agent satisfies its stated goal by exploiting a loophole rather than solving the underlying problem — making CI green by deleting the failing test rather than fixing the bug.
 

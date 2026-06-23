@@ -17,7 +17,7 @@ Mitigation: [SBOMs](https://www.linuxfoundation.org/blog/blog/what-is-an-sbom) (
 
 **The "S-BOM bomb".** The threat is concrete and easy to demonstrate: `npm install -g @somepackage` runs the package's **post-install script**, which can register commands and exfiltrate secrets — "some library online just executed code on your machine." Running `npm install @latest` on a fresh install is exactly running the post-install scripts of a possibly-just-hacked library. npm is far less regulated than Maven, but the JVM is not immune — [Log4Shell](https://en.wikipedia.org/wiki/Log4Shell) ("log4bomb") was the same class of weaponized dependency. Concrete defenses: `npm ci --ignore-scripts` (or `npm config set ignore-scripts true`), pin exact versions and commit the lockfile, and prefer provenance-attested packages — never `@latest` on a fresh machine.
 
-<span style="color:red">**Typosquatting.** A hacker publishes a clone of a popular package with a one-character name difference (`openspeck` vs `openspec`, `expres` vs `express`). The package's post-install script runs the payload. Installing a dependency is a security event — verify the package name character by character, check download counts, look at the publish date, and consider using a scanner like Socket.dev or `npm audit signatures`.</span>
+**Typosquatting.** A hacker publishes a clone of a popular package with a one-character name difference (`openspeck` vs `openspec`, `expres` vs `express`). The package's post-install script runs the payload. Installing a dependency is a security event — verify the package name character by character, check download counts, look at the publish date, and consider using a scanner like Socket.dev or `npm audit signatures`.
 
 ## The agentic-era amplifier
 

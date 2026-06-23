@@ -5,10 +5,7 @@ tags: [token-economy, cli, output-tokens, cost-optimization, hook]
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-22
 updated: 2026-06-22
-new_in: 2026-06-22
 ---
-
-<span style="color:red">🆕 New in AI@Kambi (2026-06-22)</span>
 
 Headroom is a more evolved CLI-output compression proxy in the same family as [[rtk]] — both intercept dev tool output (git, npm, test runners) and strip noise before the model reads it, reducing the tool-result tokens that dominate agent cost.
 

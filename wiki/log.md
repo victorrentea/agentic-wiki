@@ -138,3 +138,72 @@ Third delta ingest. Source: [[2026-06-22-ai-kambi]] (Day 1 of a 2-day AI-Assiste
 **Navigation:** [[wiki/index|index]] gained 2 new sections (database & search; new tools headroom, pg-trgm), new patterns (ci-green-loop, firefighter-agent, reward-hacking), new security entry (draft-only-email), new knowledge-engineering entry (agents-md), and updated source list. [[overview]] gained §8.
 
 **Stripped:** "Claudette" client name removed and generalized to "a Slack bot" in [[sub-agents]]. No session-artifact-only pages created. All provenance in `sources:` frontmatter and this log entry.
+
+## [2026-06-23] ingest | AI@Garmin (Day 1)
+
+Fourth delta ingest. Source: [[2026-06-23-ai-garmin]] (Day 1 of a 2-day AI-Assisted / Agentic Coding workshop for mobile engineers). All AI@Kambi red marks (25 pages with spans/badges + 9 `new_in` pages) promoted to normal text first; the [[overview]] §8 red span was promoted too.
+
+**Created 15 pages** (red 🆕 badge + `new_in: 2026-06-23`):
+
+*Source:*
+- [[2026-06-23-ai-garmin]] — source page.
+
+*Models, harness & anatomy:*
+- [[model-hierarchy]] — Opus/Sonnet/Haiku/GPT as experienced hires; match the tier to the task.
+- [[knowledge-cutoff]] — past-training facts get invented; pull them in (Context7) rather than recall.
+
+*Reliability & human factors:*
+- [[chop-ai-waiter]] — CHOP / "AI waiter" anti-pattern: copy-pasting instead of giving the agent a feedback loop.
+- [[cognitive-debt]] — vibe-coding collapse in 2–3 months; the fake-coverage trap; business-reviewed `.feature` files.
+
+*Patterns:*
+- [[feedback-loop]] — give every handed-off task a way to observe its own result; the core operating rule.
+- [[archunit-drift-control]] — ArchUnit + reflected class diagram so a stale `.puml` fails the build.
+- [[agentic-corporation]] — the issue tracker as a "blackboard"; the "dark factory" horizon.
+
+*Knowledge engineering:*
+- [[agents-md-discipline]] — curating AGENTS.md: anti-dumping, seed-of-heresy Socratic loop, sub-folder injection, retrospect-every-sprint.
+- [[memory-layers]] — the four scopes: user / project / team / company.
+- [[skills-governance]] — one skill-set per team (megalomania vs dichotomy).
+- [[custom-agent]] — single-purpose specialist with own context, pinned model, restricted tools.
+
+*Security:*
+- [[data-governance]] — ZDR agreements decide which endpoints may see your code; on-prem for sovereignty.
+
+*Tools:*
+- [[figma-mcp]] — pull designs straight into the app if they're truly maintained in Figma.
+- [[adb-automation]] — `adb`-driven mobile UI loop; needs a deterministic emulator in CI.
+
+**Updated 26 existing pages** (new sentences/paragraphs red-`<span>`-wrapped, + source + cross-links):
+- [[hallucination]] — the "three real causes" compression (cutoff / dumb zone / sycophancy); knowledge-cutoff link.
+- [[context7]] — vetted-feed vs poisoned-web-fetch framing; live-install / post-cutoff answer.
+- [[ralph-loop]] — fresh-agent-per-batch ("150 checkboxes"); RALF; cheap-model fit.
+- [[grill-me]] — Kumquat / over-vs-under-specify; effort-only-vs-all-properties catch; adb-browse-the-emulator; blackboard.
+- [[cli-vs-mcp-tradeoff]] — `gh` CLI over GitHub MCP (≈1,300 tokens); "wakes up dreaming about gh."
+- [[vibe-coding]] — cognitive-debt + fake-coverage + `.feature` files.
+- [[acceptance-test-bdd]] — business-reviewed `.feature` files; the "summarise what each test asserts" AGENTS.md rule.
+- [[drift]] + [[field-reality-diagram]] — ArchUnit/reflected-diagram as the static-structure cousin.
+- [[multi-model-review]] — Sonnet+GPT-parallel-then-Opus-aggregate; "tell GPT it was Claude's code" ≈20% tip.
+- [[ollama]] — open vs frontier weights; DeepSeek HF page; on-prem = strongest data governance.
+- [[caveman]] — "saving tokens on the wrong end / protect my brain stamina."
+- [[harness]] — harness-matters-as-much-as-model; CLI > IDE plugin ranking.
+- [[agents-md]] — `copilot-instructions.md` is dead; links to discipline + memory-layers.
+- [[claude-md]] — cross-links to agents-md-discipline + memory-layers.
+- [[model-context-protocol]] — integration "paradise" (Figma/adb/Jira/CI) + API-key-scope caution.
+- [[browser-mcp]] — screenshot loop as feedback; adb as the mobile equivalent.
+- [[context-window]] — "what the model sees each turn" inventory; reasoning-not-carried-forward; 400K/500K ceiling.
+- [[token-economy]] — token-burn as the first adoption metric.
+- [[prompt-injection]] — Reddit web-fetch risk vs Context7 vetted feed.
+- [[agent-skill]] — description-as-trigger; `.agents/skills/<name>/SKILL.md` path; pre-push canonical example.
+- [[dumb-zone]] — 65% is a rule of thumb, not a published number; "drops prod databases."
+- [[agentic-engineering]] — the two slogans (servant-of-AI; feel-the-problem); feedback-loop + model-hierarchy links.
+- [[skill-erosion]] — the isolation cost; feel-the-problem-class antidote.
+- [[claude-code-router]] — on-prem open model as the strongest answer to data governance.
+- [[agent-permissions]] — mind the API-key scopes you mint; `/yolo` only inside Docker.
+- [[sycophancy]] + [[prompt-caching]] + [[wispr-flow]] — source citation; wispr-flow gains the draw-a-picture / absorb-self-corrections note.
+
+**Navigation:** [[wiki/index|index]] gained the new tools (figma-mcp, adb-automation), security (data-governance), patterns (feedback-loop, chop-ai-waiter, archunit-drift-control, agentic-corporation), knowledge-engineering (agents-md-discipline, memory-layers, skills-governance, custom-agent), reliability (cognitive-debt, knowledge-cutoff), anatomy (model-hierarchy), and the updated source list. [[overview]] §8 heading de-dated + de-redded; new §9 ("Don't be the servant; engineer the knowledge") added and red-flagged.
+
+**Red-flagged new today:** the 14 new concept/tool/pattern pages above (🆕 badge) plus the §9 overview movement and every red `<span>` listed under the 26 updates. All older red marks were promoted to normal text first; only this ingest's deltas are red.
+
+**Stripped:** client name ("Garmin"), the internal company-layer product name ("Glide"), participant names (Mihai/Titus), and "today we…" / war-story phrasing generalized out of concept prose — provenance kept here and in `sources:` frontmatter. No session-artifact-only pages created. Note: the source-page prose still names the workshop for citation, per convention.

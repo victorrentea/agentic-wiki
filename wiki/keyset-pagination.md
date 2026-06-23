@@ -5,10 +5,7 @@ tags: [pagination, sql, performance, postgres, api-design, sorting]
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-22
 updated: 2026-06-22
-new_in: 2026-06-22
 ---
-
-<span style="color:red">🆕 New in AI@Kambi (2026-06-22)</span>
 
 Keyset pagination (cursor pagination) navigates result sets by remembering the last-seen key rather than an offset — the correct choice at 100,000+ rows where `OFFSET n` forces the database to count and skip rows it then discards.
 

@@ -5,10 +5,7 @@ tags: [ci, hook, agent-workflow, loop, background-agents, context-management]
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-22
 updated: 2026-06-22
-new_in: 2026-06-22
 ---
-
-<span style="color:red">🆕 New in AI@Kambi (2026-06-22)</span>
 
 A CI-green loop is a background agent pattern that watches a CI pipeline after a push and autonomously re-pushes fixes until the build is green — eliminating the developer's most hated interrupt: "fixing the build 40 minutes after I pushed."
 

@@ -2,9 +2,9 @@
 title: Ralph Loop
 category: pattern
 tags: [agent-workflow, async-agents, spec-driven, context-management]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-10
-updated: 2026-06-11
+updated: 2026-06-23
 ---
 
 A workflow where you spend a focused hour writing precise markdown specs, then hand them to an agent loop that runs unattended overnight — each batch entering with a clean, low-context "smart zone."
@@ -23,6 +23,8 @@ Specs pair well with [[token-economy]] discipline: strip the agent to only the t
 
 **`/loop` — the tamer cousin.** Claude Code's built-in `/loop` command re-runs until CI is green, retries flaky tests, and can be given a **token budget** that emails when exceeded. Unlike the bash `while` RALPH loop, `/loop` does not require `--dangerously-skip-permissions` — but it still needs a [[docker-sandboxing|Docker sandbox]] for any sensitive work. Avoid letting it fall back to Haiku as the judge model; Haiku's reliability is insufficient for autonomous guard decisions.
 
+<span style="color:red">**A fresh agent per batch** is the load-bearing idea (sometimes spelled "RALF"): write the work as a long list of markdown checkboxes (≈150 is fine), and the bash loop spawns a *new* agent for each batch — it ticks its boxes and exits, so no single agent ever enters the [[dumb-zone]]. *"It's like doing `/clear` between every bunch of tasks, automatically."* Because each agent starts clean, this works beautifully with cheap models from the lower [[model-hierarchy]] tiers — Sonnet or even Haiku for trivial batches.</span>
+
 ## See also
 
 - [[token-economy]]
@@ -33,5 +35,7 @@ Specs pair well with [[token-economy]] discipline: strip the agent to only the t
 - [[handover]]
 - [[dumb-zone]]
 - [[agentic-engineering]]
+- [[model-hierarchy]]
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-23-ai-garmin]]

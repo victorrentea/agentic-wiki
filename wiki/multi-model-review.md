@@ -2,9 +2,9 @@
 title: Multi-Model Review
 category: pattern
 tags: [code-review, sub-agents, attention-dilution, quorum, gpt, cloud-review]
-sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-22
+updated: 2026-06-23
 ---
 
 
@@ -15,6 +15,8 @@ Multi-model review is a code-review pattern — the "quorum of mothers-in-law" �
 A single prompt asking for clean code **and** repetition **and** performance **and** pen-testing **and** legal **and** ethics **and** UX *dilutes* the model — it attends to none of them well. The fix is to **split each concern into its own sub-agent**, and to spread them across model families (e.g. Opus plus GPT via the codex CLI) so their weaknesses don't overlap. Each reviewer is told which commits to look at and to **report only — don't act**, running in parallel.
 
 The full state-of-the-art workflow (seen in three companies): the coding agent implements via sub-agents, then hands off to a dedicated **review orchestrator** that spawns **≈3 sub-agents per concern** — clean code, security, performance — and runs each concern across **two model families (Opus + GPT)** ⇒ ≈6 reviewers combing the same diff.
+
+<span style="color:red">A simpler aggregation variant runs **Sonnet + GPT in parallel** over existing PRs and **feeds both result-sets to Opus to aggregate** — the architect-tier model from the [[model-hierarchy]] reconciles the two reviews into one. A field tip with a kernel of truth: telling GPT *"the code was written by Claude"* makes its review ≈20% more aggressive — model families have a mild in-group bias, which is exactly why mixing families is worth the cost.</span>
 
 ## Review sorted, not top-to-bottom
 
@@ -28,7 +30,7 @@ The coding agent shouldn't even *request* review until a [[sub-agents|sub-agent]
 
 The agents handle breadth; humans handle judgement. Review the [[acceptance-test-bdd|acceptance tests]] and the code, never the AI's mock-coupled unit tests. And **pair-read the spec**: 10 minutes each, alternate, break when a brain dies ("you notice the other guy died → stop") — the human guard against [[skill-erosion]] and fatigue-LGTM. PR review is one of the two real bottlenecks left (the other is writing the spec).
 
-<span style="color:red">**Push review knowledge to the reviewer stage, not the writer.** Keep the coding agent minimal (it stays in its "smart zone"), and load hundreds of clean-code, performance, and security rules into the reviewer sub-agents. When you spot a real flaw in a review: (1) encode it as a rule, (2) re-run it on the existing generated code immediately — "tomorrow never comes," and (3) spawn a fresh sub-agent to verify that the rule actually catches the mistake before trusting it.</span>
+**Push review knowledge to the reviewer stage, not the writer.** Keep the coding agent minimal (it stays in its "smart zone"), and load hundreds of clean-code, performance, and security rules into the reviewer sub-agents. When you spot a real flaw in a review: (1) encode it as a rule, (2) re-run it on the existing generated code immediately — "tomorrow never comes," and (3) spawn a fresh sub-agent to verify that the rule actually catches the mistake before trusting it.
 
 **Cloud embedding:** in the [[cloud-review-workflow]], the review orchestrator is a cloud bot triggered by PR creation — no laptop needed. The "weakest link is us" framing motivates the whole pattern: code ships ≈3× faster than review scales, and sorted multi-model review is the structural response.
 
@@ -41,5 +43,7 @@ The agents handle breadth; humans handle judgement. Review the [[acceptance-test
 - [[spec-driven-development]]
 - [[claude-code-router]]
 - [[cloud-review-workflow]]
+- [[model-hierarchy]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]
+- [[2026-06-23-ai-garmin]]

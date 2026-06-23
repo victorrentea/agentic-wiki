@@ -2,9 +2,9 @@
 title: Token Economy
 category: pattern
 tags: [context-window, tool-calling, cost-optimization, agent-workflow]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-10
-updated: 2026-06-22
+updated: 2026-06-23
 ---
 
 The discipline of treating context tokens as a finite, expensive resource — deliberately choosing tools, transport, and restart strategies to avoid burning the [[context-window]] on overhead rather than reasoning.
@@ -23,9 +23,11 @@ Two specific tools to weigh on the token budget: [[context7]] injects fresh libr
 
 **Output costs ≈5× input.** You pay for input, but generated tokens are roughly five times more expensive — so the cheapest win is compressing what the model *reads and writes*, not throttling your own reasoning. [[rtk]] proxies dev commands to trim their output (a 97-token `git status` → 19; expect ≈30% overall, not the advertised 80%); [[toon]] reshapes JSON collections into a compact CSV-for-AI form — but benchmark end-to-end, since an unfamiliar format can cost more reasoning than it saves. [[headroom]] is a more evolved sibling of RTK with broader command coverage.
 
-<span style="color:red">**Most tokens live in tool results, not your messages.** File reads, test logs, and stack traces accumulate and ride along on *every* subsequent turn because the LLM is stateless. A single `pom.xml` burns ≈3,000 tokens of XML noise. The pattern: teach the agent once how to extract what it needs from a structured output, then have it write a deterministic script that does the extraction without burning model tokens — the "write yourself a letter" move. This is exactly what [[rtk]] and [[headroom]] do at the CLI level, and what [[agent-skill]] does at the workflow level.</span>
+**Most tokens live in tool results, not your messages.** File reads, test logs, and stack traces accumulate and ride along on *every* subsequent turn because the LLM is stateless. A single `pom.xml` burns ≈3,000 tokens of XML noise. The pattern: teach the agent once how to extract what it needs from a structured output, then have it write a deterministic script that does the extraction without burning model tokens — the "write yourself a letter" move. This is exactly what [[rtk]] and [[headroom]] do at the CLI level, and what [[agent-skill]] does at the workflow level.
 
 **A conversation is a stateless API.** Every turn re-sends the entire prefix as input; thinking is per-turn and discarded; tool outputs accumulate forever. [[prompt-caching]] makes this affordable — you pay ≈10% for the cached prefix — but the cache TTL is only ≈5 minutes, so an idle fat terminal re-pays full price. The [[effort-setting]] is the other dial: use **xhigh**, never **max**. And don't tax your *own* attention with verbose output (the [[caveman]] anti-pattern) — that bottleneck is scarcer than tokens.
+
+<span style="color:red">**Token-burn on useful work is the *first* adoption metric.** Counter-intuitively, the engineers who blow through their quota — get it raised, and burn that too — are the ones extracting real leverage; spending tokens (in the smart zone, on real tasks) is the leading indicator of adoption, not waste. The flip side is the [[model-hierarchy]] discipline: spend the expensive tokens where intelligence is needed, and farm the rest to cheap models.</span>
 
 ## See also
 
@@ -42,6 +44,8 @@ Two specific tools to weigh on the token budget: [[context7]] injects fresh libr
 - [[toon]]
 - [[effort-setting]]
 - [[caveman]]
+- [[model-hierarchy]]
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]
+- [[2026-06-23-ai-garmin]]

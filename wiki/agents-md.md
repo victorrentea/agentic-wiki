@@ -1,14 +1,11 @@
 ---
 title: AGENTS.md (Cross-Tool Standard)
 category: concept
-tags: [claude-md, cross-tool, standards, harness, codex, interoperability]
-sources: ["[[2026-06-22-ai-kambi]]"]
+tags: [claude-md, cross-tool, standards, harness, codex, interoperability, copilot]
+sources: ["[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-22
-updated: 2026-06-22
-new_in: 2026-06-22
+updated: 2026-06-23
 ---
-
-<span style="color:red">🆕 New in AI@Kambi (2026-06-22)</span>
 
 `AGENTS.md` is the emerging cross-harness standard for project memory, readable by both Claude Code and Codex — you can symlink `AGENTS.md → CLAUDE.md` to serve both harnesses from one file.
 
@@ -29,9 +26,16 @@ Switching between Claude Code and Codex still breaks on features that are not in
 
 So `AGENTS.md` provides a common project-description layer, but any harness-specific automation (hooks, skills, permission rules) must live in harness-specific config alongside it.
 
+## `copilot-instructions.md` is dead
+
+<span style="color:red">The older `.github/copilot-instructions.md` convention has been superseded by the cross-vendor `AGENTS.md` standard at repo root — use `AGENTS.md`. *"Stick with `AGENTS.md`; rename to `CLAUDE.md` the day Claude wins in your company."* `AGENTS.md` is the file that matters now; how to *curate* it (anti-dumping, the Socratic enrichment loop, sub-folder injection) is its own discipline — see [[agents-md-discipline]] — and it sits in the project tier of the four [[memory-layers]].</span>
+
 ## See also
 - [[claude-md]]
+- [[agents-md-discipline]]
+- [[memory-layers]]
 - [[agent-skill]]
 - [[harness]]
 - [[progressive-disclosure]]
 - [[2026-06-22-ai-kambi]]
+- [[2026-06-23-ai-garmin]]

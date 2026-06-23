@@ -1,10 +1,10 @@
 ---
 title: Vibe Coding
 category: concept
-tags: [agentic-engineering, anti-pattern, context-anxiety, product-owner, human-factors]
-sources: ["[[2026-06-11-ai-playtika]]"]
+tags: [agentic-engineering, anti-pattern, context-anxiety, product-owner, human-factors, cognitive-debt]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-12
+updated: 2026-06-23
 ---
 
 
@@ -13,6 +13,8 @@ Vibe coding is generating software you never read — "forget the code exists" �
 ## How long can you vibe?
 
 Vibing works for a while, then rots. One test: ≈**3 months** of solo mania-pushing before it collapsed and engineering had to come back — diagrams, tests, decoupling. A machine signal of the same rot is **"context anxiety"**: past ≈600k tokens Opus becomes afraid to read more files, stops checking for duplication, and stops writing tests — a direct symptom of the [[dumb-zone]].
+
+<span style="color:red">The human cost of that collapse has a name: [[cognitive-debt]] — within 2–3 months nobody knows what's in the codebase and every bug fix spawns new ones. The trap that accelerates it is fake test coverage: an unreviewed 85%-coverage suite the AI rewrites alongside the code asserts only what already happens. The durable antidote is **business-reviewed `.feature` files** ([[acceptance-test-bdd]]), not more unit tests.</span>
 
 ## The role shift
 
@@ -28,4 +30,7 @@ The durable trajectory is not "no engineering" but a **role shift**: developers 
 - [[wispr-flow]]
 - [[vibe-fixer]]
 - [[cloud-review-workflow]]
+- [[cognitive-debt]]
+- [[acceptance-test-bdd]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-23-ai-garmin]]

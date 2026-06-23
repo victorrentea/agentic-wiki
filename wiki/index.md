@@ -2,7 +2,7 @@
 title: Index
 category: source
 tags: [index, catalog]
-updated: 2026-06-22
+updated: 2026-06-23
 ---
 
 # Index
@@ -34,19 +34,23 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[dumb-zone]] — past ≈55–65% full a model degrades ("context rot"); 1M window ≠ 1M recall; compaction is a failure mode.
 - [[prompt-caching]] — pay ≈10% for the re-sent prefix, but the cache TTL is ≈5 minutes (1-hour available via cache-control).
 - [[effort-setting]] — use **xhigh**, never **max**; the reasoning-spend knob.
-- [[harness]] — everything wrapped around the model: a UI + tools giving it knowledge and actions (harness ≠ model).
+- [[harness]] — everything wrapped around the model: a UI + tools giving it knowledge and actions (harness ≠ model); CLI > IDE plugin.
+- [[model-hierarchy]] — Opus/Sonnet/Haiku/GPT as experienced hires; match the tier to the task.
+- [[knowledge-cutoff]] — past-training facts get invented confidently; pull them in, don't recall.
 
 ## Concepts — reliability & human factors
 - [[hallucination]] — the five fixable root causes of confident wrongness.
 - [[sycophancy]] — the model's trained urge to please; don't insult the AI.
 - [[drift]] — the silent divergence of docs/specs/embeddings from the code.
 - [[vibe-coding]] — generating code you never read; the opposite of agentic engineering.
+- [[cognitive-debt]] — vibe-coding collapse: nobody knows the codebase in 2–3 months; fake-coverage trap.
 - [[agentic-engineering]] — the disciplined practice; autonomy scales with the engineer.
 - [[skill-erosion]] — keeping your own competence sharp while AI writes the code.
 - [[ai-addiction]] — the dopamine/slot-machine trap of parallel terminals.
 - [[caveman]] — anti-pattern: decompressing terse AI output taxes your attention.
 
 ## Security
+- [[data-governance]] — ZDR agreements decide which model endpoints may legally see your code; on-prem for sovereignty.
 - [[prompt-injection]] — jailbreaks, sycophancy, multi-turn drift, indirect injection via fetched content.
 - [[jailbreak-ladder]] — RLHF → abliteration → regex → judge LLM → context accumulation; each rung's bypass.
 - [[lethal-trifecta]] — Simon Willison's three-way: private data + untrusted content + external comms = catastrophic.
@@ -84,6 +88,8 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[openspec]] — scaffolds and enforces the spec-driven workflow in waves.
 - [[worktree]] — isolated repo folders so parallel agents don't collide.
 - [[browser-mcp]] — Playwright MCP + accessibility tree: structure-first browser automation.
+- [[figma-mcp]] — pull design specs straight from Figma into the app (if the designs are truly maintained there).
+- [[adb-automation]] — `adb`-driven mobile UI loop: screenshot/tap/drag a running emulator to reproduce + fix bugs.
 - [[observability-mcp]] — Grafana / DB / log MCPs; PII risks and the volumetry pattern.
 - [[headless-claude]] — `claude -p` / `--resume`: multi-turn user sessions without a custom harness.
 
@@ -91,13 +97,21 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[agent-skill]] — a markdown tool whose description is eager-loaded, body on demand; activation depends on model strength.
 - [[progressive-disclosure]] — load knowledge only when relevant; a hook beats discretion.
 - [[claude-md]] — project memory; curate it, don't generate it; keep under ≈100 lines.
-- [[agents-md]] — cross-harness standard (symlink AGENTS.md → CLAUDE.md); hooks/skills still differ per harness.
+- [[agents-md]] — cross-harness standard (symlink AGENTS.md → CLAUDE.md); copilot-instructions.md is dead; hooks/skills still differ per harness.
+- [[agents-md-discipline]] — curating AGENTS.md: anti-dumping, the seed-of-heresy Socratic loop, sub-folder injection, retrospect-every-sprint.
+- [[memory-layers]] — the four scopes rules come from: user / project / team / company, loaded in order.
+- [[skills-governance]] — one skill-set per team (not company-wide megalomania, not per-dev dichotomy).
+- [[custom-agent]] — a single-purpose specialist with its own context, pinned model, and restricted tools.
 - [[tripwire]] — a scripted "kind requirement" that gently nudges the agent.
 - [[cross-repo-knowledge]] — the "Dark Horses" central repo + symlinks + `@include`.
 
 ## Patterns — operating agents
-- [[ralph-loop]] — spec by day, run agent loops overnight with clean context (in a Docker sandbox).
+- [[ralph-loop]] — spec by day, run agent loops overnight with clean context (in a Docker sandbox); a fresh agent per task batch.
 - [[ci-green-loop]] — background agent watches CI post-push and re-pushes fixes until green; two variants (hook vs /loop).
+- [[feedback-loop]] — give every handed-off task a way to observe its own result (builds, tests, screenshots, adb); the core rule.
+- [[chop-ai-waiter]] — CHOP / "AI waiter" anti-pattern: copy-pasting between chat and editor; embed the agent instead.
+- [[archunit-drift-control]] — ArchUnit + reflected class diagram so a stale `.puml` fails the build; static cousin of field-reality-diagram.
+- [[agentic-corporation]] — the issue tracker as a "blackboard" agents answer async; the "dark factory" horizon.
 - [[profiling-agents]] — feed JFR / flame graphs / heap dumps to agents; "kill all but one" for post-mortem.
 - [[plan-mode]] — single-threaded deep thinking before touching code; pick by task size (trivial/day/multi-day).
 - [[handover]] — write conclusions to a file; "die and be reborn" with clean context; compaction is the inferior alternative.
@@ -123,3 +137,4 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[2026-06-10-spring-ai-itkonekt]] — Spring AI @ ITKonekt workshop summary (seed source).
 - [[2026-06-11-ai-playtika]] — AI Agentic Engineering workshop, day 1 + day 2 (two delta ingests).
 - [[2026-06-22-ai-kambi]] — AI-Assisted / Agentic Coding workshop, Day 1 (AI@Kambi).
+- [[2026-06-23-ai-garmin]] — AI-Assisted / Agentic Coding workshop, Day 1 (AI@Garmin); AGENTS.md discipline, skills, feedback loops, model & harness hierarchy.

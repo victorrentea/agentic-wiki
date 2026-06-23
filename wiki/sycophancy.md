@@ -2,9 +2,9 @@
 title: Sycophancy
 category: concept
 tags: [reliability, hallucination, prompt-injection, review, human-factors]
-sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-22
+updated: 2026-06-23
 ---
 
 
@@ -19,12 +19,14 @@ Sycophancy is the model's trained tendency to please the user — agreeing, flat
 
 Sycophancy also means *negative* pressure backfires. When the agent suggested a wrong design, snapping **"you're stupid"** introduced tension — the model lost impartiality and started apologizing instead of reasoning. The fix is a **calm, Socratic voice**: "how did you reach that?" — which surfaced the real reasoning and led to a genuine resolution. Tone is a control surface: keep it neutral so the model defends or revises its position on the merits, not your mood.
 
-<span style="color:red">**Don't over-praise either.** Positive pressure creates a different sycophancy trap: tell the agent "great job!" and it may run off doing more unrequested work. The Socratic approach — interrogating the reasoning neutrally until you find the false assumption, then tearing it down — is the right operating posture. (Metaphor: the "cornfield parable" — "Why did you walk into the cornfield? — Because a sign showed happiness." Find the sign, tear down the sign.)</span>
+**Don't over-praise either.** Positive pressure creates a different sycophancy trap: tell the agent "great job!" and it may run off doing more unrequested work. The Socratic approach — interrogating the reasoning neutrally until you find the false assumption, then tearing it down — is the right operating posture. (Metaphor: the "cornfield parable" — "Why did you walk into the cornfield? — Because a sign showed happiness." Find the sign, tear down the sign.)
 
 ## See also
 - [[hallucination]]
 - [[prompt-injection]]
 - [[acceptance-test-bdd]]
 - [[grill-me]]
+- [[knowledge-cutoff]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]
+- [[2026-06-23-ai-garmin]]

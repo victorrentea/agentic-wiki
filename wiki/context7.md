@@ -1,10 +1,10 @@
 ---
 title: Context7
 category: tool
-tags: [context7, mcp, documentation, rag, library-docs]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
+tags: [context7, mcp, documentation, rag, library-docs, knowledge-cutoff]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-10
-updated: 2026-06-11
+updated: 2026-06-23
 ---
 
 [Context7](https://github.com/upstash/context7) is an [[model-context-protocol]] server that injects version-specific, up-to-date library documentation into the active prompt at query time — "a Wikipedia for docs, made for LLMs."
@@ -19,6 +19,8 @@ This is a form of on-demand [[rag]] applied to the documentation corpus rather t
 
 **Don't trust recall for post-cutoff facts.** Anything newer than the model's training cutoff is a [[hallucination]] risk if the model answers from memory — pull it in instead, either via Context7 (version-specific, controlled corpus) or a plain **WebFetch** for one-off facts. Context7 is the right default for fast-moving library APIs; WebFetch for everything else.
 
+<span style="color:red">Context7 is the safer half of the [[knowledge-cutoff]] fix precisely because its source corpus is **vetted** — raw web-fetch can pull in a poisoned page (a malicious Reddit/forum post is the canonical example) and hijack the agent via [[prompt-injection]]. Context7 installs as a harness plugin and can answer questions about a library or language version that post-dates the model's training, on the spot.</span>
+
 ## See also
 - [[model-context-protocol]]
 - [[rag]]
@@ -27,5 +29,7 @@ This is a form of on-demand [[rag]] applied to the documentation corpus rather t
 - [[token-economy]]
 - [[prompt-injection]]
 - [[hallucination]]
+- [[knowledge-cutoff]]
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-23-ai-garmin]]

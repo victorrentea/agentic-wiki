@@ -5,10 +5,7 @@ tags: [security, oauth, email, human-in-the-loop, agent-permissions, production-
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-22
 updated: 2026-06-22
-new_in: 2026-06-22
 ---
-
-<span style="color:red">🆕 New in AI@Kambi (2026-06-22)</span>
 
 Draft-only email is the principle that an agent may read, vectorize, and compose email but must never send — and this constraint should be enforced by OAuth scope (`gmail.compose`, not `gmail.send`), not by the model's discretion.
 

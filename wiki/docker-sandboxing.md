@@ -30,7 +30,7 @@ If the GitHub API key lives inside the Docker container, a corrupted agent can p
 
 The reasoning applies with double force to CI runners (Jenkins, TeamCity, GitHub Actions). A leaked CI secret gives an attacker read/write access to every repository that pipeline touches — *"you're screwed and buried."* Never run an agent in YOLO mode on CI; always apply Docker sandboxing on CI-facing agents.
 
-<span style="color:red">**`--dangerously-skip-permissions` (YOLO) is only safe inside Docker.** This flag removes all confirmation prompts and lets the agent read, write, and execute anything — including exfiltrating SSH keys and database passwords. Outside a container, YOLO mode on a developer machine is an unlimited blast-radius. Inside a properly configured Docker container (no socket mount, egress allow-list, no secrets in the box) the same flag is acceptable because the container limits what "anything" can reach.</span>
+**`--dangerously-skip-permissions` (YOLO) is only safe inside Docker.** This flag removes all confirmation prompts and lets the agent read, write, and execute anything — including exfiltrating SSH keys and database passwords. Outside a container, YOLO mode on a developer machine is an unlimited blast-radius. Inside a properly configured Docker container (no socket mount, egress allow-list, no secrets in the box) the same flag is acceptable because the container limits what "anything" can reach.
 
 ## See also
 

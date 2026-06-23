@@ -2,8 +2,8 @@
 title: Overview — the map of the concepts
 category: source
 tags: [overview, map, synthesis]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
-updated: 2026-06-22
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
+updated: 2026-06-23
 ---
 
 # Overview — the map of the concepts
@@ -54,9 +54,9 @@ Day 2 expanded the security cluster from "how to break a chatbot" to "how to con
 
 **The cloud review workflow.** [[cloud-review-workflow]] is the "no laptop" pipeline: business vibes UX → [[vibe-fixer]] cleans it → [[three-amigos]] (Business + Developer + Tester ninja) produce acceptance tests → PR auto-created → cloud bot researches code → SDD → review by role → tasks for a cheaper model. The [[headless-claude]] (`claude -p` + `--resume`) pattern lets teams fake multi-turn user interactions without building a harness.
 
-## 8. <span style="color:red">From workshops to production operations (AI@Kambi Day 1)</span>
+## 8. From workshops to production operations
 
-<span style="color:red">The third source deepened "operate agents" into production-grade patterns and sharpened the token-economy and knowledge-engineering clusters.
+The third source deepened "operate agents" into production-grade patterns and sharpened the token-economy and knowledge-engineering clusters.
 
 **Anatomy and hygiene revisited.** The [[harness]] ≠ model distinction — an LLM is a file of weights; the harness wraps it — is foundational. [[claude-md]] hygiene got three concrete moves: strip the obvious, split into per-folder files, extract to [[agent-skill|skills]]; keep under ≈100 lines. [[agents-md]] standardizes cross-harness project memory. [[agent-skill]] activation is model-strength-dependent — strong models wait, weak local models trash context greedily.
 
@@ -66,7 +66,21 @@ Day 2 expanded the security cluster from "how to break a chatbot" to "how to con
 
 **Long loops and background agents.** [[ci-green-loop]] formalizes the post-push-hook vs `/loop` patterns; the key guard is [[reward-hacking]] — agents cheating to make CI green (deleting tests, `assert true`) — whose only reliable defense is out-of-band enforcement (branch protection, untouchable guard job, never an in-context check). [[sub-agents]] gains the pure-router pattern (main agent routes, specialists load schemas lazily).
 
-**Production access and safety.** [[firefighter-agent]] (on-call incident-recovery agent: gathers intel, waits for human approval on mutating actions) and [[draft-only-email]] (OAuth `compose` scope enforces draft-only, not model discretion) complete the production-operations cluster. [[docker-sandboxing]] adds the key rule: `--dangerously-skip-permissions` is only safe inside Docker. [[supply-chain-attack]] gains the [[typosquatting]] vector. [[sycophancy]] gains the "don't over-praise" corollary (over-praise makes the agent run off doing unrequested work). [[skill-erosion]] adds mob/pair programming and the quarter-sprint-hands-only countermeasure. [[multi-model-review]] adds the "push review knowledge to the reviewer stage" discipline and the encode-rule-then-re-run-it-now pattern. [[code-review]] adds "stop reviewing trivial diffs" and "stop reviewing unit tests."</span>
+**Production access and safety.** [[firefighter-agent]] (on-call incident-recovery agent: gathers intel, waits for human approval on mutating actions) and [[draft-only-email]] (OAuth `compose` scope enforces draft-only, not model discretion) complete the production-operations cluster. [[docker-sandboxing]] adds the key rule: `--dangerously-skip-permissions` is only safe inside Docker. [[supply-chain-attack]] gains the [[typosquatting]] vector. [[sycophancy]] gains the "don't over-praise" corollary (over-praise makes the agent run off doing unrequested work). [[skill-erosion]] adds mob/pair programming and the quarter-sprint-hands-only countermeasure. [[multi-model-review]] adds the "push review knowledge to the reviewer stage" discipline and the encode-rule-then-re-run-it-now pattern. [[code-review]] adds "stop reviewing trivial diffs" and "stop reviewing unit tests."
+
+## 9. <span style="color:red">Don't be the servant; engineer the knowledge (AI@Garmin Day 1)</span>
+
+<span style="color:red">The fourth source, framed for mobile engineers, added two spines to the craft and a cluster of knowledge-engineering pages.
+
+**Choose your model and harness deliberately.** The [[model-hierarchy]] reads the tiers as experienced hires — Opus the architect (legacy + orchestration), Sonnet the mid (greenfield, never legacy), Haiku the junior ("seppuku with Haiku"), GPT the second opinion. Independently, the [[harness]] matters as much as the model: CLI > IDE plugin, because of the invisible harness prompt and the faster CLI release cadence. A [[custom-agent]] pins both (own context, pinned model, restricted tools).
+
+**Stop being the servant of the AI.** The [[chop-ai-waiter|CHOP / "AI waiter"]] anti-pattern — copy-pasting between a chat and your editor — is the thing to kill; the fix is a [[feedback-loop]] for every handed-off task (build warnings, tests, screenshots, [[adb-automation|adb]], reflected diagrams). The deeper thesis: the new skill is *seeing and reproducing* the problem, not fixing it. Where designs are truly maintained, the [[figma-mcp]] is "paradise" — but AI is bad at design, so keep a human on UX. Connect the agent to the issue tracker (`gh` CLI over the heavier MCP, see [[cli-vs-mcp-tradeoff]]); in a [[agentic-corporation]] the tracker is a "blackboard" agents answer async — the "dark factory" horizon.
+
+**How the machine works, and why it fails.** An LLM is just a few hundred GB of weights, stateless, with reasoning discarded each turn. The three real [[hallucination]] causes are the [[knowledge-cutoff]] (fixed by pulling fresh docs via [[context7]] rather than poisoned web-fetch), the [[dumb-zone]] (rule-of-thumb ≈65%, *"where AI drops prod databases"*), and [[sycophancy]]. [[data-governance]] decides which endpoints may legally see your code — a ZDR agreement, or on-prem open weights ([[ollama]] via [[claude-code-router]]) for true sovereignty. Token-burn on real work is the *first* adoption metric (see [[token-economy]]).
+
+**Knowledge is engineered, in layers.** [[memory-layers]] names the four scopes (user / project / team / company); [[skills-governance]] keeps the team layer sane (one skill-set per team, not megalomania or dichotomy); and [[agents-md-discipline]] is the curation craft for the single most important file in the repo — anti-dumping (≈90% is obvious, ≈5% is your OCD), the **seed-of-heresy** Socratic loop (ask "why?" five times when the agent makes you angry, encode the missing *assumption* not the corrected output), sub-folder injection (context scoped like imports), and retrospect-every-sprint. `copilot-instructions.md` is dead — use [[agents-md|AGENTS.md]].
+
+**Vibe-coding's bill comes due as [[cognitive-debt]].** Generating faster than anyone reads collapses in 2–3 months; unreviewed 85% coverage is a fake net. The durable safety layer is business-reviewed `.feature` files ([[acceptance-test-bdd]]), and drift is fought structurally with [[archunit-drift-control]] (the static cousin of [[field-reality-diagram]]). The [[ralph-loop]] spawns a fresh agent per task batch so cheap models never hit the dumb zone.</span>
 
 ---
 
