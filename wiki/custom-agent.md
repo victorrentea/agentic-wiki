@@ -4,11 +4,9 @@ category: concept
 tags: [sub-agents, specialist, model-pinning, restricted-tools, context-window, review]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 A custom agent is a single-purpose specialist (e.g. a security reviewer, a clean-code maniac) defined with its **own context window**, a **pinned model**, and a **restricted tool set** — distinct from the project's ground-rules memory file.
 

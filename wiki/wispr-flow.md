@@ -4,7 +4,7 @@ category: tool
 tags: [dictation, voice, productivity, human-bottleneck, input]
 sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 
@@ -18,7 +18,7 @@ Dictation is especially valuable for [[grill-me|grilling]] requirements and for 
 
 It enables genuinely mobile [[vibe-coding]] — a whole project dictated from a mall using voice plus remote control. The trade-off to watch is the same one [[caveman]] warns about: protect your *attention*, the real last bottleneck, not just your keystrokes.
 
-<span style="color:red">Dictation handles your self-corrections gracefully — speaking a ticket aloud, the tool silently absorbs the "no, actually…" reversals into clean text. A complementary input tip for *UI* work: when there's no [[figma-mcp|Figma]] source, **draw a picture instead of describing it** — a hand-drawn wireframe pasted as an image is more token-efficient and less ambiguous than prose (an Anthropic training tip).</span>
+Dictation handles your self-corrections gracefully — speaking a ticket aloud, the tool silently absorbs the "no, actually…" reversals into clean text. A complementary input tip for *UI* work: when there's no [[figma-mcp|Figma]] source, **draw a picture instead of describing it** — a hand-drawn wireframe pasted as an image is more token-efficient and less ambiguous than prose (an Anthropic training tip).
 
 ## See also
 - [[ralph-loop]]

@@ -4,7 +4,7 @@ category: concept
 tags: [agent-harness, claude-code, tooling, knowledge, actions, cli]
 sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 
@@ -18,7 +18,7 @@ Swapping one for the other is the whole point of [[claude-code-router]]: same ha
 
 Examples named in the field: **Claude Code**, **Cursor**, **Codex**, **OpenCode**, and **Glean** (an in-house "ChatGPT" you type *into* — you plug in codebases, Slack, and Jira, and it speaks [[model-context-protocol]]). Orchestration features are usually built around the model a harness ships with, so they don't always port.
 
-<span style="color:red">**The harness matters as much as the model.** The same model in a better harness gives better results — e.g. Sonnet inside Claude Code beats Sonnet inside a weaker harness, largely because of the invisible harness prompt the CLI injects (part of the [[system-prompt]] payload). The working ranking: **CLI > IDE plugin**, because CLIs are easier to unit-test and ship ≈3 months ahead of the plugins (the IDE plugin is the weakest harness). "Which model" (see [[model-hierarchy]]) and "which harness" are two independent knobs.</span>
+**The harness matters as much as the model.** The same model in a better harness gives better results — e.g. Sonnet inside Claude Code beats Sonnet inside a weaker harness, largely because of the invisible harness prompt the CLI injects (part of the [[system-prompt]] payload). The working ranking: **CLI > IDE plugin**, because CLIs are easier to unit-test and ship ≈3 months ahead of the plugins (the IDE plugin is the weakest harness). "Which model" (see [[model-hierarchy]]) and "which harness" are two independent knobs.
 
 ## What lives in the harness
 

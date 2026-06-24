@@ -4,11 +4,9 @@ category: concept
 tags: [models, opus, sonnet, haiku, gpt, orchestration, cost]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 The model hierarchy is the discipline of matching the model tier to the task's difficulty — read like an "experienced-hire" analogy — instead of always reaching for the strongest (expensive) or cheapest (unreliable) model.
 

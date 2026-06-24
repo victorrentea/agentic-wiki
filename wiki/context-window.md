@@ -4,7 +4,7 @@ category: concept
 tags: [context-window, token-economy, lost-in-the-middle, memory, performance]
 sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-10
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 The context window is the finite token budget a model sees in one call; bigger is not always better — it costs money, degrades quality on cheap models, and suffers from "lost in the middle."
@@ -27,7 +27,7 @@ The sliding window in [[chat-memory]] is the primary defense against context blo
 
 For an *agent's* window, **auto-compaction is itself a failure** — by the time the harness summarizes at ≈90%, the decisions made just before were already taken inside the [[dumb-zone]]. Prefer a [[handover]] file or [[sub-agents]] over compaction, and `/clear` between unrelated tasks. Run `/context` at the start of a sprint: a fresh chat can already burn ≈20k tokens on MCP + [[agent-skill|skills]] before you type.
 
-<span style="color:red">**What the model actually sees each turn:** conversation history + `AGENTS.md`/`CLAUDE.md` + the front-matter *descriptions* of your skills + the *schemas* of your MCP tools + the invisible *harness prompt* the CLI injects (a big reason a stronger [[harness]] beats a weaker one). Because LLMs are stateless, the illusion of memory is the whole transcript re-sent every turn — and the agent's *reasoning* is **not** carried forward (it's discarded at turn end), which is why you must extract conclusions into the visible chat. *Don't mix unrelated tasks in one conversation* — `/clear`. A practical ceiling cited: uneasy past 400K tokens, "doing it wrong" past 500K.</span>
+**What the model actually sees each turn:** conversation history + `AGENTS.md`/`CLAUDE.md` + the front-matter *descriptions* of your skills + the *schemas* of your MCP tools + the invisible *harness prompt* the CLI injects (a big reason a stronger [[harness]] beats a weaker one). Because LLMs are stateless, the illusion of memory is the whole transcript re-sent every turn — and the agent's *reasoning* is **not** carried forward (it's discarded at turn end), which is why you must extract conclusions into the visible chat. *Don't mix unrelated tasks in one conversation* — `/clear`. A practical ceiling cited: uneasy past 400K tokens, "doing it wrong" past 500K.
 
 Source: [[2026-06-10-spring-ai-itkonekt]]
 

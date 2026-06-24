@@ -4,7 +4,7 @@ category: concept
 tags: [reliability, hallucination, prompt-injection, review, human-factors]
 sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 

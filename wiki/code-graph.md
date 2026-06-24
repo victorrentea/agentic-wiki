@@ -2,9 +2,9 @@
 title: Code Graph
 category: tool
 tags: [code-graph, symbol-graph, static-analysis, monolith, blast-radius]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-10
-updated: 2026-06-11
+updated: 2026-06-24
 ---
 
 Code Graph is an npm-installable symbol-graph tool that maintains an always-current, file-watcher-synced index of every call site, type, and definition in a codebase — reindexing within ≈1 second of a file save.
@@ -24,6 +24,8 @@ A symbol graph is also the "grep-for-reuse" defense against the agent reinventin
 
 **Reuse hunting must be instructed explicitly.** Before writing new code a "reuse" agent should look for an existing implementation, but left alone an anxious agent YOLOs and skips the check. The durable technique in a big codebase: **grep the function/symbol names tied to the business concept**, plus **code-graph for syntax-level navigation** — and you must tell the agent, in so many words, to do it. This is part of [[code-review]]'s reuse/duplication concern in a [[multi-model-review]] quorum.
 
+<span style="color:red">For legacy-code migration, Code Graph is especially valuable at the **dead-code detection** stage: a method with no callers in the graph has no live callers, and can be safely deleted. Combining this with coverage data from a test suite gives a "definitely dead" signal that grep cannot provide. See [[legacy-migration-stages]] for the full recipe.</span>
+
 ## See also
 - [[rag]]
 - [[vector-search]]
@@ -35,5 +37,7 @@ A symbol graph is also the "grep-for-reuse" defense against the agent reinventin
 - [[vibe-coding]]
 - [[code-review]]
 - [[multi-model-review]]
+- [[legacy-migration-stages]]
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-23-ai-garmin]]

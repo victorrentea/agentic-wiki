@@ -4,11 +4,9 @@ category: pattern
 tags: [feedback-loop, agentic-engineering, self-correction, screenshots, tests, adb]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 A feedback loop is any mechanism that lets the agent *observe the result of its own work* and iterate without a human in the middle — the single most important thing to set up before handing off a task.
 

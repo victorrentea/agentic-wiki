@@ -4,7 +4,7 @@ category: tool
 tags: [mcp, playwright, browser-automation, accessibility-tree, testing]
 sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-12
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 [Playwright MCP](https://github.com/microsoft/playwright-mcp) lets an agent drive a real browser headlessly via [[model-context-protocol]] — and, crucially, it reads the page through the **accessibility tree** rather than through screenshots, which is structurally cheaper and cross-browser.
@@ -16,7 +16,7 @@ Every browser exposes an **accessibility tree** (built for screen-readers): a st
 - **More reliable** — text labels are stable; pixel coordinates shift on resize.
 - **Cross-browser and cloud-runnable** — the same test script runs against Chrome, Firefox, and Safari, headless in CI.
 
-Screenshots and vision are the fallback for canvas, games, or visual regression (pixel-diff), not the default. <span style="color:red">The screenshot-driven loop is still a powerful [[feedback-loop]] when layout is the goal — *"stay in a loop taking screenshots until it's pixel-aligned"* converged a render to <0.5% diff unattended. On mobile, [[adb-automation|`adb`]] is the direct equivalent: the agent screenshots/taps/drags a running emulator.</span>
+Screenshots and vision are the fallback for canvas, games, or visual regression (pixel-diff), not the default. The screenshot-driven loop is still a powerful [[feedback-loop]] when layout is the goal — *"stay in a loop taking screenshots until it's pixel-aligned"* converged a render to <0.5% diff unattended. On mobile, [[adb-automation|`adb`]] is the direct equivalent: the agent screenshots/taps/drags a running emulator.
 
 ## The "name the tool" discipline
 

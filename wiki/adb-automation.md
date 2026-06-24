@@ -4,11 +4,9 @@ category: tool
 tags: [adb, android, mobile, emulator, feedback-loop, ui-automation, ci]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 `adb` (Android Debug Bridge) lets an agent screenshot, tap, and drag on a running emulator or device — the mobile equivalent of [[browser-mcp|Playwright]], closing the feedback loop on a real app UI.
 

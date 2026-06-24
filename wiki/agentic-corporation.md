@@ -4,11 +4,9 @@ category: pattern
 tags: [multi-agent, blackboard, async, issue-tracker, future-of-work, orchestration]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 The agentic corporation is the horizon where agents coordinate *through shared artifacts* rather than through humans — the issue tracker becomes a "blackboard" agents read from and write to asynchronously.
 

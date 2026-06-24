@@ -207,3 +207,44 @@ Fourth delta ingest. Source: [[2026-06-23-ai-garmin]] (Day 1 of a 2-day AI-Assis
 **Red-flagged new today:** the 14 new concept/tool/pattern pages above (🆕 badge) plus the §9 overview movement and every red `<span>` listed under the 26 updates. All older red marks were promoted to normal text first; only this ingest's deltas are red.
 
 **Stripped:** client name ("Garmin"), the internal company-layer product name ("Glide"), participant names (Mihai/Titus), and "today we…" / war-story phrasing generalized out of concept prose — provenance kept here and in `sources:` frontmatter. No session-artifact-only pages created. Note: the source-page prose still names the workshop for citation, per convention.
+
+## [2026-06-24] ingest | Garmin workshop Day 2
+
+Fifth delta ingest. Source: [[2026-06-23-ai-garmin]] (Day 2 added to the existing Day-1 file). All Day-1 Garmin red marks (15 new pages + spans in 29 pages + §9 overview movement) promoted to normal text first; zero red marks remain from prior ingests.
+
+**Created 9 pages** (red 🆕 badge + `new_in: 2026-06-24`):
+- [[non-goals]] — explicit non-goals chapter in spec; *"agents build rockets when you asked for a bicycle."*
+- [[hardware-mock]] — swap physical Bluetooth/sensor hardware for a loopback protobuf stub on CI.
+- [[legacy-migration-stages]] — tests → dead-code removal → migrate; the safe recipe for scary legacy codebases.
+- [[skills-benchmarking]] — run ≈10× with/without the skill, score quality + token burn; LLM-as-judge shortcut.
+- [[light-dark-code]] — designate the exemplar module; point the agent at the "light" code, not the dark 80%.
+- [[openapi-test-fixtures]] — backend OpenAPI examples → generated JSON fixtures + Kotlin DTOs; breaking the spec breaks the test.
+- [[policeman-agent]] — orchestrator that blocks new parallel tasks if file-sets overlap an open PR.
+- [[sprint-design-quiz]] — end-of-sprint agent asks 1–2 design questions per PR to verify comprehension.
+- [[productionalize]] — hardening a vibe-coded prototype to production-grade; the emerging engineering specialty.
+
+**Updated 18 existing pages** (new sentences/paragraphs red-`<span>`-wrapped):
+- [[spec-driven-development]] — four-artifact / four-reviewer mapping; "spec alignment is precision work"; non-goals chapter; +source; +see-also.
+- [[openspec]] — four artifacts and who reviews each; human-in-the-loop discipline (plan-mode before skill); +source; +see-also.
+- [[plan-mode]] — three-tier framing concretized: plan mode is "too ephemeral" for multi-day; OpenSpec is the persistent answer; +source.
+- [[three-amigos]] — Gherkin output as independent oracle; lock `.feature` files before implementation; +source.
+- [[multi-model-review]] — spawn fresh reviewers each round; surface coder–reviewer disagreements first; Day-1 Garmin span promoted.
+- [[static-analysis-gauntlet]] — custom Refaster/Semgrep rules; Snyk/Fortify; "unleash every tool because the agent does the fixing"; +source.
+- [[code-graph]] — dead-code detection stage in legacy migration; +source; +see-also.
+- [[prompt-caching]] — $20 cold vs $0.50 warm at the 5-min TTL; operational lesson; +source already present.
+- [[mcp-transport]] — token cost of tool descriptions; wrong-tool-pick failure mode; elicitation for destructive ops; +source.
+- [[prompt-injection]] — three agent-era flavors (poisoned web / steganography / user-controlled fields); OWASP LLM01; +source already present.
+- [[supply-chain-attack]] — tj-actions incident; clone-scan-build mitigation; hash-lock baseline; +source.
+- [[vibe-coding]] — "productionalize the vibe-coded crap" cross-link; +see-also.
+- [[agent-skill]] — prove-the-skill-helps-with-statistics; cross-link to skills-benchmarking; already had source.
+- [[cloud-review-workflow]] — policeman agent; selective second reviewer; +source.
+- [[acceptance-test-bdd]] — independence constraint; QA must lock `.feature` files before implementation; already had source.
+- [[vibe-fixer]] — productionalize cross-link; +source.
+- [[2026-06-23-ai-garmin]] — source page expanded to cover Day 2; title updated.
+- [[overview]] — §9 Garmin Day-1 span promoted; new §10 "reviewless code pipeline" added and red-flagged.
+
+**Navigation:** [[wiki/index|index]] gained 9 new pages across patterns and concepts sections; source list updated. [[overview]] gained §10.
+
+**Red-flagged new today:** the 9 new pages above (🆕 badge) plus the §10 overview movement and every red `<span>` listed under the 18 updates. All older red marks were promoted to normal text first.
+
+**Stripped:** "Garmin", "Bogdan" participant name removed from concept prose; "sarmale" lunch story, IoT-device anecdote, and other session-specific war stories not carried into concept pages. No session-artifact-only pages created. Provenance lives in `sources:` frontmatter and this log entry.

@@ -4,7 +4,7 @@ category: concept
 tags: [agentic-engineering, anti-pattern, context-anxiety, product-owner, human-factors, cognitive-debt]
 sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 
@@ -14,13 +14,15 @@ Vibe coding is generating software you never read — "forget the code exists" �
 
 Vibing works for a while, then rots. One test: ≈**3 months** of solo mania-pushing before it collapsed and engineering had to come back — diagrams, tests, decoupling. A machine signal of the same rot is **"context anxiety"**: past ≈600k tokens Opus becomes afraid to read more files, stops checking for duplication, and stops writing tests — a direct symptom of the [[dumb-zone]].
 
-<span style="color:red">The human cost of that collapse has a name: [[cognitive-debt]] — within 2–3 months nobody knows what's in the codebase and every bug fix spawns new ones. The trap that accelerates it is fake test coverage: an unreviewed 85%-coverage suite the AI rewrites alongside the code asserts only what already happens. The durable antidote is **business-reviewed `.feature` files** ([[acceptance-test-bdd]]), not more unit tests.</span>
+The human cost of that collapse has a name: [[cognitive-debt]] — within 2–3 months nobody knows what's in the codebase and every bug fix spawns new ones. The trap that accelerates it is fake test coverage: an unreviewed 85%-coverage suite the AI rewrites alongside the code asserts only what already happens. The durable antidote is **business-reviewed `.feature` files** ([[acceptance-test-bdd]]), not more unit tests.
 
 ## The role shift
 
 The durable trajectory is not "no engineering" but a **role shift**: developers become product owners / "managers of agents" who steer the big moves. Business may "vibe" a prototype for 2–3 days, then hand the rotted ship to engineers for de-shitification (a real, if crude, emerging job description). The antidote to vibe-coding's downsides is the whole rest of this wiki: [[spec-driven-development]], [[acceptance-test-bdd|acceptance tests]], [[multi-model-review]], and guarding against [[skill-erosion]].
 
 **The [[vibe-fixer]] role** is the economic response to vibe coding at scale: an engineer receives ≈10,000 lines of almost-working output and applies judgement — what to keep, reuse, or discard — rather than rewriting from scratch. In the [[cloud-review-workflow]], business vibes a UI draft and the developer becomes the vibe-fixer. The leverage shifts from writing to judgement.
+
+<span style="color:red">*"Productionalize the vibe-coded crap — that is the profession of the future."* See [[productionalize]] for the full role description.</span>
 
 ## See also
 - [[agentic-engineering]]
@@ -32,5 +34,6 @@ The durable trajectory is not "no engineering" but a **role shift**: developers 
 - [[cloud-review-workflow]]
 - [[cognitive-debt]]
 - [[acceptance-test-bdd]]
+- [[productionalize]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-23-ai-garmin]]

@@ -4,11 +4,9 @@ category: pattern
 tags: [agents-md, claude-md, knowledge-engineering, socratic, retrospective, sub-folder]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 `AGENTS.md` discipline is the curation practice that keeps a project's agent-memory file lean and *earned* — the most important file in your repo right now, and the one most often ruined by dumping into it.
 

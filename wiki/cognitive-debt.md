@@ -4,11 +4,9 @@ category: concept
 tags: [vibe-coding, anti-pattern, review, tests, human-factors, technical-debt]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 Cognitive debt is the accumulated *not-knowing* that builds up when code is generated faster than any human reads it — within a few months nobody on the team understands what is in the codebase, and every bug fix spawns new bugs.
 

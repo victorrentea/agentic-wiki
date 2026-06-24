@@ -4,11 +4,9 @@ category: pattern
 tags: [anti-pattern, feedback-loop, copy-paste, chat, agentic-engineering]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 CHOP — **Ch**at-**O**riented **P**rogramming — is the anti-pattern of copy-pasting between a chat web UI and your editor, with *you* acting as the waiter: ferrying code and errors back and forth so the AI can never see the result of its own work.
 

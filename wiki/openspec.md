@@ -2,9 +2,9 @@
 title: OpenSpec
 category: tool
 tags: [spec-driven, skill, workflow-enforcement, scaffolding, handover]
-sources: ["[[2026-06-11-ai-playtika]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-24
 ---
 
 
@@ -24,6 +24,20 @@ The three SDD artifacts — `proposal.md`, `design.md`, `tasks.md` (see [[spec-d
 
 OpenSpec ships via `npm install -g` — whose **post-install script** silently registered the `openspec` command, a live demonstration of the [[supply-chain-attack]] risk ("some library online just executed code on your machine").
 
+<span style="color:red">## The four artifacts and who reviews them
+
+OpenSpec emits four reviewable markdown files that map to four stakeholder roles:
+- **Proposal** — functional, non-technical → review with the **business / PO**.
+- **Design** — architecture and code decisions → review with **developers** (pair/mob). Include a `## Non-goals` section.
+- **Tasks** — the AI's execution checklist, git-tracked progress; minimal human review needed.
+- **Spec** — acceptance criteria → review with **QA**, then convert to [[acceptance-test-bdd|Gherkin `.feature`]] files so the agent can verify its own work against an independent oracle.
+
+The key guard: QA (or a human) must lock the `.feature` files *before* implementation starts. If the agent generates both the Gherkin and the implementation in the same pass, the test is no longer an independent oracle.
+
+## Human-in-the-loop discipline
+
+The most common failure mode: the agent skips the spec review and proceeds directly to implementation. The reliable fix is to force [[plan-mode]] *before* invoking the OpenSpec skill, rather than trusting the skill's internal "don't continue" hint — harness-level plan-mode is the enforcer, not the skill text.</span>
+
 ## See also
 - [[spec-driven-development]]
 - [[handover]]
@@ -31,4 +45,8 @@ OpenSpec ships via `npm install -g` — whose **post-install script** silently r
 - [[tripwire]]
 - [[supply-chain-attack]]
 - [[drift]]
+- [[plan-mode]]
+- [[non-goals]]
+- [[three-amigos]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-23-ai-garmin]]

@@ -4,11 +4,9 @@ category: concept
 tags: [hallucination, training-data, context7, web-fetch, reliability]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 The knowledge cutoff is the date past which a model has no training data — ask it about anything newer (a library release, a language version, an API change) and it will **invent an answer confidently** rather than admit ignorance.
 

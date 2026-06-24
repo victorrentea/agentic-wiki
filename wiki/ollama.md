@@ -4,7 +4,7 @@ category: tool
 tags: [ollama, local-llm, self-hosted, gdpr, open-weights, zdr]
 sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-10
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 [Ollama](https://ollama.com/) is a runtime for executing open-weight LLMs entirely on local hardware, eliminating outbound data transfer to third-party APIs.
@@ -17,7 +17,7 @@ The workshop used Ollama running **Qwen 2.5**, activated in [[spring-ai]] by swi
 
 For any agent workflow where confidential data must stay on-premises, pairing Ollama with [[spring-ai]]'s advisor pipeline and a local [[judge-llm]] is the canonical local stack.
 
-<span style="color:red">**Open vs frontier, and what local actually buys you.** An LLM is *"a few hundred gigabytes of floating-point weights."* **Open** models like [DeepSeek](https://huggingface.co/deepseek-ai) you can actually download (its weights live on a Hugging Face page) — DeepSeek is cited at ≈Sonnet quality for ≈10% of the price — but self-hosting needs serious hardware (≈900 GB RAM, ≈$500K of kit). **Frontier proprietary** models (GPT, Opus) can *never* be downloaded — they always run in a vendor datacenter. Running open weights on-prem is the strongest form of [[data-governance]]: when there's no [[data-governance|ZDR]] agreement with a cloud provider, local inference keeps the data inside the perimeter entirely. Point the harness at it with [[claude-code-router]].</span>
+**Open vs frontier, and what local actually buys you.** An LLM is *"a few hundred gigabytes of floating-point weights."* **Open** models like [DeepSeek](https://huggingface.co/deepseek-ai) you can actually download (its weights live on a Hugging Face page) — DeepSeek is cited at ≈Sonnet quality for ≈10% of the price — but self-hosting needs serious hardware (≈900 GB RAM, ≈$500K of kit). **Frontier proprietary** models (GPT, Opus) can *never* be downloaded — they always run in a vendor datacenter. Running open weights on-prem is the strongest form of [[data-governance]]: when there's no [[data-governance|ZDR]] agreement with a cloud provider, local inference keeps the data inside the perimeter entirely. Point the harness at it with [[claude-code-router]].
 
 ## See also
 - [[spring-ai]]

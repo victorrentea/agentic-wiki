@@ -4,11 +4,9 @@ category: tool
 tags: [mcp, figma, design, ui, mobile, design-to-code]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 The Figma MCP lets an agent pull design specs straight from Figma into the app it's building — *if* the screens are genuinely maintained in Figma, this is "paradise."
 

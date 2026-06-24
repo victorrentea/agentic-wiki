@@ -4,7 +4,7 @@ category: concept
 tags: [agentic-engineering, discipline, autonomy, spec-driven, overview]
 sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 
@@ -26,7 +26,7 @@ The day's whole arc is the toolkit:
 
 The engineer becomes a "manager of agents", not a viper — see [[vibe-coding]] for the contrast.
 
-<span style="color:red">**Two slogans capture the spine of the discipline.** First, *stop being the servant of the AI*: don't copy-paste between a chat and your editor (the [[chop-ai-waiter|CHOP anti-pattern]]) — integrate the agent and give it a [[feedback-loop]] so it checks its own work. Second, *the new skill is seeing, testing, and reproducing the problem, not fixing it* — *"move your focus from typing to feeling the problems"* (races, deadlocks, load). The agent fixes almost anything once you point it at an observable loop; your job is to make the problem visible and to judge the result. Matching the right [[model-hierarchy]] tier to the task is part of that judgment.</span>
+**Two slogans capture the spine of the discipline.** First, *stop being the servant of the AI*: don't copy-paste between a chat and your editor (the [[chop-ai-waiter|CHOP anti-pattern]]) — integrate the agent and give it a [[feedback-loop]] so it checks its own work. Second, *the new skill is seeing, testing, and reproducing the problem, not fixing it* — *"move your focus from typing to feeling the problems"* (races, deadlocks, load). The agent fixes almost anything once you point it at an observable loop; your job is to make the problem visible and to judge the result. Matching the right [[model-hierarchy]] tier to the task is part of that judgment.
 
 **Every AI failure is an opportunity to enrich the plan or the context.** If the agent gets it wrong, the first question is: what did the agent not know (context), or what was the spec unclear about (plan)? Make "what did the agent learn this sprint?" the first item in every sprint retro — congratulate whoever added good insight to [[claude-md]]. Treat the agent like a junior who just joined: pair, babysit, show the way.
 

@@ -4,11 +4,9 @@ category: concept
 tags: [claude-md, agents-md, team, company, skills, knowledge-engineering]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 Memory layers are the four nested scopes an agent's rules come from — user, project, team, and company — loaded by the harness in order so the most specific context wins.
 

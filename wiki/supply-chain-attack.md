@@ -2,9 +2,9 @@
 title: Supply Chain Attack
 category: security
 tags: [security, supply-chain, sbom, npm, agentic-risk, typosquatting]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-10
-updated: 2026-06-22
+updated: 2026-06-24
 ---
 
 A supply chain attack compromises a dependency in your build graph — not your code directly — so that installing or building your project executes the attacker's payload.
@@ -18,6 +18,10 @@ Mitigation: [SBOMs](https://www.linuxfoundation.org/blog/blog/what-is-an-sbom) (
 **The "S-BOM bomb".** The threat is concrete and easy to demonstrate: `npm install -g @somepackage` runs the package's **post-install script**, which can register commands and exfiltrate secrets — "some library online just executed code on your machine." Running `npm install @latest` on a fresh install is exactly running the post-install scripts of a possibly-just-hacked library. npm is far less regulated than Maven, but the JVM is not immune — [Log4Shell](https://en.wikipedia.org/wiki/Log4Shell) ("log4bomb") was the same class of weaponized dependency. Concrete defenses: `npm ci --ignore-scripts` (or `npm config set ignore-scripts true`), pin exact versions and commit the lockfile, and prefer provenance-attested packages — never `@latest` on a fresh machine.
 
 **Typosquatting.** A hacker publishes a clone of a popular package with a one-character name difference (`openspeck` vs `openspec`, `expres` vs `express`). The package's post-install script runs the payload. Installing a dependency is a security event — verify the package name character by character, check download counts, look at the publish date, and consider using a scanner like Socket.dev or `npm audit signatures`.
+
+<span style="color:red">## The tj-actions incident
+
+A real-world instance of the MCP-era supply-chain threat: the **tj-actions/changed-files** GitHub Action was compromised, and a contributor's token was stolen and used to slip a post-install script into a widely-used action. Any workflow that ran `uses: tj-actions/changed-files@latest` in that window executed the malicious code, which harvested API keys from CI environment variables. The mitigation: **clone the MCP/action source, scan it with two models, build locally** rather than pulling from a registry at deploy time. Hash-lock (npm lockfile / Docker digest pinning) is the baseline — even if you can't clone-and-scan every dependency, pinning prevents a compromised later release from silently swapping in.</span>
 
 ## The agentic-era amplifier
 

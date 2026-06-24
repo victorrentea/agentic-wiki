@@ -2,7 +2,7 @@
 title: Index
 category: source
 tags: [index, catalog]
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 # Index
@@ -48,6 +48,7 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[skill-erosion]] — keeping your own competence sharp while AI writes the code.
 - [[ai-addiction]] — the dopamine/slot-machine trap of parallel terminals.
 - [[caveman]] — anti-pattern: decompressing terse AI output taxes your attention.
+- [[light-dark-code]] — designate the "impeccable" module as reference exemplar; point the agent at it.
 
 ## Security
 - [[data-governance]] — ZDR agreements decide which model endpoints may legally see your code; on-prem for sovereignty.
@@ -128,6 +129,14 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[reward-hacking]] — agent gaming CI green by deleting tests or asserting true; defenses must be out-of-band.
 - [[field-reality-diagram]] — sequence diagrams generated from real traces; can't drift.
 - [[agent-auth]] — service-account API key + on-behalf-of bearer; identity never as tool argument.
+- [[non-goals]] — explicit out-of-scope declaration in the spec; prevents agents from building rockets when asked for bicycles.
+- [[hardware-mock]] — swap a physical device for a loopback protobuf stub at build time; makes CI-testable builds possible without hardware.
+- [[legacy-migration-stages]] — tests → dead-code removal → migrate; skip stages at your peril.
+- [[skills-benchmarking]] — run ≈10× with/without, score quality + token burn; one run proves nothing (LLM-as-judge shortcut).
+- [[policeman-agent]] — orchestrator that blocks new parallel tasks if their file-set overlaps an open PR.
+- [[sprint-design-quiz]] — end-of-sprint agent asks 1–2 design questions per PR to verify comprehension.
+- [[productionalize]] — hardening a vibe-coded prototype to production-grade: the emerging engineering specialty.
+- [[openapi-test-fixtures]] — backend OpenAPI examples → generated JSON fixtures + Kotlin DTOs; breaking the spec breaks the test.
 
 ## Concepts — database & search
 - [[keyset-pagination]] — cursor-based pagination for 100K+ rows; OFFSET breaks at scale; stable tie-breaker required.
@@ -137,4 +146,4 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[2026-06-10-spring-ai-itkonekt]] — Spring AI @ ITKonekt workshop summary (seed source).
 - [[2026-06-11-ai-playtika]] — AI Agentic Engineering workshop, day 1 + day 2 (two delta ingests).
 - [[2026-06-22-ai-kambi]] — AI-Assisted / Agentic Coding workshop, Day 1 (AI@Kambi).
-- [[2026-06-23-ai-garmin]] — AI-Assisted / Agentic Coding workshop, Day 1 (AI@Garmin); AGENTS.md discipline, skills, feedback loops, model & harness hierarchy.
+- [[2026-06-23-ai-garmin]] — AI-Assisted / Agentic Coding workshop, Days 1 & 2 (AI@Garmin); AGENTS.md discipline, skills, feedback loops, model & harness hierarchy, spec-driven development, MCP architecture, AI security.

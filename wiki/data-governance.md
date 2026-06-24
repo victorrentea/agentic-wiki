@@ -4,11 +4,9 @@ category: security
 tags: [security, privacy, zdr, compliance, data-residency, policy, gdpr]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 Data governance for agents is the policy layer that decides *which* model endpoints may legally see your source code and prompts — most concretely whether a vendor has signed a **Zero-Data-Retention (ZDR)** agreement.
 

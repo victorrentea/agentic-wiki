@@ -4,11 +4,9 @@ category: pattern
 tags: [skill, team, knowledge-engineering, marketplace, conflict, scaling]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 Skills governance is the organizational discipline of deciding *who owns which skill-set* — avoiding both the megalomania of one set for everyone and the dichotomy of every dev with their own.
 

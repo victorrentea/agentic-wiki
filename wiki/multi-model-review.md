@@ -4,7 +4,7 @@ category: pattern
 tags: [code-review, sub-agents, attention-dilution, quorum, gpt, cloud-review]
 sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 
@@ -16,11 +16,13 @@ A single prompt asking for clean code **and** repetition **and** performance **a
 
 The full state-of-the-art workflow (seen in three companies): the coding agent implements via sub-agents, then hands off to a dedicated **review orchestrator** that spawns **≈3 sub-agents per concern** — clean code, security, performance — and runs each concern across **two model families (Opus + GPT)** ⇒ ≈6 reviewers combing the same diff.
 
-<span style="color:red">A simpler aggregation variant runs **Sonnet + GPT in parallel** over existing PRs and **feeds both result-sets to Opus to aggregate** — the architect-tier model from the [[model-hierarchy]] reconciles the two reviews into one. A field tip with a kernel of truth: telling GPT *"the code was written by Claude"* makes its review ≈20% more aggressive — model families have a mild in-group bias, which is exactly why mixing families is worth the cost.</span>
+A simpler aggregation variant runs **Sonnet + GPT in parallel** over existing PRs and **feeds both result-sets to Opus to aggregate** — the architect-tier model from the [[model-hierarchy]] reconciles the two reviews into one. A field tip with a kernel of truth: telling GPT *"the code was written by Claude"* makes its review ≈20% more aggressive — model families have a mild in-group bias, which is exactly why mixing families is worth the cost.
 
 ## Review sorted, not top-to-bottom
 
 Don't read a PR in file order — your reviewer brain dies roughly halfway through a big one. Have the quorum review first, then **surface the lines the reviewers disagreed on first**: spend your sharpest minutes where the bots fought, not on the boilerplate they all approved. "Review sorted, not selective" is the one trick that shrinks PR-review pain to ≈10% of the effort. See [[code-review]] for the human side (PR-size sweet spot, judgement vs mechanics).
+
+<span style="color:red">For adversarial effectiveness, spawn **fresh** reviewer sub-agents each round rather than resuming a previous reviewer — fresh context means fresh randomness and no anchoring bias from prior rounds. And surface **coder–reviewer disagreements first** to the human reviewer: the lines the models fought over are where your sharpest attention should go, not the boilerplate they unanimously approved.</span>
 
 ## "Done" includes "I watched it work"
 

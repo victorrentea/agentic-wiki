@@ -4,7 +4,7 @@ category: pattern
 tags: [context-window, tool-calling, cost-optimization, agent-workflow]
 sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-10
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 The discipline of treating context tokens as a finite, expensive resource — deliberately choosing tools, transport, and restart strategies to avoid burning the [[context-window]] on overhead rather than reasoning.
@@ -27,7 +27,7 @@ Two specific tools to weigh on the token budget: [[context7]] injects fresh libr
 
 **A conversation is a stateless API.** Every turn re-sends the entire prefix as input; thinking is per-turn and discarded; tool outputs accumulate forever. [[prompt-caching]] makes this affordable — you pay ≈10% for the cached prefix — but the cache TTL is only ≈5 minutes, so an idle fat terminal re-pays full price. The [[effort-setting]] is the other dial: use **xhigh**, never **max**. And don't tax your *own* attention with verbose output (the [[caveman]] anti-pattern) — that bottleneck is scarcer than tokens.
 
-<span style="color:red">**Token-burn on useful work is the *first* adoption metric.** Counter-intuitively, the engineers who blow through their quota — get it raised, and burn that too — are the ones extracting real leverage; spending tokens (in the smart zone, on real tasks) is the leading indicator of adoption, not waste. The flip side is the [[model-hierarchy]] discipline: spend the expensive tokens where intelligence is needed, and farm the rest to cheap models.</span>
+**Token-burn on useful work is the *first* adoption metric.** Counter-intuitively, the engineers who blow through their quota — get it raised, and burn that too — are the ones extracting real leverage; spending tokens (in the smart zone, on real tasks) is the leading indicator of adoption, not waste. The flip side is the [[model-hierarchy]] discipline: spend the expensive tokens where intelligence is needed, and farm the rest to cheap models.
 
 ## See also
 

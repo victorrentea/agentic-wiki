@@ -4,11 +4,9 @@ category: pattern
 tags: [drift, archunit, plantuml, diagrams, tests, no-drift, architecture]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-23
-updated: 2026-06-23
-new_in: 2026-06-23
+updated: 2026-06-24
 ---
 
-<span style="color:red">🆕 New in Garmin 2026-06-23</span>
 
 A drift-control pattern that makes architecture diagrams and package rules *self-verifying*: unit-test package dependencies with ArchUnit, and reflect the class diagram out of the code at test time, so a stale diagram fails the build instead of quietly lying.
 

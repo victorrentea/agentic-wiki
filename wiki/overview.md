@@ -3,7 +3,7 @@ title: Overview — the map of the concepts
 category: source
 tags: [overview, map, synthesis]
 sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 # Overview — the map of the concepts
@@ -68,9 +68,9 @@ The third source deepened "operate agents" into production-grade patterns and sh
 
 **Production access and safety.** [[firefighter-agent]] (on-call incident-recovery agent: gathers intel, waits for human approval on mutating actions) and [[draft-only-email]] (OAuth `compose` scope enforces draft-only, not model discretion) complete the production-operations cluster. [[docker-sandboxing]] adds the key rule: `--dangerously-skip-permissions` is only safe inside Docker. [[supply-chain-attack]] gains the [[typosquatting]] vector. [[sycophancy]] gains the "don't over-praise" corollary (over-praise makes the agent run off doing unrequested work). [[skill-erosion]] adds mob/pair programming and the quarter-sprint-hands-only countermeasure. [[multi-model-review]] adds the "push review knowledge to the reviewer stage" discipline and the encode-rule-then-re-run-it-now pattern. [[code-review]] adds "stop reviewing trivial diffs" and "stop reviewing unit tests."
 
-## 9. <span style="color:red">Don't be the servant; engineer the knowledge (AI@Garmin Day 1)</span>
+## 9. Don't be the servant; engineer the knowledge (AI@Garmin Day 1)
 
-<span style="color:red">The fourth source, framed for mobile engineers, added two spines to the craft and a cluster of knowledge-engineering pages.
+The fourth source, framed for mobile engineers, added two spines to the craft and a cluster of knowledge-engineering pages.
 
 **Choose your model and harness deliberately.** The [[model-hierarchy]] reads the tiers as experienced hires — Opus the architect (legacy + orchestration), Sonnet the mid (greenfield, never legacy), Haiku the junior ("seppuku with Haiku"), GPT the second opinion. Independently, the [[harness]] matters as much as the model: CLI > IDE plugin, because of the invisible harness prompt and the faster CLI release cadence. A [[custom-agent]] pins both (own context, pinned model, restricted tools).
 
@@ -80,7 +80,21 @@ The third source deepened "operate agents" into production-grade patterns and sh
 
 **Knowledge is engineered, in layers.** [[memory-layers]] names the four scopes (user / project / team / company); [[skills-governance]] keeps the team layer sane (one skill-set per team, not megalomania or dichotomy); and [[agents-md-discipline]] is the curation craft for the single most important file in the repo — anti-dumping (≈90% is obvious, ≈5% is your OCD), the **seed-of-heresy** Socratic loop (ask "why?" five times when the agent makes you angry, encode the missing *assumption* not the corrected output), sub-folder injection (context scoped like imports), and retrospect-every-sprint. `copilot-instructions.md` is dead — use [[agents-md|AGENTS.md]].
 
-**Vibe-coding's bill comes due as [[cognitive-debt]].** Generating faster than anyone reads collapses in 2–3 months; unreviewed 85% coverage is a fake net. The durable safety layer is business-reviewed `.feature` files ([[acceptance-test-bdd]]), and drift is fought structurally with [[archunit-drift-control]] (the static cousin of [[field-reality-diagram]]). The [[ralph-loop]] spawns a fresh agent per task batch so cheap models never hit the dumb zone.</span>
+**Vibe-coding's bill comes due as [[cognitive-debt]].** Generating faster than anyone reads collapses in 2–3 months; unreviewed 85% coverage is a fake net. The durable safety layer is business-reviewed `.feature` files ([[acceptance-test-bdd]]), and drift is fought structurally with [[archunit-drift-control]] (the static cousin of [[field-reality-diagram]]). The [[ralph-loop]] spawns a fresh agent per task batch so cheap models never hit the dumb zone.
+
+## 10. <span style="color:red">Spec-driven development and the "reviewless code" pipeline (AI@Garmin Day 2)</span>
+
+<span style="color:red">Day 2 assembled the full agentic development lifecycle into a single diagram whose purpose is **"reviewless code"** — not no review, but review-targeted code where human attention goes only where it matters.
+
+**Three task sizes, three modes.** [[plan-mode]] covers up to a day; [[spec-driven-development]] with [[openspec]] covers anything bigger. The four OpenSpec artifacts — Proposal, Design, Tasks, Spec — each have a distinct reviewer: business/PO, developers, minimal, QA. The [[three-amigos]] ceremony produces [[acceptance-test-bdd|Gherkin acceptance tests]] *before* implementation, ensuring the tests are an independent oracle. A [[non-goals]] section prevents agents from over-engineering.
+
+**The review pipeline.** [[multi-model-review]] spawns fresh adversarial reviewers each round and surfaces coder–reviewer disagreements first. The [[static-analysis-gauntlet]] is extended with custom rules (Refaster, Semgrep, Snyk, Fortify) and becomes a true quality wall — viable now because the agent does the fixing. A [[policeman-agent]] prevents parallel-PR merge conflicts overnight. A [[sprint-design-quiz]] guards against losing comprehension of AI-written code.
+
+**MCP and security.** [[mcp-transport]] tool-description token cost explains why too many tools leads to wrong-tool picks; [[elicitation]] enables human-in-the-loop approval for destructive operations. [[prompt-injection]] now has three concrete agent-era flavors: poisoned web content (exfil via `<img>`), white-on-white steganography, and user-controlled fields. [[supply-chain-attack]] adds the tj-actions case and the clone-scan-build mitigation.
+
+**Legacy and mobile.** [[legacy-migration-stages]] (tests → dead-code → migrate) and the [[hardware-mock]] pattern (Bluetooth protobuf stub on CI) address the mobile/embedded agentic gap. [[code-graph]] is the must-have for legacy dead-code detection. [[light-dark-code]] solves the "agent learns from bad examples" problem by designating a reference module.
+
+**The profession shift.** [[productionalize]] names what happens after vibe-coding: hardening the prototype. [[skills-benchmarking]] brings statistical rigor to skill evaluation. [[openapi-test-fixtures]] closes the contract-testing gap.</span>
 
 ---
 

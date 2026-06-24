@@ -4,7 +4,7 @@ category: concept
 tags: [skill, progressive-disclosure, tool-calling, front-matter, claude-code]
 sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 
@@ -17,7 +17,7 @@ The [agent-skills standard](https://platform.claude.com/docs/en/agents-and-tools
 1. Only the **description** is eager-loaded so the agent knows what it *could* load.
 2. When a prompt matches, the agent calls the `skill` tool, which **pastes everything below the front-matter into context**. ("I know Kung Fu" — Neo loads the skill right before the fight.)
 
-<span style="color:red">The **front-matter `description` is the whole self-loading mechanism** — it's the only thing the agent reads at startup to decide whether to fire. A vague description means the skill *never activates*; write it like search keywords with explicit "Use when…" triggers, not a summary. Skills live at `.agents/skills/<name>/SKILL.md` (project) or `~/.claude/` (global) — install one by pasting its URL and let the agent drop it in (redirect it to the project folder if it defaults to global). Canonical examples: a **pre-push** skill (run all tests, watch CI go green) and the [grilling skill](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling).</span>
+The **front-matter `description` is the whole self-loading mechanism** — it's the only thing the agent reads at startup to decide whether to fire. A vague description means the skill *never activates*; write it like search keywords with explicit "Use when…" triggers, not a summary. Skills live at `.agents/skills/<name>/SKILL.md` (project) or `~/.claude/` (global) — install one by pasting its URL and let the agent drop it in (redirect it to the project folder if it defaults to global). Canonical examples: a **pre-push** skill (run all tests, watch CI go green) and the [grilling skill](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling).
 
 **Skill activation depends on model strength.** Strong models (Opus/Sonnet) exhibit "abstinence" — they wait to load a skill until they genuinely need it. Weak local models (Qwen, Llama) greedily load every referenced file and trash their own context. This is why local models are a poor fit for skill-heavy workflows. Write the description with concrete "Use when…" triggers — too thin a description and a capable model may not activate the skill at all. Activation is driven by semantic match between the trigger conditions and the current task, not raw word count.
 
@@ -30,6 +30,10 @@ A skill is more than prose — it can carry **extra knowledge files** (a `testin
 - `disable-model-invocation: true` keeps an expensive skill (e.g. one that starts the app and pixel-compares Playwright screenshots) from ever auto-firing — it becomes a manual `/`-command only.
 - A skill is *your opinionated way* of doing something, not a magic quality upgrade. **Don't blindly adopt a downloaded skill** — use it to learn the delta ("compare my way with this skill and teach me the differences") and build your own.
 
+<span style="color:red">## Prove the skill helps before shipping it
+
+A skill is only worth keeping if it demonstrably improves outcomes. The rigorous approach: run the same task ≈10 times with and without the skill, score quality and token burn on each run, and look at the spread. One run proves nothing (LLMs are stochastic). See [[skills-benchmarking]] for the full methodology including LLM-as-judge scoring.</span>
+
 ## See also
 - [[progressive-disclosure]]
 - [[claude-md]]
@@ -41,6 +45,7 @@ A skill is more than prose — it can carry **extra knowledge files** (a `testin
 - [[grill-me]]
 - [[skills-governance]]
 - [[custom-agent]]
+- [[skills-benchmarking]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]
 - [[2026-06-23-ai-garmin]]

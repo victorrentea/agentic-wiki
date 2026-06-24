@@ -4,7 +4,7 @@ category: concept
 tags: [mcp, tool-calling, agent-integration, protocol]
 sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-10
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 An open protocol that connects agents to external tools and data by exposing three primitive types over a standard wire format.
@@ -41,7 +41,7 @@ The full protocol spec lives at [modelcontextprotocol.io](https://modelcontextpr
 
 ## Integration "paradise" — and its blast radius
 
-<span style="color:red">Real MCP integrations are the road to a self-driving developer: a [[figma-mcp|Figma MCP]] (designs straight into the app, *if* they're truly maintained there), [[adb-automation|`adb`]] for mobile UI loops, a Jira MCP (e.g. mcp-atlassian) or the Atlassian CLI, and a TeamCity/CI CLI. Two cautions: when a CLI already covers it, the CLI is far cheaper than the MCP ([[cli-vs-mcp-tradeoff]] — the GitHub MCP burns ≈1,300 tokens for what `gh` does free); and **mind which checkboxes you tick when you mint the agent's API key** — don't hand it the power to delete a Jira project or take down prod ([[agent-permissions]]).</span>
+Real MCP integrations are the road to a self-driving developer: a [[figma-mcp|Figma MCP]] (designs straight into the app, *if* they're truly maintained there), [[adb-automation|`adb`]] for mobile UI loops, a Jira MCP (e.g. mcp-atlassian) or the Atlassian CLI, and a TeamCity/CI CLI. Two cautions: when a CLI already covers it, the CLI is far cheaper than the MCP ([[cli-vs-mcp-tradeoff]] — the GitHub MCP burns ≈1,300 tokens for what `gh` does free); and **mind which checkboxes you tick when you mint the agent's API key** — don't hand it the power to delete a Jira project or take down prod ([[agent-permissions]]).
 
 ## See also
 
