@@ -4,7 +4,7 @@ category: security
 tags: [security, docker, sandbox, egress, containment, ci, agentic-risk]
 sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-12
-updated: 2026-06-22
+updated: 2026-06-25
 ---
 
 Running an agent inside Docker is the gold standard for containment: you mount only what the agent needs, restrict outbound traffic to an explicit allow-list, and when an agent goes rogue — from prompt injection, the dumb zone, or just a bad day — you burn the container.
@@ -25,6 +25,10 @@ Unlike an [[os-sandbox]], Docker gives you **ephemeral state**: every installati
 If the GitHub API key lives inside the Docker container, a corrupted agent can post it as a GitHub issue or exfiltrate it over an allowed egress channel. Instead:
 - Run the **MCP as a proxy *outside* the container** — the agent calls the MCP, the MCP holds and uses the real key, and the agent never sees it. See [[secret-zero]].
 - Or use the kernel-level man-in-the-middle broker that swaps a fake key for the real one only at the egress boundary.
+
+## Kernel-space key proxy
+
+<span style="color:red">An advanced pattern: store real credentials in **kernel space** behind a man-in-the-middle proxy that swaps fake credentials → real ones only at the network egress boundary. The agent in user space holds only a fake token; even if it's compromised, it can't read the real key. This is the security-maximalist extension of the [[secret-zero]] proxy pattern.</span>
 
 ## CI is prod-adjacent
 

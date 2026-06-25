@@ -4,7 +4,7 @@ category: pattern
 tags: [code-review, pull-request, judgement, sorted-review, attention]
 sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-11
-updated: 2026-06-22
+updated: 2026-06-25
 ---
 
 
@@ -24,6 +24,10 @@ A reviewer's attention dies roughly halfway through a big PR, so do not read it 
 
 The coding agent should not even *request* review until a [[sub-agents|sub-agent]] has **driven the running app** — deployed to a dev environment, clicked through with [Playwright](https://playwright.dev), screenshotted, written and run the [[acceptance-test-bdd|acceptance tests]] in the browser. Driving the app is common sense, not the review itself; it just means the review bots and the human are critiquing something already shown to run, not guessing.
 
+## Proof-of-life merge gate
+
+<span style="color:red">Nothing merges without a human proof-of-life gate — "rotate your face to the right, are you alive?" The final approval is the one step that cannot be automated away. Persist the review verdict as a **committed `.md`** in the PR so it's durable, searchable, and survives conversation resets. See [[agentic-review-pipeline]] for the full ordered pipeline that precedes the human gate.</span>
+
 ## The PR-size sweet spot
 
 Granularity has two failure modes. **Too big** — a 1000-line end-of-sprint dump easily hides a bug, and your attention runs out before the end. **Too small** — six tiny parallel branches collide on merge, producing rework and bugs when they fight, and you won't have the patience to babysit each one. Aim for the middle (fifteen ≈200-line PRs over one 3000-line one); for the unavoidably-big ones, fall back to sorted review and assume your brain dies halfway.
@@ -39,5 +43,7 @@ The human rule underneath all of it: **if you don't understand something, stop**
 - [[acceptance-test-bdd]]
 - [[skill-erosion]]
 - [[spec-driven-development]]
+- [[agentic-review-pipeline]]
+- [[mob-spec-review]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]

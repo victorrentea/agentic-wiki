@@ -5,10 +5,7 @@ tags: [testing, mobile, bluetooth, protobuf, ci, hardware]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-24
 updated: 2026-06-24
-new_in: 2026-06-24
 ---
-
-<span style="color:red">🆕 New in Garmin workshop Day 2 (2026-06-24)</span>
 
 A hardware mock swaps a physical device (Bluetooth peripheral, sensor, CAN bus dongle) for a software emulator that speaks the same application-layer protocol over a loopback transport, making CI-testable builds possible without the physical hardware.
 

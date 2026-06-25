@@ -2,9 +2,9 @@
 title: Agent Permissions
 category: concept
 tags: [security, permissions, auto-mode, yolo, tripwires, claude-code, api-key-scope]
-sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-12
-updated: 2026-06-24
+updated: 2026-06-25
 ---
 
 Agent permissions form a spectrum from fully supervised to fully autonomous, with each mode trading safety for throughput — and with [[tripwire|tripwires]] as a surgical override at any level.
@@ -36,6 +36,10 @@ For a production-facing agent, the correct posture is:
 
 **Mind the API-key scopes you mint for the agent.** When you create the token an agent uses to reach Jira, CI, or a deploy tool, the checkboxes you tick *are* the blast radius — don't hand it the power to delete a project or take down prod. This is the same external-control-plane principle as [[draft-only-email]]: scope is technical enforcement, not a social contract. The `/yolo` (all-permissions) demo is only sane inside a [[docker-sandboxing|Docker sandbox]] — *"my agent can delete my drive right now."*
 
+## Shift+Tab permission cycling
+
+<span style="color:red">In Claude Code, **Shift+Tab** cycles through permission modes in order: **default** (prompts on every non-read action) → **accept-edits** (auto-approves file writes, prompts on bash) → **plan mode** (read + think only, no writes or bash) → **auto / YOLO** (`--dangerously-skip-permissions`). The safest mode is dockerized auto/YOLO — inside a properly configured Docker container, YOLO is acceptable; outside Docker, it reaches `\~/.ssh` and all credentials. MCP servers downloaded from the internet and skills embedding shell scripts mean [[prompt-injection]] via HTML comments on a fetched page is real.</span>
+
 ## See also
 
 - [[os-sandbox]]
@@ -45,5 +49,7 @@ For a production-facing agent, the correct posture is:
 - [[headless-claude]]
 - [[draft-only-email]]
 - [[adb-automation]]
+- [[agent-lifecycle-hooks]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-22-ai-kambi]]
 - [[2026-06-23-ai-garmin]]

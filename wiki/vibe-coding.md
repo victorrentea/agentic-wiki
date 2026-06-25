@@ -22,7 +22,7 @@ The durable trajectory is not "no engineering" but a **role shift**: developers 
 
 **The [[vibe-fixer]] role** is the economic response to vibe coding at scale: an engineer receives ≈10,000 lines of almost-working output and applies judgement — what to keep, reuse, or discard — rather than rewriting from scratch. In the [[cloud-review-workflow]], business vibes a UI draft and the developer becomes the vibe-fixer. The leverage shifts from writing to judgement.
 
-<span style="color:red">*"Productionalize the vibe-coded crap — that is the profession of the future."* See [[productionalize]] for the full role description.</span>
+*"Productionalize the vibe-coded crap — that is the profession of the future."* See [[productionalize]] for the full role description.
 
 ## See also
 - [[agentic-engineering]]

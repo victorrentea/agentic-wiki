@@ -2,9 +2,9 @@
 title: Observability MCP
 category: tool
 tags: [mcp, grafana, observability, pii, logs, metrics, anomaly-detection]
-sources: ["[[2026-06-11-ai-playtika]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-12
-updated: 2026-06-12
+updated: 2026-06-25
 ---
 
 Observability MCPs (Grafana, OpenSearch/Kibana) give agents read access to metrics, dashboards, logs, and traces — letting them derive production facts without a human copy-pasting numbers into the chat.
@@ -34,6 +34,12 @@ Logs, traces, and dashboards frequently contain personal data (player names, ema
 
 Expose a metric for any production fact you'd otherwise paste into the prompt (record count, request rate, p99 latency). Point the agent at Grafana and let it query the metric at analysis time. This keeps the agent's understanding current without hand-feeding, and anchors its design decisions (pagination thresholds, cache TTLs) to real data.
 
+## Latency metric for incremental pipelines
+
+<span style="color:red">For data pipelines, emit a metric for the **latency between a row appearing in production** (its timestamp) and **landing in the output table**. Measure this before optimizing a slow incremental merge. This is the observability prerequisite for [[optimize-then-measure-subset]]: you can't responsibly parallelize what you haven't measured.
+
+**Data-quality validator companion:** rather than having an agent eyeball code for data-quality conformance, build a programmatic validator — feed known input, assert the output conforms to the schema/standards. See [[data-quality-validator]].</span>
+
 ## See also
 
 - [[model-context-protocol]]
@@ -41,4 +47,7 @@ Expose a metric for any production fact you'd otherwise paste into the prompt (r
 - [[mcp-sandbox-inheritance]]
 - [[profiling-agents]]
 - [[token-economy]]
+- [[optimize-then-measure-subset]]
+- [[data-quality-validator]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-22-ai-kambi]]

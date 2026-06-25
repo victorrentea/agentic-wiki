@@ -24,9 +24,9 @@ A 5,400-line single HTML file from un-guarded [[vibe-coding]] is exactly what th
 
 The load-bearing detail: wire these as **build-failing CI gates**, not advisory dashboards. A Sonar quality gate, a Semgrep rule, or a CodeQL query that *fails the build* is what forces the agent's self-repair loop; a report the agent can ignore won't. This is the hard end of the same enforcement gradient as a [[tripwire]] (a soft "kind requirement" the agent may ignore) and a [[claude-md]] rule (pure discretion) — the gauntlet *makes* the workflow happen, like [[openspec]]'s backing CLI. It belongs in the same family as the [[guardrails]] stack: layered, automated defence placed around the model's output.
 
-<span style="color:red">## Custom rules as the agent improves
+## Custom rules as the agent improves
 
-The gauntlet is not limited to off-the-shelf tools. Custom Refaster rules (for Java), Semgrep patterns, or ArchUnit checks can encode team-specific standards — *"RxJava, die!"* as a build-failing rule. When an agent generates code that uses a banned pattern, the CI wall catches it and the agent fixes it — the human never needs to say it again. Snyk and Fortify extend coverage to dependency vulnerabilities and SAST security findings. The principle: **unleash every tool in CI**, because now there is an agent to do the fixing — tools that were advisory dashboards (because humans couldn't fix everything) become viable build gates.</span>
+The gauntlet is not limited to off-the-shelf tools. Custom Refaster rules (for Java), Semgrep patterns, or ArchUnit checks can encode team-specific standards — *"RxJava, die!"* as a build-failing rule. When an agent generates code that uses a banned pattern, the CI wall catches it and the agent fixes it — the human never needs to say it again. Snyk and Fortify extend coverage to dependency vulnerabilities and SAST security findings. The principle: **unleash every tool in CI**, because now there is an agent to do the fixing — tools that were advisory dashboards (because humans couldn't fix everything) become viable build gates.
 
 ## See also
 - [[code-review]]

@@ -5,10 +5,7 @@ tags: [openapi, testing, kotlin, dto-generation, contract-testing]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-24
 updated: 2026-06-24
-new_in: 2026-06-24
 ---
-
-<span style="color:red">🆕 New in Garmin workshop Day 2 (2026-06-24)</span>
 
 OpenAPI test fixtures is the practice of asking the backend to annotate their swagger with realistic `examples`, then using those examples to generate JSON test fixtures and Kotlin DTOs at build time.
 

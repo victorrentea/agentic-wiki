@@ -30,9 +30,9 @@ A skill is more than prose — it can carry **extra knowledge files** (a `testin
 - `disable-model-invocation: true` keeps an expensive skill (e.g. one that starts the app and pixel-compares Playwright screenshots) from ever auto-firing — it becomes a manual `/`-command only.
 - A skill is *your opinionated way* of doing something, not a magic quality upgrade. **Don't blindly adopt a downloaded skill** — use it to learn the delta ("compare my way with this skill and teach me the differences") and build your own.
 
-<span style="color:red">## Prove the skill helps before shipping it
+## Prove the skill helps before shipping it
 
-A skill is only worth keeping if it demonstrably improves outcomes. The rigorous approach: run the same task ≈10 times with and without the skill, score quality and token burn on each run, and look at the spread. One run proves nothing (LLMs are stochastic). See [[skills-benchmarking]] for the full methodology including LLM-as-judge scoring.</span>
+A skill is only worth keeping if it demonstrably improves outcomes. The rigorous approach: run the same task ≈10 times with and without the skill, score quality and token burn on each run, and look at the spread. One run proves nothing (LLMs are stochastic). See [[skills-benchmarking]] for the full methodology including LLM-as-judge scoring.
 
 ## See also
 - [[progressive-disclosure]]

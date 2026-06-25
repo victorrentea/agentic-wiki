@@ -5,10 +5,7 @@ tags: [vibe-coding, engineering, judgement, profession, quality]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-24
 updated: 2026-06-24
-new_in: 2026-06-24
 ---
-
-<span style="color:red">🆕 New in Garmin workshop Day 2 (2026-06-24)</span>
 
 "Productionalize" (or "de-shitify") is the engineering discipline of taking a vibe-coded prototype — working but fragile — and making it production-grade: stable, safe, observable, and maintainable.
 

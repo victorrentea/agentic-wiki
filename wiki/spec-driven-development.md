@@ -4,7 +4,7 @@ category: pattern
 tags: [spec-driven, planning, agent-workflow, handover, acceptance-tests, three-amigos]
 sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-24
+updated: 2026-06-25
 ---
 
 
@@ -30,11 +30,17 @@ SDD is the longest and most complex of the ways to develop with an agent — a d
 
 Then constrain the agent from the other side with [[acceptance-test-bdd]] tests that must go green.
 
-<span style="color:red">OpenSpec's full artifact set is **Proposal** (reviewed with business/PO), **Design** (reviewed with developers in a pair/mob), **Tasks** (the AI's git-tracked execution checklist, reviewed minimally), and **Spec** (acceptance criteria, reviewed with QA and then converted to Gherkin `.feature` files for agent self-testing). The reviewer mapping is the most durable lesson: each artifact belongs to a different audience, and mixing them dilutes both reviews.</span>
+OpenSpec's full artifact set is **Proposal** (reviewed with business/PO), **Design** (reviewed with developers in a pair/mob), **Tasks** (the AI's git-tracked execution checklist, reviewed minimally), and **Spec** (acceptance criteria, reviewed with QA and then converted to Gherkin `.feature` files for agent self-testing). The reviewer mapping is the most durable lesson: each artifact belongs to a different audience, and mixing them dilutes both reviews.
 
-<span style="color:red">## Spec alignment is precision work
+## Framework interchangeability
 
-Aligning your mental model with the agent's through the spec is like aiming at a distant target — one millimetre off at the barrel and you land somewhere completely wrong. Every word in the spec earns its place. The practical corollary: the spec should include a [[non-goals]] chapter that explicitly names what the feature will *not* do, since agents over-deliver by default ("agents build rockets when you asked for a bicycle").</span>
+<span style="color:red">Spec-driven frameworks (GSD, [Kiro](https://kiro.dev), [OpenSpec](https://github.com/Fission-AI/OpenSpec), Specky) are interchangeable — every team is unhappy with their flow after 3–6 months; their universal core is the same gates: interview → align business/QA/dev → architecture → tasks → code → review. Four companies starting from different frameworks converge on substantially the same structure.
+
+**Never edit the framework markdown by hand** — prompt the agent to fix the flow. Change it only when the same failure recurs. The framework lives in committed skills, so you own it.</span>
+
+## Spec alignment is precision work
+
+Aligning your mental model with the agent's through the spec is like aiming at a distant target — one millimetre off at the barrel and you land somewhere completely wrong. Every word in the spec earns its place. The practical corollary: the spec should include a [[non-goals]] chapter that explicitly names what the feature will *not* do, since agents over-deliver by default ("agents build rockets when you asked for a bicycle").
 
 **Cloud workflow integration:** In the [[cloud-review-workflow]], the SDD is built by a cloud bot (not the developer). The bot researches the codebase first (read-only phase), then generates proposal/design/tasks from the [[three-amigos]] acceptance tests. The `tasks.md` is explicitly broken down for a cheaper model (Sonnet). The developer's job shifts to reviewing and correcting the SDD from PR comments — not writing it.
 

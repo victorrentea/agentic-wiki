@@ -25,9 +25,9 @@ In the [[cloud-review-workflow]], the tester role can be played or supplemented 
 
 Skipping this ceremony means the developer builds against the first interpretation of the ticket, the tester finds the obvious gaps, and the business gets surprised by both. Three Amigos front-loads that negotiation — the same ≈1-hour investment that [[spec-driven-development]] compresses into a design document.
 
-<span style="color:red">## Gherkin output as independent oracle
+## Gherkin output as independent oracle
 
-The Three Amigos session produces [[acceptance-test-bdd|Gherkin `.feature`]] files as the concrete deliverable. These must be locked by QA *before* a coder agent implements the feature — if the agent generates the Gherkin and the implementation in the same pass, the acceptance tests are no longer an independent oracle. The tester's role is moving upstream: critical thinking on corner cases and acceptance criteria, not after-the-fact clicking. The Gherkin files are also the input to the [[spec-driven-development|Spec]] artifact in [[openspec]].</span>
+The Three Amigos session produces [[acceptance-test-bdd|Gherkin `.feature`]] files as the concrete deliverable. These must be locked by QA *before* a coder agent implements the feature — if the agent generates the Gherkin and the implementation in the same pass, the acceptance tests are no longer an independent oracle. The tester's role is moving upstream: critical thinking on corner cases and acceptance criteria, not after-the-fact clicking. The Gherkin files are also the input to the [[spec-driven-development|Spec]] artifact in [[openspec]].
 
 ## See also
 

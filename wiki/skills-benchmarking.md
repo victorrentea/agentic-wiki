@@ -5,10 +5,7 @@ tags: [skills, evaluation, statistics, llm-judge, quality-assurance]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-24
 updated: 2026-06-24
-new_in: 2026-06-24
 ---
-
-<span style="color:red">🆕 New in Garmin workshop Day 2 (2026-06-24)</span>
 
 Skills benchmarking is the practice of running the same task repeatedly with and without a skill, scoring the results statistically, to prove whether the skill improves outcomes before adopting it.
 

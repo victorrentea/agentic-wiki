@@ -2,9 +2,9 @@
 title: Memory Layers
 category: concept
 tags: [claude-md, agents-md, team, company, skills, knowledge-engineering]
-sources: ["[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-23-ai-garmin]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-23
-updated: 2026-06-24
+updated: 2026-06-25
 ---
 
 
@@ -23,6 +23,12 @@ Stacking lets each scope stay small and stay out of the [[dumb-zone]]: the compa
 
 The cross-tool filename for the project layer is [[agents-md|AGENTS.md]]; loading deeper context only when relevant is [[progressive-disclosure]]; the team layer's compounding loop (PR-to-central, reviewed each sprint) is described in [[cross-repo-knowledge]].
 
+## The two-layer split for personal style
+
+<span style="color:red">Within the user scope, the durable split is: **home `memory.md`** (personal communication style and challenge preferences — who you are, "always challenge me when I'm vague or contradictory," be concise, don't sycophant, match my language) vs **project `CLAUDE.md`** (domain rules and NFRs). Define both explicitly so the agent doesn't need re-prompting style every session. The `memory.md` at user scope is *selfish* (your personal taste); the project `CLAUDE.md` is the team's ground rules for that repo.
+
+See [[two-layer-memory]] for the detailed breakdown.</span>
+
 ## See also
 - [[agents-md-discipline]]
 - [[agents-md]]
@@ -30,4 +36,6 @@ The cross-tool filename for the project layer is [[agents-md|AGENTS.md]]; loadin
 - [[cross-repo-knowledge]]
 - [[skills-governance]]
 - [[progressive-disclosure]]
+- [[two-layer-memory]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-22-ai-kambi]]

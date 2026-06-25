@@ -5,10 +5,7 @@ tags: [spec-driven, requirements, scope, agents-md]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-24
 updated: 2026-06-24
-new_in: 2026-06-24
 ---
-
-<span style="color:red">🆕 New in Garmin workshop Day 2 (2026-06-24)</span>
 
 A non-goals section explicitly states what a feature will *not* do, preventing agents from over-engineering solutions beyond the requested scope.
 

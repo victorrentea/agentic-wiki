@@ -20,9 +20,9 @@ The cache has a short TTL. It was 1 hour until ≈April, then silently dropped t
 
 The canonical failure: **four terminals open**, two of them carrying 500k of accumulated context, all neglected past the cache window. Idle fat terminals are the worst case both for the cache *and* for the [[dumb-zone]] — *"you're not a 10× developer, you're a 10× sucker."* An especially brutal case: an 8-minute Spring test run blows the 5-minute budget, so you re-pay full input price on the entire accumulated context. A **1-hour cache TTL** is available via explicit `cache-control` headers in the API — useful for idle orchestrators that need to stay warm.
 
-<span style="color:red">## Cost cliff in practice
+## Cost cliff in practice
 
-A real demonstration of the cost cliff: a single Opus 1M-context prompt left idle past the ≈5-minute cache window cost **$20**; the same prompt answered within the window cost **$0.50** — a 40× difference. The operational lesson: `/clear` often, lean on [[rtk]] and [[headroom]], lazy-load [[agent-skill|skills]], keep [[claude-md]] tight, and never run a heavyweight model on trivial tasks like CSS.</span>
+A real demonstration of the cost cliff: a single Opus 1M-context prompt left idle past the ≈5-minute cache window cost **$20**; the same prompt answered within the window cost **$0.50** — a 40× difference. The operational lesson: `/clear` often, lean on [[rtk]] and [[headroom]], lazy-load [[agent-skill|skills]], keep [[claude-md]] tight, and never run a heavyweight model on trivial tasks like CSS.
 
 ## See also
 - [[token-economy]]

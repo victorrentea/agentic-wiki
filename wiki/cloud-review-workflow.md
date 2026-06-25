@@ -20,7 +20,7 @@ The cloud review workflow is a "no laptop" pipeline where every step from ticket
 7. **`tasks.md` broken down for a cheaper model.** The tasks file exists so a Sonnet-class model can execute without the full reasoning load; humans barely review it.
 8. **Or just let Opus + swarm run it.** For tasks smaller than a sprint, the orchestrator holds the plan in its head and spins sub-agents per sub-chapter on the fly. Load tests fit here too.
 
-<span style="color:red">**Policeman agent** — when many PRs run in parallel overnight, a [[policeman-agent|policeman agent]] blocks a new task from starting if its expected file-set overlaps an open PR, preventing merge collisions. A **selective second reviewer** is triggered only for genuinely risky files (Gradle/build files, swagger definitions, shared utilities).</span>
+**Policeman agent** — when many PRs run in parallel overnight, a [[policeman-agent|policeman agent]] blocks a new task from starting if its expected file-set overlaps an open PR, preventing merge collisions. A **selective second reviewer** is triggered only for genuinely risky files (Gradle/build files, swagger definitions, shared utilities).
 
 ## The "no laptop" property
 

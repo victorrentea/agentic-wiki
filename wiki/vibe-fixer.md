@@ -13,7 +13,7 @@ A "vibe fixer" is an engineer who receives ≈10,000 lines of almost-working, vi
 
 In the [[cloud-review-workflow]], the business or a non-technical stakeholder "vibes" a rough UI draft using an LLM (or via [[vibe-coding]] tools), producing something that looks right but won't scale, duplicates existing components, or ignores performance/security constraints. The vibe fixer takes that output and:
 
-<span style="color:red">The full production-readiness checklist the vibe fixer applies has a name: [[productionalize]]. Business or designers vibe-code a working prototype; the vibe fixer *"makes it real"* — stable, safe, handling the deadlocks, memory issues, and race conditions that exceed the skills of a non-engineer.</span>
+The full production-readiness checklist the vibe fixer applies has a name: [[productionalize]]. Business or designers vibe-code a working prototype; the vibe fixer *"makes it real"* — stable, safe, handling the deadlocks, memory issues, and race conditions that exceed the skills of a non-engineer.
 
 - Decides what to **keep** (already good enough).
 - Decides what to **reuse** (existing components/services that should replace the vibe-generated version).

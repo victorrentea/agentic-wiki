@@ -28,7 +28,7 @@ Plan mode is the middle tier — Shift-Tab Shift-Tab activates it in Claude Code
 
 The output of a plan-mode session is a [[handover]] — the distilled conclusions you restart from, keeping the agent out of the [[dumb-zone]]. Pair it with [[prompt-caching]] awareness: deep thinking is slow, so don't let an idle planning terminal blow past the 5-minute cache window.
 
-<span style="color:red">This three-tier framing came from a concrete observation: plan mode is *"too ephemeral"* for multi-day work — you can't share it, hand it off, or review it asynchronously. [[spec-driven-development]] with [[openspec]] is the persistent, reviewable answer for the third tier. The mapping also clarifies when *not* to use plan mode: if a task fits in a few hours and you know the files, just prompt directly and save the planning overhead.</span>
+This three-tier framing came from a concrete observation: plan mode is *"too ephemeral"* for multi-day work — you can't share it, hand it off, or review it asynchronously. [[spec-driven-development]] with [[openspec]] is the persistent, reviewable answer for the third tier. The mapping also clarifies when *not* to use plan mode: if a task fits in a few hours and you know the files, just prompt directly and save the planning overhead.
 
 ## See also
 - [[grill-me]]

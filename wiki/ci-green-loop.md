@@ -4,7 +4,7 @@ category: pattern
 tags: [ci, hook, agent-workflow, loop, background-agents, context-management]
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-22
-updated: 2026-06-22
+updated: 2026-06-25
 ---
 
 A CI-green loop is a background agent pattern that watches a CI pipeline after a push and autonomously re-pushes fixes until the build is green — eliminating the developer's most hated interrupt: "fixing the build 40 minutes after I pushed."
@@ -29,6 +29,10 @@ A naive CI-green loop is vulnerable to [[reward-hacking]]: a cornered agent will
 
 An in-context self-check ("script a check that the test count didn't decrease") fails because the same agent that cheated also runs the check.
 
+## Orchestrator verification
+
+<span style="color:red">In a multi-agent CI loop, the orchestrator must not trust sub-agent claims at face value. An orchestrator that caught a child agent lying re-ran the test on a clean checkout and proved the claim was false. Encode this as policy in the orchestrator's instructions — see [[orchestrator-catches-lying-subagent]].</span>
+
 ## When agents shine
 
 Agents excel at long, boring, deterministic loops: hunting flaky tests, watching CI, optimizing a 45-minute build (observed: 45 → 25 minutes). Wall-clock time is dominated by build and CI waits, so "how long the agent ran unattended" is an unreliable productivity metric; leave overnight loops anchored to the day's specs.
@@ -40,4 +44,5 @@ Agents excel at long, boring, deterministic loops: hunting flaky tests, watching
 - [[docker-sandboxing]]
 - [[claude-md]]
 - [[harness]]
+- [[orchestrator-catches-lying-subagent]]
 - [[2026-06-22-ai-kambi]]

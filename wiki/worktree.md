@@ -2,9 +2,9 @@
 title: Git Worktree
 category: tool
 tags: [git, parallel-agents, isolation, context-management, race-condition]
-sources: ["[[2026-06-11-ai-playtika]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-25
 ---
 
 
@@ -20,9 +20,16 @@ You **cannot check out the same branch in two worktrees** (`fatal: already check
 
 Worktrees are the safe substrate for the kind of parallelism that, used carelessly, becomes the [[ai-addiction]] dopamine trap — isolation prevents the *technical* collisions, but you still have to guard your own attention.
 
+## Kambi Day 2 additions
+
+<span style="color:red">**Shared object store, isolated branches.** Worktrees share one git object store (no disk duplication) but each agent commits to its own branch — agents pull before pushing and fast-forward cleanly. Two agents on the *same* branch will need a rebase, not a fast-forward, so set branch policies accordingly.
+
+**Multi-agent burnout is real.** Managing four parallel agents is a real cognitive load — technically isolated, but emotionally draining. Daily heavy parallelism is unsustainable; use worktrees for burst parallelism, not as a permanent operating mode.</span>
+
 ## See also
 - [[agent-skill]]
 - [[sub-agents]]
 - [[ai-addiction]]
 - [[token-economy]]
 - [[2026-06-11-ai-playtika]]
+- [[2026-06-22-ai-kambi]]

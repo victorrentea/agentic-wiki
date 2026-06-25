@@ -5,10 +5,7 @@ tags: [orchestration, parallel-agents, pr-conflict, worktree, sub-agents]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-24
 updated: 2026-06-24
-new_in: 2026-06-24
 ---
-
-<span style="color:red">🆕 New in Garmin workshop Day 2 (2026-06-24)</span>
 
 A policeman agent is a dedicated orchestrator that blocks new parallel tasks from starting if their file-overlap with an open PR would cause merge conflicts.
 

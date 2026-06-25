@@ -32,11 +32,11 @@ The second major transport is **local stdio**: the MCP client (the agent harness
 
 Remote (SSE/HTTP) MCPs live outside the agent's sandbox and need their own authz and rate-limiting. Local stdio MCPs inherit the agent's sandbox automatically — this is the security-relevant distinction between the two transports.
 
-<span style="color:red">## Token cost of tool descriptions
+## Token cost of tool descriptions
 
 Every tool a server advertises has a description that is loaded into the agent's context at connection time — this is the token cost of MCP vs CLI. When a server exposes dozens of tools, the descriptions alone can consume hundreds of tokens per turn, and too many tools lead the agent to pick the wrong one (e.g. confusing Playwright MCP with Chrome DevTools MCP). Design principle: **expose only the tools the agent will actually use in a given workflow**, and use [[progressive-disclosure]] to load specialized toolsets on demand. See [[cli-vs-mcp-tradeoff]] for the quantified comparison.
 
-MCP servers can also request **human-in-the-loop** approval via the [[elicitation]] mechanism — *"you're about to delete your database — are you sure?"* — making destructive operations safe to expose without removing them from the agent's toolbox.</span>
+MCP servers can also request **human-in-the-loop** approval via the [[elicitation]] mechanism — *"you're about to delete your database — are you sure?"* — making destructive operations safe to expose without removing them from the agent's toolbox.
 
 ## See also
 

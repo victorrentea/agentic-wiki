@@ -2,13 +2,10 @@
 title: Sprint Design Quiz
 category: pattern
 tags: [sprint, code-review, skill-erosion, orchestration, accountability]
-sources: ["[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-23-ai-garmin]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-24
-updated: 2026-06-24
-new_in: 2026-06-24
+updated: 2026-06-25
 ---
-
-<span style="color:red">🆕 New in Garmin workshop Day 2 (2026-06-24)</span>
 
 A sprint design quiz is an automated end-of-sprint exercise where an agent scans all merged PRs and asks each developer one or two questions about the architectural decisions in their PRs — a lightweight guard against losing comprehension of AI-written code.
 
@@ -29,6 +26,10 @@ The questions are a forcing function: *"Are we still in charge, or squeezed?"*
 
 The sprint design quiz is a lightweight countermeasure to [[skill-erosion]] — the gradual loss of technical depth as developers defer more decisions to agents. Running it regularly ensures the team retains authorship over architectural choices even when agents do the typing.
 
+## Knowledge spreading and bus-factor
+
+<span style="color:red">The Kambi framing: at sprint end, have AI quiz the whole team *"why did we decide X?"* from merged PRs and design docs — not just the PR author. This spreads architectural knowledge across the team and fights bus factor (the risk that only one person understands a design decision). Non-answers flag PRs for deeper retrospective discussion; the quiz is a forcing function: *"Are we still in charge, or squeezed?"*</span>
+
 ## See also
 - [[skill-erosion]]
 - [[cognitive-debt]]
@@ -36,3 +37,4 @@ The sprint design quiz is a lightweight countermeasure to [[skill-erosion]] — 
 - [[multi-model-review]]
 - [[agentic-engineering]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-22-ai-kambi]]

@@ -2,7 +2,7 @@
 title: Index
 category: source
 tags: [index, catalog]
-updated: 2026-06-24
+updated: 2026-06-25
 ---
 
 # Index
@@ -51,6 +51,8 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[light-dark-code]] — designate the "impeccable" module as reference exemplar; point the agent at it.
 
 ## Security
+- <span style="color:red">[[dont-run-in-home-folder]] — set cwd to `~/workspace`; home contains .ssh, API keys, prompt-injected PDFs; ☢️ status-bar warning.</span>
+- <span style="color:red">[[agent-lifecycle-hooks]] — PreToolUse/PostToolUse/Stop/Notification; PreToolUse is the real guard hook.</span>
 - [[data-governance]] — ZDR agreements decide which model endpoints may legally see your code; on-prem for sovereignty.
 - [[prompt-injection]] — jailbreaks, sycophancy, multi-turn drift, indirect injection via fetched content.
 - [[jailbreak-ladder]] — RLHF → abliteration → regex → judge LLM → context accumulation; each rung's bypass.
@@ -95,6 +97,7 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[headless-claude]] — `claude -p` / `--resume`: multi-turn user sessions without a custom harness.
 
 ## Concepts — skills & knowledge engineering
+- <span style="color:red">[[two-layer-memory]] — home `memory.md` for personal style; project `CLAUDE.md` for domain rules; define both explicitly.</span>
 - [[agent-skill]] — a markdown tool whose description is eager-loaded, body on demand; activation depends on model strength.
 - [[progressive-disclosure]] — load knowledge only when relevant; a hook beats discretion.
 - [[claude-md]] — project memory; curate it, don't generate it; keep under ≈100 lines.
@@ -105,6 +108,12 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[custom-agent]] — a single-purpose specialist with its own context, pinned model, and restricted tools.
 - [[tripwire]] — a scripted "kind requirement" that gently nudges the agent.
 - [[cross-repo-knowledge]] — the "Dark Horses" central repo + symlinks + `@include`.
+
+## Patterns — agentic review pipeline
+- <span style="color:red">[[agentic-review-pipeline]] — the full ordered pipeline: multi-model reviewers → Sonar max → attempt merge → human proof-of-life → sorted review → committed verdict.</span>
+- <span style="color:red">[[mob-spec-review]] — no spec/architecture markdown reviewed alone; 2+ humans always; prevents fatigue-LGTM.</span>
+- <span style="color:red">[[review-by-images]] — review diagrams/schema images first ("what's red?"); pre-push hook renders ER diff as highlighted picture.</span>
+- <span style="color:red">[[codeowners-elders]] — protect CLAUDE.md, settings, schema with CODEOWNERS "elders" who auto-approve agent changes.</span>
 
 ## Patterns — operating agents
 - [[ralph-loop]] — spec by day, run agent loops overnight with clean context (in a Docker sandbox); a fresh agent per task batch.
@@ -132,11 +141,17 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 - [[non-goals]] — explicit out-of-scope declaration in the spec; prevents agents from building rockets when asked for bicycles.
 - [[hardware-mock]] — swap a physical device for a loopback protobuf stub at build time; makes CI-testable builds possible without hardware.
 - [[legacy-migration-stages]] — tests → dead-code removal → migrate; skip stages at your peril.
+- <span style="color:red">[[selenium-to-playwright-migration]] — rewrite only the step-definition glue; verify with mutation testing; never touch `.feature` files.</span>
+- <span style="color:red">[[optimize-then-measure-subset]] — baseline first; prototype on ≈5% subset; confirm speedup twice; then scale.</span>
+- <span style="color:red">[[orchestrator-catches-lying-subagent]] — orchestrator verifies sub-agent claims by re-running on a clean checkout; bake as policy.</span>
 - [[skills-benchmarking]] — run ≈10× with/without, score quality + token burn; one run proves nothing (LLM-as-judge shortcut).
 - [[policeman-agent]] — orchestrator that blocks new parallel tasks if their file-set overlaps an open PR.
 - [[sprint-design-quiz]] — end-of-sprint agent asks 1–2 design questions per PR to verify comprehension.
 - [[productionalize]] — hardening a vibe-coded prototype to production-grade: the emerging engineering specialty.
 - [[openapi-test-fixtures]] — backend OpenAPI examples → generated JSON fixtures + Kotlin DTOs; breaking the spec breaks the test.
+
+## Concepts — data quality & observability
+- <span style="color:red">[[data-quality-validator]] — programmatic validator (known input → assert output) beats agent eyeballing; latency metric companion.</span>
 
 ## Concepts — database & search
 - [[keyset-pagination]] — cursor-based pagination for 100K+ rows; OFFSET breaks at scale; stable tie-breaker required.
@@ -145,5 +160,5 @@ Catalog of all wiki pages, grouped by category. Start at [[overview]] for the co
 ## Sources
 - [[2026-06-10-spring-ai-itkonekt]] — Spring AI @ ITKonekt workshop summary (seed source).
 - [[2026-06-11-ai-playtika]] — AI Agentic Engineering workshop, day 1 + day 2 (two delta ingests).
-- [[2026-06-22-ai-kambi]] — AI-Assisted / Agentic Coding workshop, Day 1 (AI@Kambi).
+- [[2026-06-22-ai-kambi]] — AI-Assisted / Agentic Coding workshop, Days 1 & 2 (AI@Kambi); review pipeline, Selenium→Playwright migration, security, lifecycle hooks.
 - [[2026-06-23-ai-garmin]] — AI-Assisted / Agentic Coding workshop, Days 1 & 2 (AI@Garmin); AGENTS.md discipline, skills, feedback loops, model & harness hierarchy, spec-driven development, MCP architecture, AI security.

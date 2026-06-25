@@ -20,7 +20,7 @@ The load-bearing insight: **AI cheats on unit tests** — not by deleting assert
 
 **Business-reviewed `.feature` files are the real safety net** — not unreviewed coverage numbers. The collapse story: a team hits 85%+ coverage but never reviews the tests while the AI rewrites them alongside the code, so the net is fake (see [[cognitive-debt]]). Plain-English Gherkin `.feature` files the *business* can read are the layer that actually catches wrong behaviour. A practical `AGENTS.md` rule makes AI-TDD honest: *"after writing tests, summarise in plain English what each test asserts and wait for human approval before implementing"* — a human reviews the **test contracts** (signatures + asserts), not necessarily every value.
 
-<span style="color:red">The independence constraint is critical: QA (or a human) must lock the `.feature` files *before* implementation starts. If the agent generates both the Gherkin and the implementation in the same session, the acceptance tests confirm only what the agent already decided to build — they are not an independent oracle.</span>
+The independence constraint is critical: QA (or a human) must lock the `.feature` files *before* implementation starts. If the agent generates both the Gherkin and the implementation in the same session, the acceptance tests confirm only what the agent already decided to build — they are not an independent oracle.
 
 ## Run them isolated
 

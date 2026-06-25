@@ -2,13 +2,10 @@
 title: Legacy Migration Stages
 category: pattern
 tags: [legacy, migration, testing, dead-code, kotlin, java, refactoring]
-sources: ["[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-23-ai-garmin]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-24
-updated: 2026-06-24
-new_in: 2026-06-24
+updated: 2026-06-25
 ---
-
-<span style="color:red">🆕 New in Garmin workshop Day 2 (2026-06-24)</span>
 
 A staged recipe for safely migrating a large, untested legacy codebase: first build a test harness, then remove dead code, and only then migrate technology — skipping stages collapses.
 
@@ -30,6 +27,16 @@ The instinct *"if it works, don't touch it"* is exactly how years of untested "w
 
 The agent is particularly good at stage 1 (mechanical test generation) and stage 2 (dead-code detection via call-graph analysis with [[code-graph]]). Stage 3 benefits from the agent's knowledge of the target language/framework but needs the human to validate idiomatic correctness and performance implications.
 
+## Selenium → Playwright as a concrete migration pattern
+
+<span style="color:red">A concrete instance of the three-stage recipe applied to end-to-end tests: dead Selenium-Java tests (not run on CI for ≈2 years, locators rotted) migrated to Playwright-TypeScript while **reusing the exact same Gherkin `.feature` files**.
+
+- **Rewrite only the glue** (step definitions), never the `.feature` files — they are the acceptance oracle.
+- **Verify the port with mutation testing**: break something in the browser so the old Selenium fails, then confirm the same breakage fails the new Playwright test.
+- **Reality check**: if the Selenium tests are already broken, run a small experiment to gauge locator-repair cost before committing to the "fix Selenium first, then migrate" path.
+
+See [[selenium-to-playwright-migration]] for the full pattern.</span>
+
 ## See also
 - [[code-graph]]
 - [[acceptance-test-bdd]]
@@ -38,3 +45,5 @@ The agent is particularly good at stage 1 (mechanical test generation) and stage
 - [[vibe-fixer]]
 - [[agents-md-discipline]]
 - [[2026-06-23-ai-garmin]]
+- [[selenium-to-playwright-migration]]
+- [[2026-06-22-ai-kambi]]

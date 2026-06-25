@@ -2,9 +2,9 @@
 title: Browser MCP
 category: tool
 tags: [mcp, playwright, browser-automation, accessibility-tree, testing]
-sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-12
-updated: 2026-06-24
+updated: 2026-06-25
 ---
 
 [Playwright MCP](https://github.com/microsoft/playwright-mcp) lets an agent drive a real browser headlessly via [[model-context-protocol]] — and, crucially, it reads the page through the **accessibility tree** rather than through screenshots, which is structurally cheaper and cross-browser.
@@ -26,6 +26,10 @@ When telling an agent to drive the browser, name the exact MCP tool: *"iterate o
 
 [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview) lives in Chrome DevTools and gives a perf/a11y audit as structured JSON — another structured oracle the agent can reason over without vision. Wire it into the same MCP session for a combined layout-correction + accessibility pass.
 
+## Chrome extension vs Playwright for login-gated apps
+
+<span style="color:red">The Chrome browser extension reuses your already-logged-in session; a fresh Playwright launch opens a clean profile with no cookies and hits the login wall. Workarounds (a login script with credentials, persisted `storageState`, attaching to the existing browser) all exist, but the extension is the clean path for internal tools and staging environments. For new pipelines you control (no SSO/OAuth), `storageState` — save an authenticated session once and reuse the file — is the cleanest production answer. The login problem decides it: extension for session-gated internal apps, Playwright for clean automated pipelines.</span>
+
 ## See also
 
 - [[model-context-protocol]]
@@ -37,3 +41,5 @@ When telling an agent to drive the browser, name the exact MCP tool: *"iterate o
 - [[feedback-loop]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-22-ai-kambi]]
+- [[selenium-to-playwright-migration]]

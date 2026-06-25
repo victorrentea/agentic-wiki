@@ -5,10 +5,7 @@ tags: [agents-md, reference-architecture, code-quality, exemplar]
 sources: ["[[2026-06-23-ai-garmin]]"]
 created: 2026-06-24
 updated: 2026-06-24
-new_in: 2026-06-24
 ---
-
-<span style="color:red">🆕 New in Garmin workshop Day 2 (2026-06-24)</span>
 
 "Light code" is the reference-architecture exemplar module that sets the quality bar; "dark code" is the rest of the legacy codebase the agent must not imitate.
 

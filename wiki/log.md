@@ -248,3 +248,58 @@ Fifth delta ingest. Source: [[2026-06-23-ai-garmin]] (Day 2 added to the existin
 **Red-flagged new today:** the 9 new pages above (🆕 badge) plus the §10 overview movement and every red `<span>` listed under the 18 updates. All older red marks were promoted to normal text first.
 
 **Stripped:** "Garmin", "Bogdan" participant name removed from concept prose; "sarmale" lunch story, IoT-device anecdote, and other session-specific war stories not carried into concept pages. No session-artifact-only pages created. Provenance lives in `sources:` frontmatter and this log entry.
+
+## [2026-06-25] ingest | Kambi Day 2
+
+Sixth delta ingest. Source: [[2026-06-22-ai-kambi]] (Day 2 added to the existing Day-1 file; Day 2 = June 25, 2026, sections 6–10 and key points marked 2️⃣). All Garmin Day-2 red marks (9 new pages + spans in 25 pages + §10 overview movement) promoted to normal text first; zero red marks from prior ingests remain.
+
+**Created 11 pages** (red 🆕 badge + `new_in: 2026-06-25`):
+
+*Review pipeline:*
+- [[agentic-review-pipeline]] — full ordered pipeline: coder → multi-model mother-in-law reviewers → Sonar max → attempt-merge → proof-of-life → sorted review → committed verdict `.md`.
+- [[mob-spec-review]] — no spec/architecture markdown reviewed alone; 2+ humans; prevents fatigue-LGTM.
+- [[review-by-images]] — look at ER/class/dependency images first; pre-push hook renders SQL schema change as red-highlighted PlantUML ER diagram.
+- [[codeowners-elders]] — protect CLAUDE.md, settings, schema with GitHub CODEOWNERS "elder" group; governance complement to tripwires.
+
+*Engineering patterns:*
+- [[optimize-then-measure-subset]] — baseline first, ≈5% subset prototype, confirm speedup twice, then scale; watch for shared-resource contention.
+- [[orchestrator-catches-lying-subagent]] — prove claims on a clean checkout; bake as orchestrator policy; context-budget discipline.
+- [[selenium-to-playwright-migration]] — rewrite only glue (never `.feature` files); mutation-testing verification; TypeScript prerequisite.
+- [[data-quality-validator]] — programmatic validator (known input → assert output conforms); latency metric for incremental pipelines.
+
+*Security:*
+- [[dont-run-in-home-folder]] — set cwd to `≈~/workspace`; ☢️ status-bar guard; prompt-injected PDF threat vector.
+- [[agent-lifecycle-hooks]] — PreToolUse/PostToolUse/Stop/Notification; PreToolUse as the real guard (not skippable like git hooks).
+
+*Knowledge:*
+- [[two-layer-memory]] — home `memory.md` (personal style) vs project `CLAUDE.md` (domain rules); define both explicitly.
+
+**Updated 22 existing pages** (new sentences/paragraphs red-`<span>`-wrapped, + sources + cross-links):
+- [[worktree]] — shared object store / per-branch isolation / pull-before-push; multi-agent burnout; +source.
+- [[browser-mcp]] — Chrome extension vs Playwright for login-gated apps; extension reuses session; Playwright hits login wall; `storageState` as clean production answer; +source.
+- [[legacy-migration-stages]] — Selenium→Playwright as concrete pattern; mutation-testing verification; +source.
+- [[multi-model-review]] — full agentic review pipeline section (5 steps); committed `.md` verdict; +see-also.
+- [[code-review]] — proof-of-life merge gate; committed `.md` verdict; +see-also.
+- [[handover]] — HANDOVER/post-mortem template before `/clear`; orchestrator context-budget alarm; +see-also.
+- [[archunit-drift-control]] — review-by-images and pre-push hook that renders red-highlighted ER diagram; +source.
+- [[production-safety]] — sycophancy-spiral framing after disaster; don't-run-in-home-folder; +source.
+- [[docker-sandboxing]] — kernel-space key proxy section; +source already present.
+- [[elicitation]] — CLI vs MCP: CLI can't say no; MCP elicitation blocks at protocol layer; +source.
+- [[sub-agents]] — orchestrator verification policy; context-budget discipline; +see-also.
+- [[spec-driven-development]] — framework interchangeability section (GSD/Kiro/OpenSpec/Specky converge); never hand-edit the framework; +source already present.
+- [[reward-hacking]] — orchestrator-verification complement; +see-also.
+- [[ci-green-loop]] — orchestrator verification section; +see-also.
+- [[agent-permissions]] — Shift+Tab full cycle section (default → accept-edits → plan → auto/YOLO); prompt-injection risk via MCP/skills; +source.
+- [[jailbreak-ladder]] — token-budget escalation pattern (jailbreak vendor chatbot, then abuse its LLM tokens); +source.
+- [[prompt-injection]] — home-folder exposure via cwd; +see-also.
+- [[supply-chain-attack]] — `npm install` as security event framing; +source already present.
+- [[sprint-design-quiz]] — knowledge-spreading / bus-factor framing from Kambi; +source.
+- [[memory-layers]] — two-layer personal-style split; +source; +see-also.
+- [[observability-mcp]] — latency metric for incremental pipelines; data-quality-validator companion; +source.
+- [[2026-06-22-ai-kambi]] — source page title updated to Days 1 & 2; body expanded with Day-2 concept inventory.
+
+**Navigation:** [[wiki/index|index]] gained 11 new pages across new "Patterns — agentic review pipeline" section, patterns cluster, security cluster, knowledge-engineering cluster, and new "Concepts — data quality & observability" section; source list updated. [[overview]] gained §11 ("Frameworks, the full review pipeline, and containment").
+
+**Red-flagged new today:** the 11 new pages above (🆕 badge) plus the §11 overview movement and every red `<span>` listed under the 22 updates. All older red marks from Garmin Day 2 were promoted first.
+
+**Stripped:** "Kambi", participant names (Luiza, Sorin, Cip, Alexandra, Stelian, Miha, Maria, Boris Cherny), and session-specific anecdotes generalized out of concept prose. The "Tina love story" (AI customer support) excluded as session colour, not a durable concept. Provenance lives in `sources:` frontmatter and this log entry.

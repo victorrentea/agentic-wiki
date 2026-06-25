@@ -4,11 +4,22 @@ category: pattern
 tags: [code-review, sub-agents, attention-dilution, quorum, gpt, cloud-review]
 sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
 created: 2026-06-11
-updated: 2026-06-24
+updated: 2026-06-25
 ---
 
 
 Multi-model review is a code-review pattern — the "quorum of mothers-in-law" — that runs one [[sub-agents|sub-agent]] per review concern across two model families, so each concern gets full attention and no single model's blind spots dominate.
+
+## The full agentic review pipeline
+
+<span style="color:red">Before the human sees code, a full pipeline runs in order — see [[agentic-review-pipeline]]:
+1. Coder agent writes code.
+2. Fresh "mother-in-law" reviewers on **different model families** in parallel (reuse → Sonnet, simplification → GPT, efficiency → Haiku).
+3. Static analysis (Sonar) at maximum aggression.
+4. Attempt the merge: pull dev into the branch, run all tests post-merge.
+5. Only then call the human ("the king").
+
+Persist the review verdict as a **committed `.md`** in the PR — not volatile chat — so it's sortable next to the code and survives conversation resets.</span>
 
 ## Attention dilution
 
@@ -22,7 +33,7 @@ A simpler aggregation variant runs **Sonnet + GPT in parallel** over existing PR
 
 Don't read a PR in file order — your reviewer brain dies roughly halfway through a big one. Have the quorum review first, then **surface the lines the reviewers disagreed on first**: spend your sharpest minutes where the bots fought, not on the boilerplate they all approved. "Review sorted, not selective" is the one trick that shrinks PR-review pain to ≈10% of the effort. See [[code-review]] for the human side (PR-size sweet spot, judgement vs mechanics).
 
-<span style="color:red">For adversarial effectiveness, spawn **fresh** reviewer sub-agents each round rather than resuming a previous reviewer — fresh context means fresh randomness and no anchoring bias from prior rounds. And surface **coder–reviewer disagreements first** to the human reviewer: the lines the models fought over are where your sharpest attention should go, not the boilerplate they unanimously approved.</span>
+For adversarial effectiveness, spawn **fresh** reviewer sub-agents each round rather than resuming a previous reviewer — fresh context means fresh randomness and no anchoring bias from prior rounds. And surface **coder–reviewer disagreements first** to the human reviewer: the lines the models fought over are where your sharpest attention should go, not the boilerplate they unanimously approved.
 
 ## "Done" includes "I watched it work"
 
@@ -46,6 +57,8 @@ The agents handle breadth; humans handle judgement. Review the [[acceptance-test
 - [[claude-code-router]]
 - [[cloud-review-workflow]]
 - [[model-hierarchy]]
+- [[agentic-review-pipeline]]
+- [[mob-spec-review]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]
 - [[2026-06-23-ai-garmin]]

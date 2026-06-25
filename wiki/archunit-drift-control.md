@@ -2,9 +2,9 @@
 title: ArchUnit + Reflected-Diagram Drift Control
 category: pattern
 tags: [drift, archunit, plantuml, diagrams, tests, no-drift, architecture]
-sources: ["[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-23-ai-garmin]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-23
-updated: 2026-06-24
+updated: 2026-06-25
 ---
 
 
@@ -25,6 +25,12 @@ A bird's-eye reflected diagram is a fast way to **hunt AI-generated slop** in a 
 
 It is also a [[feedback-loop]] for review: the diagram and the ArchUnit tests are an oracle the agent can be pointed at, and a guard against [[cognitive-debt]] in code humans no longer fully read.
 
+## Review-by-images and the pre-push hook
+
+<span style="color:red">The natural extension: a `pre-push` hook that parses a SQL schema change, regenerates an ER diagram with new/changed entities **highlighted in red**, and commits the rendered picture beside the SQL change — so a reviewer reads a picture, not a raw diff. The same pattern applies to class diagrams and dependency graphs. Human reviewers should look at images *first*: "how did my model change? My schema? What's red?" — this optimizes human brain bandwidth for large PRs.
+
+See [[review-by-images]] for the broader visual-review pattern.</span>
+
 ## See also
 - [[drift]]
 - [[field-reality-diagram]]
@@ -32,4 +38,6 @@ It is also a [[feedback-loop]] for review: the diagram and the ArchUnit tests ar
 - [[cognitive-debt]]
 - [[static-analysis-gauntlet]]
 - [[code-review]]
+- [[review-by-images]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-22-ai-kambi]]

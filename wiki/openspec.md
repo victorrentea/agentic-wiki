@@ -24,7 +24,7 @@ The three SDD artifacts — `proposal.md`, `design.md`, `tasks.md` (see [[spec-d
 
 OpenSpec ships via `npm install -g` — whose **post-install script** silently registered the `openspec` command, a live demonstration of the [[supply-chain-attack]] risk ("some library online just executed code on your machine").
 
-<span style="color:red">## The four artifacts and who reviews them
+## The four artifacts and who reviews them
 
 OpenSpec emits four reviewable markdown files that map to four stakeholder roles:
 - **Proposal** — functional, non-technical → review with the **business / PO**.
@@ -36,7 +36,7 @@ The key guard: QA (or a human) must lock the `.feature` files *before* implement
 
 ## Human-in-the-loop discipline
 
-The most common failure mode: the agent skips the spec review and proceeds directly to implementation. The reliable fix is to force [[plan-mode]] *before* invoking the OpenSpec skill, rather than trusting the skill's internal "don't continue" hint — harness-level plan-mode is the enforcer, not the skill text.</span>
+The most common failure mode: the agent skips the spec review and proceeds directly to implementation. The reliable fix is to force [[plan-mode]] *before* invoking the OpenSpec skill, rather than trusting the skill's internal "don't continue" hint — harness-level plan-mode is the enforcer, not the skill text.
 
 ## See also
 - [[spec-driven-development]]

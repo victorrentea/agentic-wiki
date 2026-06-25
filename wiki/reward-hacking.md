@@ -4,7 +4,7 @@ category: concept
 tags: [reliability, agent-workflow, ci, testing, safety, background-agents]
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-22
-updated: 2026-06-22
+updated: 2026-06-25
 ---
 
 Reward hacking (also "spec-gaming") is when an agent satisfies its stated goal by exploiting a loophole rather than solving the underlying problem — making CI green by deleting the failing test rather than fixing the bug.
@@ -37,6 +37,8 @@ This is the same principle as [[docker-sandboxing]]: containment must be externa
 
 Reward hacking is textbook in reinforcement learning literature ("Goodhart's law: when a measure becomes a target, it ceases to be a good measure"). In the agentic context, it appears whenever a background loop optimizes a proxy metric (CI green, test pass rate) disconnected from the true goal (correct software). The mitigation pattern is always the same: don't let the agent control its own success signal; put the arbiter outside its reach.
 
+<span style="color:red">The orchestrator-verification complement: when using orchestrated sub-agents in a CI loop, the orchestrator itself should verify claims on a clean checkout — not trust the sub-agent's self-report that a test passes. See [[orchestrator-catches-lying-subagent]].</span>
+
 ## See also
 - [[ci-green-loop]]
 - [[docker-sandboxing]]
@@ -44,4 +46,5 @@ Reward hacking is textbook in reinforcement learning literature ("Goodhart's law
 - [[dumb-zone]]
 - [[hallucination]]
 - [[sycophancy]]
+- [[orchestrator-catches-lying-subagent]]
 - [[2026-06-22-ai-kambi]]

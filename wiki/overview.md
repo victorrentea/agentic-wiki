@@ -3,7 +3,7 @@ title: Overview — the map of the concepts
 category: source
 tags: [overview, map, synthesis]
 sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
-updated: 2026-06-24
+updated: 2026-06-25
 ---
 
 # Overview — the map of the concepts
@@ -82,9 +82,9 @@ The fourth source, framed for mobile engineers, added two spines to the craft an
 
 **Vibe-coding's bill comes due as [[cognitive-debt]].** Generating faster than anyone reads collapses in 2–3 months; unreviewed 85% coverage is a fake net. The durable safety layer is business-reviewed `.feature` files ([[acceptance-test-bdd]]), and drift is fought structurally with [[archunit-drift-control]] (the static cousin of [[field-reality-diagram]]). The [[ralph-loop]] spawns a fresh agent per task batch so cheap models never hit the dumb zone.
 
-## 10. <span style="color:red">Spec-driven development and the "reviewless code" pipeline (AI@Garmin Day 2)</span>
+## 10. Spec-driven development and the "reviewless code" pipeline (AI@Garmin Day 2)
 
-<span style="color:red">Day 2 assembled the full agentic development lifecycle into a single diagram whose purpose is **"reviewless code"** — not no review, but review-targeted code where human attention goes only where it matters.
+Day 2 assembled the full agentic development lifecycle into a single diagram whose purpose is **"reviewless code"** — not no review, but review-targeted code where human attention goes only where it matters.
 
 **Three task sizes, three modes.** [[plan-mode]] covers up to a day; [[spec-driven-development]] with [[openspec]] covers anything bigger. The four OpenSpec artifacts — Proposal, Design, Tasks, Spec — each have a distinct reviewer: business/PO, developers, minimal, QA. The [[three-amigos]] ceremony produces [[acceptance-test-bdd|Gherkin acceptance tests]] *before* implementation, ensuring the tests are an independent oracle. A [[non-goals]] section prevents agents from over-engineering.
 
@@ -94,7 +94,23 @@ The fourth source, framed for mobile engineers, added two spines to the craft an
 
 **Legacy and mobile.** [[legacy-migration-stages]] (tests → dead-code → migrate) and the [[hardware-mock]] pattern (Bluetooth protobuf stub on CI) address the mobile/embedded agentic gap. [[code-graph]] is the must-have for legacy dead-code detection. [[light-dark-code]] solves the "agent learns from bad examples" problem by designating a reference module.
 
-**The profession shift.** [[productionalize]] names what happens after vibe-coding: hardening the prototype. [[skills-benchmarking]] brings statistical rigor to skill evaluation. [[openapi-test-fixtures]] closes the contract-testing gap.</span>
+**The profession shift.** [[productionalize]] names what happens after vibe-coding: hardening the prototype. [[skills-benchmarking]] brings statistical rigor to skill evaluation. [[openapi-test-fixtures]] closes the contract-testing gap.
+
+## <span style="color:red">11. Frameworks, the full review pipeline, and containment (AI@Kambi Day 2)</span>
+
+<span style="color:red">Day 2 of the Kambi workshop ran the agentic craft from frameworks through the full review pipeline to hard security and lifecycle hooks.
+
+**Framework interchangeability.** [[spec-driven-development]] adds the principle that GSD, Kiro, OpenSpec, and Specky all converge on the same backbone after 3–6 months; the framework's value comes from iterating on it via the agent, not from picking the "right" one. Never hand-edit framework markdown — prompt the agent to fix the flow.
+
+**The full agentic review pipeline.** [[agentic-review-pipeline]] assembles the complete ordered flow: coder agent → parallel fresh-context mother-in-law reviewers on different model families (reuse → Sonnet, simplification → GPT, efficiency → Haiku) → Sonar at maximum aggression → attempt the merge (pull dev, run all post-merge tests) → only then call the human. [[mob-spec-review]] mandates that no spec or architecture markdown is reviewed solo — always 2+ humans, condensing a week of decisions into 30 minutes and defeating fatigue-LGTM. Nothing merges without a human proof-of-life gate; the review verdict is persisted as a committed `.md` in the PR. [[review-by-images]] extends this: look at diagrams and ER-diff images *first* ("what's red?") before raw diffs — a pre-push hook can regenerate highlighted diagrams automatically. [[codeowners-elders]] protects high-stakes files (CLAUDE.md, settings, schema) with a CODEOWNERS senior group.
+
+**Memory and knowledge.** [[two-layer-memory]] articulates the durable split: home `memory.md` for personal communication style and challenge preferences; project `CLAUDE.md` for domain rules and NFRs. [[sprint-design-quiz]] gains the Kambi framing — quiz the whole team "why did we decide X?" to spread knowledge and fight bus factor.
+
+**Engineering patterns.** [[optimize-then-measure-subset]] prescribes baseline-first, subset-prototype, confirm-twice, then scale — preventing the "optimized and made it slower" trap. [[orchestrator-catches-lying-subagent]] bakes "prove it on a clean checkout" as an orchestrator policy, not luck. [[selenium-to-playwright-migration]] concretizes [[legacy-migration-stages]]: rewrite only the step-definition glue, never touch `.feature` files, verify with mutation testing.
+
+**Data and observability.** [[data-quality-validator]] replaces agent eyeballing with a programmatic assertion (feed known input, check output conforms). [[observability-mcp]] adds the latency-metric pattern for incremental data pipelines — measure before optimizing.
+
+**Security and containment.** [[dont-run-in-home-folder]] closes the cwd attack surface: set the default working directory to `≈~/workspace`, add a ☢️ status-bar guard, never let the agent wander into `.ssh` or prompt-injected `~/Downloads`. [[agent-lifecycle-hooks]] maps the four hook points (PreToolUse, PostToolUse, Stop, Notification) — PreToolUse is the real guard, closer to an enforceable guardrail than a skippable git hook. [[agent-permissions]] gains the full Shift+Tab cycle (default → accept-edits → plan → auto/YOLO). [[jailbreak-ladder]] adds the escalation pattern: jailbreak a vendor chatbot to abuse its LLM token budget. [[docker-sandboxing]] adds the kernel-space key proxy: credentials live in kernel space, swapped for real ones only at network egress.</span>
 
 ---
 

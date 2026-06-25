@@ -4,7 +4,7 @@ category: pattern
 tags: [context-management, dumb-zone, plan-mode, spec-driven, handoff]
 sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
 created: 2026-06-11
-updated: 2026-06-22
+updated: 2026-06-25
 ---
 
 
@@ -18,6 +18,12 @@ It is one of the three ways to dodge the dumb zone (alongside lossy compaction a
 
 The same principle powers the [[ralph-loop]]: each overnight batch enters with a clean context anchored by the spec. A handover is to a single task what a [[claude-md]] is to a whole project — durable, distilled knowledge that survives a context reset.
 
+## Handover before derailing
+
+<span style="color:red">When an agent has clearly gone off the rails — not just filled context but actively lost the thread — don't silently `/clear` it. Ask it to write a **HANDOVER / post-mortem markdown** of what it learned before you end the session: Goal · What I tried · What worked · Dead ends · Current state · Next step · Open questions · Files touched. This ensures the next agent ingests it deterministically rather than re-discovering dead ends.
+
+**Context budget discipline:** Keep an orchestrator's context to a few hundred K tokens. A background sub-agent that finishes after ≈50 minutes returns to an expired orchestrator context and "burns you." Sub-agents must report back concisely so they don't flood the boss. Set a context-budget alarm that auto-emits the handover template past ≈50–60% fill.</span>
+
 ## See also
 - [[dumb-zone]]
 - [[plan-mode]]
@@ -25,5 +31,6 @@ The same principle powers the [[ralph-loop]]: each overnight batch enters with a
 - [[grill-me]]
 - [[ralph-loop]]
 - [[sub-agents]]
+- [[orchestrator-catches-lying-subagent]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]
