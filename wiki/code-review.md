@@ -2,11 +2,10 @@
 title: Code Review
 category: pattern
 tags: [code-review, pull-request, judgement, sorted-review, attention]
-sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-26-ai-agentic-how]]"]
 created: 2026-06-11
-updated: 2026-06-25
+updated: 2026-06-26
 ---
-
 
 Code review in the agentic era is the human's last, scarcest gate: once agents write most of the code, reviewing it becomes one of the two real bottlenecks left (the other is writing the spec), so the whole craft is about spending a fading human attention budget where it changes the outcome.
 
@@ -26,11 +25,15 @@ The coding agent should not even *request* review until a [[sub-agents|sub-agent
 
 ## Proof-of-life merge gate
 
-<span style="color:red">Nothing merges without a human proof-of-life gate — "rotate your face to the right, are you alive?" The final approval is the one step that cannot be automated away. Persist the review verdict as a **committed `.md`** in the PR so it's durable, searchable, and survives conversation resets. See [[agentic-review-pipeline]] for the full ordered pipeline that precedes the human gate.</span>
+Nothing merges without a human proof-of-life gate — "rotate your face to the right, are you alive?" The final approval is the one step that cannot be automated away. Persist the review verdict as a **committed `.md`** in the PR so it's durable, searchable, and survives conversation resets. See [[agentic-review-pipeline]] for the full ordered pipeline that precedes the human gate.
 
 ## The PR-size sweet spot
 
-Granularity has two failure modes. **Too big** — a 1000-line end-of-sprint dump easily hides a bug, and your attention runs out before the end. **Too small** — six tiny parallel branches collide on merge, producing rework and bugs when they fight, and you won't have the patience to babysit each one. Aim for the middle (fifteen ≈200-line PRs over one 3000-line one); for the unavoidably-big ones, fall back to sorted review and assume your brain dies halfway.
+Granularity has two failure modes. **Too big** — a 1000-line end-of-sprint dump easily hides a bug, and your attention runs out before the end. **Too small** — six tiny parallel branches collide on merge, producing rework and bugs when they fight, and you won't have the patience to babysit each one. Aim for the middle (fifteen ≈200-line PRs over one 3000-line one); for the unavoidably-big ones, fall back to sorted review and assume your brain dies halfway. <span style="color:red">A quick rule: **+1,500 lines is a declaration of war** — and a one-line vague ticket without context is *also* a declaration of war. Slice monster features into ≈2 iterations.</span>
+
+## Auto-fix CI on push
+
+<span style="color:red">A git hook makes Claude **watch its own build after push and fix it if it breaks** — *"don't you dare push without watching the build."* The hook notifies the agent of the push, the agent monitors CI, and if the build fails it diagnoses and re-pushes a fix. This removes the "push and forget" trap. See [[ci-green-loop]] for the two variants and [[reward-hacking]] for the defenses against a cheating agent that makes CI green by deleting tests.</span>
 
 ## Never approve what you don't understand
 
@@ -45,5 +48,8 @@ The human rule underneath all of it: **if you don't understand something, stop**
 - [[spec-driven-development]]
 - [[agentic-review-pipeline]]
 - [[mob-spec-review]]
+- [[ci-green-loop]]
+- [[reward-hacking]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]
+- [[2026-06-26-ai-agentic-how]]

@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-24
 ---
 
-
 The dumb zone (also called "context rot") is the region of a [[context-window]] — roughly past **≈55–65% full** — where a model becomes "lost in the middle" and its reasoning quality visibly degrades, even on frontier models.
 
 ## Where it kicks in

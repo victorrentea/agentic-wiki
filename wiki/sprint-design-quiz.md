@@ -28,7 +28,7 @@ The sprint design quiz is a lightweight countermeasure to [[skill-erosion]] — 
 
 ## Knowledge spreading and bus-factor
 
-<span style="color:red">The Kambi framing: at sprint end, have AI quiz the whole team *"why did we decide X?"* from merged PRs and design docs — not just the PR author. This spreads architectural knowledge across the team and fights bus factor (the risk that only one person understands a design decision). Non-answers flag PRs for deeper retrospective discussion; the quiz is a forcing function: *"Are we still in charge, or squeezed?"*</span>
+The Kambi framing: at sprint end, have AI quiz the whole team *"why did we decide X?"* from merged PRs and design docs — not just the PR author. This spreads architectural knowledge across the team and fights bus factor (the risk that only one person understands a design decision). Non-answers flag PRs for deeper retrospective discussion; the quiz is a forcing function: *"Are we still in charge, or squeezed?"*
 
 ## See also
 - [[skill-erosion]]

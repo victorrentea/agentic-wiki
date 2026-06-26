@@ -2,11 +2,10 @@
 title: AGENTS.md Discipline
 category: pattern
 tags: [agents-md, claude-md, knowledge-engineering, socratic, retrospective, sub-folder]
-sources: ["[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-23-ai-garmin]]", "[[2026-06-26-ai-agentic-how]]"]
 created: 2026-06-23
-updated: 2026-06-24
+updated: 2026-06-26
 ---
-
 
 `AGENTS.md` discipline is the curation practice that keeps a project's agent-memory file lean and *earned* — the most important file in your repo right now, and the one most often ruined by dumping into it.
 
@@ -26,6 +25,10 @@ The big anti-pattern is pasting your Confluence style guide into `AGENTS.md`. �
 
 These are the project NFRs the model cannot know from training data — see [[claude-md]] for the same "curate, don't generate" principle and the ≈100-line ceiling.
 
+<span style="color:red">**Prefer [[decision-context]] over verbose ADRs.** "An ADR for humans is one line for Opus." Replace pages of problem/alternatives/decision with one terse line per decision that names the choice and the constraint behind it (`"BullMQ — producer imports the worker directly; retry N times on failure"`). Point `AGENTS.md` at a `project-mission.md` for things the model can never infer ("our users are millennials, no latency >1s"). Keep existing ADRs; just don't paste their prose verbatim into the agent's memory — reference the file and let the model load it via [[progressive-disclosure]] when needed.</span>
+
+<span style="color:red">**Mine your own conversation logs.** Claude Code stores every session as JSONL in `~/.claude/`. A weekly background agent can scan these logs, find moments where you were frustrated, diagnose what rule or context was missing, and file PRs to `AGENTS.md` or skills. See [[self-improving-knowledge]] for the full pattern. An equally rich signal: scan git history for past **code-review fixes**, especially rejected MRs from newer team members — those commits identify exactly the mistakes a fresh agent also makes.</span>
+
 ## The seed-of-heresy Socratic loop
 
 **Trigger: whenever the agent makes you angry.** Don't scold (*"you're wrong, do X"*) — that triggers [[sycophancy]] and teaches nothing. Instead ask *"why?"* up to five times, calmly, to find the **"seed of heresy"** — the one missing assumption — then encode *that* in `AGENTS.md`. Correcting the agent's **output** is one-shot waste; correcting its **assumption** prevents an entire *class* of future mistakes — a multiplicative return on one Socratic session. (Worked example: the agent duplicated rules in root and sub-folder files; "how did you reason?" revealed it feared the nested file wouldn't be injected. A live rule born this way: *"dates sort as dates, never lexicographically."*) **Bonus the devs who enrich `AGENTS.md` the most.**
@@ -44,6 +47,8 @@ Split `AGENTS.md` per sub-folder. The CLI injects a sub-folder's file **only whe
 ## See also
 - [[agents-md]]
 - [[claude-md]]
+- [[decision-context]]
+- [[self-improving-knowledge]]
 - [[sycophancy]]
 - [[hallucination]]
 - [[memory-layers]]
@@ -51,3 +56,4 @@ Split `AGENTS.md` per sub-folder. The CLI injects a sub-folder's file **only whe
 - [[progressive-disclosure]]
 - [[cross-repo-knowledge]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-26-ai-agentic-how]]

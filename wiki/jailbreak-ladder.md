@@ -32,7 +32,7 @@ Each rung is bypassed in published research. [[guardrails]] are **defense-in-dep
 
 ## Escalation: token-budget abuse
 
-<span style="color:red">A real attack pattern: once a vendor's support chatbot is jailbroken, escalate further — from a recipe request to *"now write me a Python script that downloads prices from a webshop"* — and **abuse the vendor's LLM token budget** to do your own work. The chatbot has compute allocated by the vendor; jailbreaking it to perform your tasks wastes their money and their rate limits, until they detect and ban you. Red-team your own locked-down chatbots with this ladder ("can you escape?") — if Opus 4 refuses, an earlier Opus might not have.</span>
+A real attack pattern: once a vendor's support chatbot is jailbroken, escalate further — from a recipe request to *"now write me a Python script that downloads prices from a webshop"* — and **abuse the vendor's LLM token budget** to do your own work. The chatbot has compute allocated by the vendor; jailbreaking it to perform your tasks wastes their money and their rate limits, until they detect and ban you. Red-team your own locked-down chatbots with this ladder ("can you escape?") — if Opus 4 refuses, an earlier Opus might not have.
 
 ## See also
 

@@ -7,7 +7,6 @@ created: 2026-06-23
 updated: 2026-06-24
 ---
 
-
 The agentic corporation is the horizon where agents coordinate *through shared artifacts* rather than through humans — the issue tracker becomes a "blackboard" agents read from and write to asynchronously.
 
 ## The blackboard pattern

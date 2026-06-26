@@ -29,13 +29,13 @@ The agent is particularly good at stage 1 (mechanical test generation) and stage
 
 ## Selenium → Playwright as a concrete migration pattern
 
-<span style="color:red">A concrete instance of the three-stage recipe applied to end-to-end tests: dead Selenium-Java tests (not run on CI for ≈2 years, locators rotted) migrated to Playwright-TypeScript while **reusing the exact same Gherkin `.feature` files**.
+A concrete instance of the three-stage recipe applied to end-to-end tests: dead Selenium-Java tests (not run on CI for ≈2 years, locators rotted) migrated to Playwright-TypeScript while **reusing the exact same Gherkin `.feature` files**.
 
 - **Rewrite only the glue** (step definitions), never the `.feature` files — they are the acceptance oracle.
 - **Verify the port with mutation testing**: break something in the browser so the old Selenium fails, then confirm the same breakage fails the new Playwright test.
 - **Reality check**: if the Selenium tests are already broken, run a small experiment to gauge locator-repair cost before committing to the "fix Selenium first, then migrate" path.
 
-See [[selenium-to-playwright-migration]] for the full pattern.</span>
+See [[selenium-to-playwright-migration]] for the full pattern.
 
 ## See also
 - [[code-graph]]

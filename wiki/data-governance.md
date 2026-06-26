@@ -7,7 +7,6 @@ created: 2026-06-23
 updated: 2026-06-24
 ---
 
-
 Data governance for agents is the policy layer that decides *which* model endpoints may legally see your source code and prompts — most concretely whether a vendor has signed a **Zero-Data-Retention (ZDR)** agreement.
 
 ## Zero-Data-Retention

@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-24
 ---
 
-
 Hallucination is when a model confidently asserts something false or invented — and in agentic work it has five recurring, mostly *fixable* root causes.
 
 ## The five causes

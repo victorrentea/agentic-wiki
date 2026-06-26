@@ -7,7 +7,6 @@ created: 2026-06-23
 updated: 2026-06-25
 ---
 
-
 A drift-control pattern that makes architecture diagrams and package rules *self-verifying*: unit-test package dependencies with ArchUnit, and reflect the class diagram out of the code at test time, so a stale diagram fails the build instead of quietly lying.
 
 ## The problem it fixes
@@ -27,9 +26,9 @@ It is also a [[feedback-loop]] for review: the diagram and the ArchUnit tests ar
 
 ## Review-by-images and the pre-push hook
 
-<span style="color:red">The natural extension: a `pre-push` hook that parses a SQL schema change, regenerates an ER diagram with new/changed entities **highlighted in red**, and commits the rendered picture beside the SQL change — so a reviewer reads a picture, not a raw diff. The same pattern applies to class diagrams and dependency graphs. Human reviewers should look at images *first*: "how did my model change? My schema? What's red?" — this optimizes human brain bandwidth for large PRs.
+The natural extension: a `pre-push` hook that parses a SQL schema change, regenerates an ER diagram with new/changed entities **highlighted in red**, and commits the rendered picture beside the SQL change — so a reviewer reads a picture, not a raw diff. The same pattern applies to class diagrams and dependency graphs. Human reviewers should look at images *first*: "how did my model change? My schema? What's red?" — this optimizes human brain bandwidth for large PRs.
 
-See [[review-by-images]] for the broader visual-review pattern.</span>
+See [[review-by-images]] for the broader visual-review pattern.
 
 ## See also
 - [[drift]]

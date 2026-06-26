@@ -7,7 +7,6 @@ created: 2026-06-23
 updated: 2026-06-24
 ---
 
-
 A custom agent is a single-purpose specialist (e.g. a security reviewer, a clean-code maniac) defined with its **own context window**, a **pinned model**, and a **restricted tool set** — distinct from the project's ground-rules memory file.
 
 ## Custom agent vs `AGENTS.md`

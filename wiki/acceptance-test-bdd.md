@@ -2,11 +2,10 @@
 title: Acceptance Tests & BDD
 category: pattern
 tags: [testing, bdd, playwright, karate, spec-driven, review, gherkin]
-sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]", "[[2026-06-26-ai-agentic-how]]"]
 created: 2026-06-11
-updated: 2026-06-24
+updated: 2026-06-26
 ---
-
 
 Acceptance tests express behaviour as plain-English given/when/then scenarios (with assertions in the **`then`** step) so they constrain the agent from the *outside* while a [[spec-driven-development|spec]] constrains it from within.
 
@@ -26,6 +25,8 @@ The independence constraint is critical: QA (or a human) must lock the `.feature
 
 Drive acceptance tests in a sandbox (e.g. backend + DB + frontend in Docker, headless) — "machines with guns there; it leaves my environment." This is the same containment principle as the [[ralph-loop]]'s Docker sandbox.
 
+<span style="color:red">**Agent-inaccessible test repo.** For fully-autonomous coding loops, keep the acceptance tests in a **separate git repo the coding agent cannot see** — so it can't over-fit or delete them. Reviewers then judge black-box outcomes against tests the agent never read. This is the strongest guard for overnight autonomous runs.</span>
+
 ## See also
 - [[spec-driven-development]]
 - [[multi-model-review]]
@@ -34,5 +35,7 @@ Drive acceptance tests in a sandbox (e.g. backend + DB + frontend in Docker, hea
 - [[ralph-loop]]
 - [[cognitive-debt]]
 - [[agents-md-discipline]]
+- [[reward-hacking]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-26-ai-agentic-how]]

@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-25
 ---
 
-
 Spec-driven development (SDD) is the practice of **aligning your mental model with what the AI will build** by anticipating every decision point in a written spec *now*, then letting the agent execute later.
 
 ## Why a spec, not a prompt
@@ -34,9 +33,9 @@ OpenSpec's full artifact set is **Proposal** (reviewed with business/PO), **Desi
 
 ## Framework interchangeability
 
-<span style="color:red">Spec-driven frameworks (GSD, [Kiro](https://kiro.dev), [OpenSpec](https://github.com/Fission-AI/OpenSpec), Specky) are interchangeable — every team is unhappy with their flow after 3–6 months; their universal core is the same gates: interview → align business/QA/dev → architecture → tasks → code → review. Four companies starting from different frameworks converge on substantially the same structure.
+Spec-driven frameworks (GSD, [Kiro](https://kiro.dev), [OpenSpec](https://github.com/Fission-AI/OpenSpec), Specky) are interchangeable — every team is unhappy with their flow after 3–6 months; their universal core is the same gates: interview → align business/QA/dev → architecture → tasks → code → review. Four companies starting from different frameworks converge on substantially the same structure.
 
-**Never edit the framework markdown by hand** — prompt the agent to fix the flow. Change it only when the same failure recurs. The framework lives in committed skills, so you own it.</span>
+**Never edit the framework markdown by hand** — prompt the agent to fix the flow. Change it only when the same failure recurs. The framework lives in committed skills, so you own it.
 
 ## Spec alignment is precision work
 

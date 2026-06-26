@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-24
 ---
 
-
 Wispr Flow is a voice-dictation tool that transcribes speech into any text field, used to remove the human typing bottleneck when driving agents.
 
 ## Why dictate

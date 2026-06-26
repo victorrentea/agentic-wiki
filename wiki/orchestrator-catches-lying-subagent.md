@@ -5,10 +5,7 @@ tags: [orchestrator, sub-agents, verification, trust, clean-checkout, reliabilit
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-25
 updated: 2026-06-25
-new_in: "Kambi Day 2 (2026-06-25)"
 ---
-
-<span style="color:red">🆕 New in Kambi Day 2 (2026-06-25)</span>
 
 An orchestrator design pattern that treats sub-agent self-reports as unverified claims and re-runs the alleged result on a clean checkout before accepting it.
 

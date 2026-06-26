@@ -2,11 +2,10 @@
 title: Model Hierarchy
 category: concept
 tags: [models, opus, sonnet, haiku, gpt, orchestration, cost]
-sources: ["[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-23-ai-garmin]]", "[[2026-06-26-ai-agentic-how]]"]
 created: 2026-06-23
-updated: 2026-06-24
+updated: 2026-06-26
 ---
-
 
 The model hierarchy is the discipline of matching the model tier to the task's difficulty — read like an "experienced-hire" analogy — instead of always reaching for the strongest (expensive) or cheapest (unreliable) model.
 
@@ -16,6 +15,10 @@ The model hierarchy is the discipline of matching the model tier to the task's d
 - **Sonnet = mid-level dev (2–5 yrs).** Excellent for greenfield day-to-day work — but **don't point Sonnet at a big legacy codebase**; it lacks the architect's reach.
 - **Haiku = graduate hire (<1 yr).** Trivial, well-scoped sub-tasks only. Quotably: *"you can do seppuku with Haiku"* — never trust it with judgement calls, guard decisions, or autonomous review (see the [[ralph-loop]] warning about Haiku as a judge model).
 - **GPT = the second opinion.** Reach for it when the primary model has a hiccup — *"only when Claude feels sick"* — and as an independent reviewer family in a [[multi-model-review]] quorum.
+
+## Local-model tiering
+
+<span style="color:red">The emerging dream tier: **Opus as orchestrator delegating cheap subtasks to a company-server [[ollama|Qwen]]** — so you don't even burn Sonnet on trivial work like log scanning, support bots, or deterministic extraction. Local open-weight models (Qwen, DeepSeek) on company hardware offer data sovereignty *and* cost savings for the dumb-task layer. The constraint is quality: *"I won't maintain production code a local model wrote"* — reserve local tiers for scoped, verifiable tasks, never for judgement-heavy or long-horizon work.</span>
 
 ## Why it matters
 
@@ -31,4 +34,7 @@ The tier is independent of the [[harness]]: the same Sonnet runs better inside a
 - [[custom-agent]]
 - [[token-economy]]
 - [[dumb-zone]]
+- [[ollama]]
+- [[data-governance]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-26-ai-agentic-how]]

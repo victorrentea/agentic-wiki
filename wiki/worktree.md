@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-25
 ---
 
-
 A git worktree is a separate working folder of the same repository, letting two agents each work on their own files and see each other's changes only on commit+push / pull.
 
 ## Why agents need them
@@ -22,9 +21,9 @@ Worktrees are the safe substrate for the kind of parallelism that, used careless
 
 ## Kambi Day 2 additions
 
-<span style="color:red">**Shared object store, isolated branches.** Worktrees share one git object store (no disk duplication) but each agent commits to its own branch — agents pull before pushing and fast-forward cleanly. Two agents on the *same* branch will need a rebase, not a fast-forward, so set branch policies accordingly.
+**Shared object store, isolated branches.** Worktrees share one git object store (no disk duplication) but each agent commits to its own branch — agents pull before pushing and fast-forward cleanly. Two agents on the *same* branch will need a rebase, not a fast-forward, so set branch policies accordingly.
 
-**Multi-agent burnout is real.** Managing four parallel agents is a real cognitive load — technically isolated, but emotionally draining. Daily heavy parallelism is unsustainable; use worktrees for burst parallelism, not as a permanent operating mode.</span>
+**Multi-agent burnout is real.** Managing four parallel agents is a real cognitive load — technically isolated, but emotionally draining. Daily heavy parallelism is unsustainable; use worktrees for burst parallelism, not as a permanent operating mode.
 
 ## See also
 - [[agent-skill]]

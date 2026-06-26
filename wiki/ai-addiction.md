@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-11
 ---
 
-
 AI addiction is the dopamine/gambling loop of agentic work — spinning up parallel terminals chasing the next spectacular result — that drains your tokens and your agency, often by 1pm.
 
 ## The slot-machine loop

@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-11
 ---
 
-
 Progressive disclosure is the practice of loading knowledge into the agent **only when it becomes relevant**, so the [[context-window]] stays lean and the model never drifts into the [[dumb-zone]].
 
 ## Why it matters

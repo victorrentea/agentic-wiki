@@ -7,7 +7,6 @@ created: 2026-06-23
 updated: 2026-06-24
 ---
 
-
 The knowledge cutoff is the date past which a model has no training data — ask it about anything newer (a library release, a language version, an API change) and it will **invent an answer confidently** rather than admit ignorance.
 
 ## Why it causes hallucination

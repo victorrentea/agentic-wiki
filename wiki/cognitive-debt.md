@@ -2,11 +2,10 @@
 title: Cognitive Debt (Vibe-Coding Collapse)
 category: concept
 tags: [vibe-coding, anti-pattern, review, tests, human-factors, technical-debt]
-sources: ["[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-23-ai-garmin]]", "[[2026-06-26-ai-agentic-how]]"]
 created: 2026-06-23
-updated: 2026-06-24
+updated: 2026-06-26
 ---
-
 
 Cognitive debt is the accumulated *not-knowing* that builds up when code is generated faster than any human reads it — within a few months nobody on the team understands what is in the codebase, and every bug fix spawns new bugs.
 
@@ -24,6 +23,8 @@ The pragmatic antidote is **not more unit tests** — it is **business-reviewed 
 
 Cognitive debt is the human cost of [[vibe-coding]]; the standing countermeasure is [[skill-erosion]] discipline (mob-review, hands-only quarter) plus [[multi-model-review]] and honest [[code-review]].
 
+<span style="color:red">**The "yeah okay Claude" moment.** The debt accrues one rubber-stamp at a time. Parallel agent terminals compound the problem: running two deep-thinking sessions simultaneously — one on concurrency, one on caching — means your brain is in neither. The result is [[dumb-zone]]-level review quality from a human who is technically awake. Remedy: never approve in that state; walk, sleep, or take a break first. See also [[skill-erosion]] for countermeasures.</span>
+
 ## See also
 - [[vibe-coding]]
 - [[acceptance-test-bdd]]
@@ -31,4 +32,7 @@ Cognitive debt is the human cost of [[vibe-coding]]; the standing countermeasure
 - [[skill-erosion]]
 - [[code-review]]
 - [[agents-md-discipline]]
+- [[dumb-zone]]
+- [[grilling-in-reverse]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-26-ai-agentic-how]]

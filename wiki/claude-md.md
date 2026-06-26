@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-24
 ---
 
-
 `CLAUDE.md` is the project memory file loaded into every agent session from the current working directory — and because it costs [[context-window]] on turn 1, its hygiene matters more than its completeness.
 
 ## The hygiene ritual

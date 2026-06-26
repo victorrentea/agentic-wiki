@@ -28,7 +28,7 @@ When telling an agent to drive the browser, name the exact MCP tool: *"iterate o
 
 ## Chrome extension vs Playwright for login-gated apps
 
-<span style="color:red">The Chrome browser extension reuses your already-logged-in session; a fresh Playwright launch opens a clean profile with no cookies and hits the login wall. Workarounds (a login script with credentials, persisted `storageState`, attaching to the existing browser) all exist, but the extension is the clean path for internal tools and staging environments. For new pipelines you control (no SSO/OAuth), `storageState` — save an authenticated session once and reuse the file — is the cleanest production answer. The login problem decides it: extension for session-gated internal apps, Playwright for clean automated pipelines.</span>
+The Chrome browser extension reuses your already-logged-in session; a fresh Playwright launch opens a clean profile with no cookies and hits the login wall. Workarounds (a login script with credentials, persisted `storageState`, attaching to the existing browser) all exist, but the extension is the clean path for internal tools and staging environments. For new pipelines you control (no SSO/OAuth), `storageState` — save an authenticated session once and reuse the file — is the cleanest production answer. The login problem decides it: extension for session-gated internal apps, Playwright for clean automated pipelines.
 
 ## See also
 

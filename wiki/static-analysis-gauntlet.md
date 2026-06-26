@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-24
 ---
 
-
 The static-analysis gauntlet is the practice of throwing every static-analysis tool at agent-written code as **build-failing CI gates**, so the code self-repairs against the machines before a human ever reviews it — "make the machine draw blood before a human looks."
 
 ## Make the machine draw blood first

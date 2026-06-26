@@ -2,12 +2,12 @@
 title: Context7
 category: tool
 tags: [context7, mcp, documentation, rag, library-docs, knowledge-cutoff]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-23-ai-garmin]]", "[[2026-06-26-ai-agentic-how]]"]
 created: 2026-06-10
-updated: 2026-06-24
+updated: 2026-06-26
 ---
 
-[Context7](https://github.com/upstash/context7) is an [[model-context-protocol]] server that injects version-specific, up-to-date library documentation into the active prompt at query time — "a Wikipedia for docs, made for LLMs."
+[Context7](https://github.com/upstash/context7) is an [[model-context-protocol]] server that injects version-specific, up-to-date library documentation into the active prompt at query time — <span style="color:red">*"a Wikipedia for agents"*</span> (curated, safe, version-aware).
 
 LLM training cutoffs are a hard constraint: a model trained through early 2025 has no knowledge of a library released or significantly updated afterward. The standard workaround — pasting docs into the prompt manually — is tedious, token-expensive, and still delivers the wrong version if you paste carelessly. Context7 automates this: when an agent needs documentation for a specific library version, it calls the Context7 MCP tool, which fetches and returns the relevant reference material directly, scoped to the version in use.
 
@@ -33,3 +33,4 @@ Context7 is the safer half of the [[knowledge-cutoff]] fix precisely because its
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-26-ai-agentic-how]]

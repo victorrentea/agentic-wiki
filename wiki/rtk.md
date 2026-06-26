@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-22
 ---
 
-
 RTK (Rust Token Killer) is a bash-command proxy that runs a shell command, polishes its output, and hands the model only what matters — cutting the output tokens that dominate agent cost.
 
 ## How it works

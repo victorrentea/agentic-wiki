@@ -2,13 +2,10 @@
 title: CODEOWNERS Elders
 category: pattern
 tags: [security, governance, codeowners, github, agent-control, architecture-drift]
-sources: ["[[2026-06-22-ai-kambi]]"]
+sources: ["[[2026-06-22-ai-kambi]]", "[[2026-06-26-ai-agentic-how]]"]
 created: 2026-06-25
-updated: 2026-06-25
-new_in: "Kambi Day 2 (2026-06-25)"
+updated: 2026-06-26
 ---
-
-<span style="color:red">🆕 New in Kambi Day 2 (2026-06-25)</span>
 
 A governance pattern that uses GitHub CODEOWNERS to auto-assign senior reviewers ("elders") to any PR that touches high-stakes files, enforcing human oversight over the files that control AI agent behavior.
 
@@ -48,6 +45,10 @@ The CI pipeline ("the holy Jenkins") is the last line of defense. CODEOWNERS is 
 | `.github/CODEOWNERS` | Protecting the guardian itself |
 | `settings.json` / agent config | Widens or narrows agent permissions |
 | Schema contracts / API contracts | Inconsistent naming causes data corruption across services |
+| <span style="color:red">`.github/workflows/**`</span> | <span style="color:red">CI workflow changes can exfiltrate secrets or disable safety checks</span> |
+| <span style="color:red">OpenAPI contract</span> | <span style="color:red">Breaking API changes cause cross-service runtime failures</span> |
+| <span style="color:red">Domain model / `pom.xml` deps</span> | <span style="color:red">Core model changes propagate everywhere; dependency additions are supply-chain events</span> |
+| <span style="color:red">Architecture diagrams</span> | <span style="color:red">A stale diagram is confidently wrong; changes must be reviewed alongside the code</span> |
 
 ## See also
 
@@ -56,3 +57,6 @@ The CI pipeline ("the holy Jenkins") is the last line of defense. CODEOWNERS is 
 - [[archunit-drift-control]]
 - [[review-by-images]]
 - [[production-safety]]
+- [[prompt-injection-canary]]
+- [[2026-06-22-ai-kambi]]
+- [[2026-06-26-ai-agentic-how]]

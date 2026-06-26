@@ -2,9 +2,9 @@
 title: Token Economy
 category: pattern
 tags: [context-window, tool-calling, cost-optimization, agent-workflow]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]", "[[2026-06-26-ai-agentic-how]]"]
 created: 2026-06-10
-updated: 2026-06-24
+updated: 2026-06-26
 ---
 
 The discipline of treating context tokens as a finite, expensive resource — deliberately choosing tools, transport, and restart strategies to avoid burning the [[context-window]] on overhead rather than reasoning.
@@ -24,6 +24,8 @@ Two specific tools to weigh on the token budget: [[context7]] injects fresh libr
 **Output costs ≈5× input.** You pay for input, but generated tokens are roughly five times more expensive — so the cheapest win is compressing what the model *reads and writes*, not throttling your own reasoning. [[rtk]] proxies dev commands to trim their output (a 97-token `git status` → 19; expect ≈30% overall, not the advertised 80%); [[toon]] reshapes JSON collections into a compact CSV-for-AI form — but benchmark end-to-end, since an unfamiliar format can cost more reasoning than it saves. [[headroom]] is a more evolved sibling of RTK with broader command coverage.
 
 **Most tokens live in tool results, not your messages.** File reads, test logs, and stack traces accumulate and ride along on *every* subsequent turn because the LLM is stateless. A single `pom.xml` burns ≈3,000 tokens of XML noise. The pattern: teach the agent once how to extract what it needs from a structured output, then have it write a deterministic script that does the extraction without burning model tokens — the "write yourself a letter" move. This is exactly what [[rtk]] and [[headroom]] do at the CLI level, and what [[agent-skill]] does at the workflow level.
+
+<span style="color:red">**Format efficiency hierarchy:** XML → JSON → YAML → TOML, from worst to best. Putting raw XML or JSON in the context is expensive noise. Agents don't read big files top-to-bottom — they grep and cherry-pick; they almost never ingest a full `pom.xml`. Run `/context` on a fresh chat to see your baseline ("I just said *hi* and I'm eating 40,000 tokens").</span>
 
 **A conversation is a stateless API.** Every turn re-sends the entire prefix as input; thinking is per-turn and discarded; tool outputs accumulate forever. [[prompt-caching]] makes this affordable — you pay ≈10% for the cached prefix — but the cache TTL is only ≈5 minutes, so an idle fat terminal re-pays full price. The [[effort-setting]] is the other dial: use **xhigh**, never **max**. And don't tax your *own* attention with verbose output (the [[caveman]] anti-pattern) — that bottleneck is scarcer than tokens.
 
@@ -49,3 +51,4 @@ Two specific tools to weigh on the token budget: [[context7]] injects fresh libr
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-26-ai-agentic-how]]

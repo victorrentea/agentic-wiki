@@ -5,10 +5,7 @@ tags: [claude-md, memory, agents-md, communication-style, context-engineering]
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-25
 updated: 2026-06-25
-new_in: "Kambi Day 2 (2026-06-25)"
 ---
-
-<span style="color:red">🆕 New in Kambi Day 2 (2026-06-25)</span>
 
 The deliberate split of agent memory into a personal home scope (communication style and challenge preferences) and a project scope (domain rules and NFRs), so neither layer bleeds into the other.
 

@@ -38,7 +38,7 @@ For a production-facing agent, the correct posture is:
 
 ## Shift+Tab permission cycling
 
-<span style="color:red">In Claude Code, **Shift+Tab** cycles through permission modes in order: **default** (prompts on every non-read action) → **accept-edits** (auto-approves file writes, prompts on bash) → **plan mode** (read + think only, no writes or bash) → **auto / YOLO** (`--dangerously-skip-permissions`). The safest mode is dockerized auto/YOLO — inside a properly configured Docker container, YOLO is acceptable; outside Docker, it reaches `\~/.ssh` and all credentials. MCP servers downloaded from the internet and skills embedding shell scripts mean [[prompt-injection]] via HTML comments on a fetched page is real.</span>
+In Claude Code, **Shift+Tab** cycles through permission modes in order: **default** (prompts on every non-read action) → **accept-edits** (auto-approves file writes, prompts on bash) → **plan mode** (read + think only, no writes or bash) → **auto / YOLO** (`--dangerously-skip-permissions`). The safest mode is dockerized auto/YOLO — inside a properly configured Docker container, YOLO is acceptable; outside Docker, it reaches `\~/.ssh` and all credentials. MCP servers downloaded from the internet and skills embedding shell scripts mean [[prompt-injection]] via HTML comments on a fetched page is real.
 
 ## See also
 

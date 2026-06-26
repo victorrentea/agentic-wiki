@@ -5,10 +5,7 @@ tags: [performance, testing, measurement, subset, parallelism]
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-25
 updated: 2026-06-25
-new_in: "Kambi Day 2 (2026-06-25)"
 ---
-
-<span style="color:red">🆕 New in Kambi Day 2 (2026-06-25)</span>
 
 A disciplined sequence for performance optimization that baselines first, validates on a small subset, and only scales after confirming a real speedup — preventing the classic trap of "optimized and made it slower."
 

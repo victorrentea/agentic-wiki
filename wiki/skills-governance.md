@@ -7,7 +7,6 @@ created: 2026-06-23
 updated: 2026-06-24
 ---
 
-
 Skills governance is the organizational discipline of deciding *who owns which skill-set* — avoiding both the megalomania of one set for everyone and the dichotomy of every dev with their own.
 
 ## The two failure extremes

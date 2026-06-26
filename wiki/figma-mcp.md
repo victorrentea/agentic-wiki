@@ -7,7 +7,6 @@ created: 2026-06-23
 updated: 2026-06-24
 ---
 
-
 The Figma MCP lets an agent pull design specs straight from Figma into the app it's building — *if* the screens are genuinely maintained in Figma, this is "paradise."
 
 ## What it enables

@@ -2,9 +2,9 @@
 title: Elicitation
 category: concept
 tags: [mcp, human-in-the-loop, safety, agent-control]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-26-ai-agentic-how]]"]
 created: 2026-06-10
-updated: 2026-06-25
+updated: 2026-06-26
 ---
 
 An [[model-context-protocol]] feature that allows a server to pause a [[tool-calling|tool]] invocation mid-flight and demand a real human response before proceeding.
@@ -31,7 +31,9 @@ The Railway incident (see [[production-safety]]) illustrates the cost of a missi
 
 ## CLI vs MCP: who can say no?
 
-<span style="color:red">A raw CLI cannot say no — it simply executes. MCP's elicitation mechanism lets the tool demand human confirmation before executing a destructive operation. This is the protocol-level difference: a `PreToolUse` hook or CLI flag can be bypassed with `--no-verify` or compound `&&` commands; MCP elicitation blocks at the protocol layer, not the advisory layer. For any operation that is hard to reverse, route it through an MCP with elicitation rather than a raw CLI invocation. See [[agent-lifecycle-hooks]] for where `PreToolUse` hooks sit in the enforcement chain.</span>
+A raw CLI cannot say no — it simply executes. MCP's elicitation mechanism lets the tool demand human confirmation before executing a destructive operation. This is the protocol-level difference: a `PreToolUse` hook or CLI flag can be bypassed with `--no-verify` or compound `&&` commands; MCP elicitation blocks at the protocol layer, not the advisory layer. For any operation that is hard to reverse, route it through an MCP with elicitation rather than a raw CLI invocation. See [[agent-lifecycle-hooks]] for where `PreToolUse` hooks sit in the enforcement chain.
+
+<span style="color:red">**Harness-level permission ≠ MCP elicitation.** Claude Code's *"Do you want to run this?"* confirmation prompt is a harness-level gate — it is configurable, bypassable via auto-approve mode, and controlled by the *harness*, not the tool server. MCP elicitation is fundamentally different: the tool *server* interrupts the flow and demands a human response, and the agent **cannot continue** until an actual human replies. Elicitation is MCP's one killer feature that genuinely justifies it over a plain CLI — it is the only mechanism that makes human-in-the-loop approval structurally uncircumventable.</span>
 
 ## See also
 
@@ -46,3 +48,4 @@ The Railway incident (see [[production-safety]]) illustrates the cost of a missi
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]
+- [[2026-06-26-ai-agentic-how]]

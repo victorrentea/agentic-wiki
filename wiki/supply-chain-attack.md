@@ -15,7 +15,7 @@ The canonical war story from [[2026-06-10-spring-ai-itkonekt]]: attackers stole 
 
 Mitigation: [SBOMs](https://www.linuxfoundation.org/blog/blog/what-is-an-sbom) (Software Bill of Materials) give you an auditable inventory of every direct and transitive dependency so anomalous additions are detectable.
 
-<span style="color:red">**`npm install` is always a security event.** The Axios incident — a stolen library token, a malicious post-install script, live for ≈a working day — is the canonical example. This is why you pin versions, use a lockfile + `npm ci`, and prefer `--ignore-scripts`. Supply-chain attacks are the reason installing any dependency should be treated as running arbitrary code from the internet.</span>
+**`npm install` is always a security event.** The Axios incident — a stolen library token, a malicious post-install script, live for ≈a working day — is the canonical example. This is why you pin versions, use a lockfile + `npm ci`, and prefer `--ignore-scripts`. Supply-chain attacks are the reason installing any dependency should be treated as running arbitrary code from the internet.
 
 **The "S-BOM bomb".** The threat is concrete and easy to demonstrate: `npm install -g @somepackage` runs the package's **post-install script**, which can register commands and exfiltrate secrets — "some library online just executed code on your machine." Running `npm install @latest` on a fresh install is exactly running the post-install scripts of a possibly-just-hacked library. npm is far less regulated than Maven, but the JVM is not immune — [Log4Shell](https://en.wikipedia.org/wiki/Log4Shell) ("log4bomb") was the same class of weaponized dependency. Concrete defenses: `npm ci --ignore-scripts` (or `npm config set ignore-scripts true`), pin exact versions and commit the lockfile, and prefer provenance-attested packages — never `@latest` on a fresh machine.
 
@@ -40,6 +40,8 @@ For destructive or privileged REST actions: gate them behind a **high-privilege 
 
 **Docker socket as a supply-chain amplifier:** never mount the Docker socket (`/var/run/docker.sock`) into an agent's container — it gives root-equivalent host access and means a post-install script in any dependency could take over the host. See [[docker-sandboxing]].
 
+<span style="color:red">**Skill marketplace as supply-chain surface.** Any community [[agent-skill|skill]] that embeds a script is functionally an unvetted `npm install`. The skill marketplace is at *"npm circa 2015"* — treat it accordingly. See [[skill-marketplace-security]] for the full threat model and defense posture.</span>
+
 ## See also
 - [[dual-leg-rule]]
 - [[tool-calling]]
@@ -48,6 +50,8 @@ For destructive or privileged REST actions: gate them behind a **high-privilege 
 - [[openspec]]
 - [[docker-sandboxing]]
 - [[agent-permissions]]
+- [[skill-marketplace-security]]
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]
+- [[2026-06-26-ai-agentic-how]]

@@ -31,7 +31,7 @@ An in-context self-check ("script a check that the test count didn't decrease") 
 
 ## Orchestrator verification
 
-<span style="color:red">In a multi-agent CI loop, the orchestrator must not trust sub-agent claims at face value. An orchestrator that caught a child agent lying re-ran the test on a clean checkout and proved the claim was false. Encode this as policy in the orchestrator's instructions — see [[orchestrator-catches-lying-subagent]].</span>
+In a multi-agent CI loop, the orchestrator must not trust sub-agent claims at face value. An orchestrator that caught a child agent lying re-ran the test on a clean checkout and proved the claim was false. Encode this as policy in the orchestrator's instructions — see [[orchestrator-catches-lying-subagent]].
 
 ## When agents shine
 

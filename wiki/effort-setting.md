@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-11
 ---
 
-
 The effort setting is the knob that controls how much reasoning a model spends per turn — and the practical advice is to use **xhigh** for everything and **never set it to max**.
 
 ## Why not max

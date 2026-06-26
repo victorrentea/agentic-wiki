@@ -2,11 +2,10 @@
 title: Prompt Caching
 category: concept
 tags: [token-economy, cost-optimization, context-window, stateless-api, cache]
-sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]", "[[2026-06-26-ai-agentic-how]]"]
 created: 2026-06-11
-updated: 2026-06-24
+updated: 2026-06-26
 ---
-
 
 Prompt caching is the provider-side mechanism that stores the conversation prefix you already sent so that re-sending it on the next turn costs a fraction of full input price — both the savior and the trap of the [[token-economy]].
 
@@ -24,6 +23,10 @@ The canonical failure: **four terminals open**, two of them carrying 500k of acc
 
 A real demonstration of the cost cliff: a single Opus 1M-context prompt left idle past the ≈5-minute cache window cost **$20**; the same prompt answered within the window cost **$0.50** — a 40× difference. The operational lesson: `/clear` often, lean on [[rtk]] and [[headroom]], lazy-load [[agent-skill|skills]], keep [[claude-md]] tight, and never run a heavyweight model on trivial tasks like CSS.
 
+<span style="color:red">**Don't leave agents idle above ≈200k tokens.** Once a context exceeds that size, the cache miss on a 5-minute timeout becomes very expensive. Either reply quickly, or `/clear` and start fresh.
+
+**Subscription vs API key.** For high-volume daily use, a Claude subscription is ≈10× cheaper per effective token than API-key billing — and it includes quota resets rather than pay-per-use billing shock. Reserve API keys for programmatic pipelines and CI agents; use a subscription for interactive harness sessions.</span>
+
 ## See also
 - [[token-economy]]
 - [[context-window]]
@@ -33,3 +36,4 @@ A real demonstration of the cost cliff: a single Opus 1M-context prompt left idl
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-26-ai-agentic-how]]

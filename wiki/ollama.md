@@ -2,9 +2,9 @@
 title: Ollama
 category: tool
 tags: [ollama, local-llm, self-hosted, gdpr, open-weights, zdr]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-23-ai-garmin]]", "[[2026-06-26-ai-agentic-how]]"]
 created: 2026-06-10
-updated: 2026-06-24
+updated: 2026-06-26
 ---
 
 [Ollama](https://ollama.com/) is a runtime for executing open-weight LLMs entirely on local hardware, eliminating outbound data transfer to third-party APIs.
@@ -17,6 +17,8 @@ The workshop used Ollama running **Qwen 2.5**, activated in [[spring-ai]] by swi
 
 For any agent workflow where confidential data must stay on-premises, pairing Ollama with [[spring-ai]]'s advisor pipeline and a local [[judge-llm]] is the canonical local stack.
 
+<span style="color:red">**Tiered model architecture: Opus orchestrator + local Qwen.** The emerging production pattern: use Opus or Sonnet only for the orchestration layer and judgement-heavy tasks, and delegate cheap, scoped subtasks (log scanning, support-bot responses, deterministic extraction) to a Qwen model running on a company server via Ollama. This avoids burning Sonnet on trivial work while keeping sensitive data on-premises. Constraint: local tiers are not suitable for production code authorship or long-horizon reasoning.</span>
+
 **Open vs frontier, and what local actually buys you.** An LLM is *"a few hundred gigabytes of floating-point weights."* **Open** models like [DeepSeek](https://huggingface.co/deepseek-ai) you can actually download (its weights live on a Hugging Face page) — DeepSeek is cited at ≈Sonnet quality for ≈10% of the price — but self-hosting needs serious hardware (≈900 GB RAM, ≈$500K of kit). **Frontier proprietary** models (GPT, Opus) can *never* be downloaded — they always run in a vendor datacenter. Running open weights on-prem is the strongest form of [[data-governance]]: when there's no [[data-governance|ZDR]] agreement with a cloud provider, local inference keeps the data inside the perimeter entirely. Point the harness at it with [[claude-code-router]].
 
 ## See also
@@ -28,5 +30,7 @@ For any agent workflow where confidential data must stay on-premises, pairing Ol
 - [[dual-leg-rule]]
 - [[data-governance]]
 - [[claude-code-router]]
+- [[model-hierarchy]]
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-26-ai-agentic-how]]

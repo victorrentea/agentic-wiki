@@ -2,9 +2,9 @@
 title: Grill Me
 category: tool
 tags: [skill, ideation, brainstorming, playwright, agent-workflow, requirements]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]", "[[2026-06-26-ai-agentic-how]]"]
 created: 2026-06-10
-updated: 2026-06-24
+updated: 2026-06-26
 ---
 
 A minimal 3-line Claude Code skill by Matt Pocock that fires 10–20 pointed, adversarial questions at an idea or plan, forcing you to stress-test your thinking before committing to execution.
@@ -22,6 +22,10 @@ The recommended configuration for business brainstorms: grant the agent **browse
 A four-line ticket ("add sorting & pagination to the owner's screen") is **a declaration of war** — the grill (and a room of engineers) routinely finds ≈10 questions hiding in it: server- or client-side? what is the business *actually* trying to achieve? how do you even sort phone numbers (don't — sort name & city only)? change the sort while on page 30 → jump to page 1? page-size selector and default? Filtering is almost inevitable but ≈10× more complex — don't even propose it. The point: **you don't *require* the product, you *propose* it** — and missing context (e.g. "100,000 owners within a year") is what makes the agent ask "dumb" questions, so volunteer scale, request/sec, latency, and load distribution.
 
 **Don't over-specify — let the questions expose the vagueness.** A counter-intuitive twist: if you *hard-code* the answer (e.g. the exact target colour), the agent confidently does the wrong thing. Leave the option open and a strong agent starts *asking* — and its questions force the humans to actually look. (The canonical catch: refusing to pin the brand colour made the agent ask, which surfaced that two screens used two slightly-different oranges — the "Kumquat" moment.) Over-specify → confident wrong; leave open → the ambiguity surfaces. The grill also catches *scope* ambiguity others miss — e.g. "sortable by all properties and filterable by high-effort" actually means **filter by effort only, sort by all properties**. A run of ≈3 questions is disappointing; prior groups reached **17**. Hidden questions a good grill surfaces: default order? what *is* "high effort"? persist sort across filtering / tab-switch / restart? available offline? ascending only or toggle? how many rows now and in a year? server-side pagination (and then server-side sort)? When the human can't answer, the agent posts a clarifying comment on the issue for the business to answer async — the [[agentic-corporation|blackboard]] pattern.
+
+## Research-only minions before the grill
+
+<span style="color:red">For large spec-driven tasks (a week, five microservices, 55 classes), send **read-only research minions** before you start the grill: *"Do not suggest. Do not perform. Don't you dare. You just freaking read."* The same compulsion that made clean-code engineers reformat a class on sight hits agents too — they will start fixing things if you give them write access during the research phase. Send them read-only first, summarize what they found, then grill on that foundation.</span>
 
 ## Two grills — keep them apart
 
@@ -46,7 +50,9 @@ This pattern complements [[ralph-loop]]: grill-me stress-tests the spec *before*
 - [[keyset-pagination]]
 - [[adb-automation]]
 - [[agentic-corporation]]
+- [[grilling-in-reverse]]
 - [[2026-06-10-spring-ai-itkonekt]]
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-26-ai-agentic-how]]

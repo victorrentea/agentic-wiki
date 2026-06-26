@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-24
 ---
 
-
 Agentic engineering is the disciplined practice of building software *through* autonomous agents — investing human effort in specs, knowledge, guardrails, and review rather than in typing code — the deliberate opposite of [[vibe-coding]].
 
 ## The defining principle

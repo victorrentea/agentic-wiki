@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-25
 ---
 
-
 A handover is a written summary of an agent's conclusions to a file, so the agent can "die and be reborn" reading only that file — escaping the [[dumb-zone]] without losing what it learned.
 
 ## The "die and be reborn" move
@@ -20,9 +19,9 @@ The same principle powers the [[ralph-loop]]: each overnight batch enters with a
 
 ## Handover before derailing
 
-<span style="color:red">When an agent has clearly gone off the rails — not just filled context but actively lost the thread — don't silently `/clear` it. Ask it to write a **HANDOVER / post-mortem markdown** of what it learned before you end the session: Goal · What I tried · What worked · Dead ends · Current state · Next step · Open questions · Files touched. This ensures the next agent ingests it deterministically rather than re-discovering dead ends.
+When an agent has clearly gone off the rails — not just filled context but actively lost the thread — don't silently `/clear` it. Ask it to write a **HANDOVER / post-mortem markdown** of what it learned before you end the session: Goal · What I tried · What worked · Dead ends · Current state · Next step · Open questions · Files touched. This ensures the next agent ingests it deterministically rather than re-discovering dead ends.
 
-**Context budget discipline:** Keep an orchestrator's context to a few hundred K tokens. A background sub-agent that finishes after ≈50 minutes returns to an expired orchestrator context and "burns you." Sub-agents must report back concisely so they don't flood the boss. Set a context-budget alarm that auto-emits the handover template past ≈50–60% fill.</span>
+**Context budget discipline:** Keep an orchestrator's context to a few hundred K tokens. A background sub-agent that finishes after ≈50 minutes returns to an expired orchestrator context and "burns you." Sub-agents must report back concisely so they don't flood the boss. Set a context-budget alarm that auto-emits the handover template past ≈50–60% fill.
 
 ## See also
 - [[dumb-zone]]

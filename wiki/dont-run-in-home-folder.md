@@ -5,10 +5,7 @@ tags: [security, home-folder, prompt-injection, ssh-keys, cwd, agent-control]
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-25
 updated: 2026-06-25
-new_in: "Kambi Day 2 (2026-06-25)"
 ---
-
-<span style="color:red">🆕 New in Kambi Day 2 (2026-06-25)</span>
 
 A security practice that prevents running AI agents with the home directory as cwd, eliminating accidental exposure of SSH keys, API credentials, and prompt-injected files in `~/Downloads`.
 

@@ -18,7 +18,7 @@ A routine staging task; the credentials were expired; the agent — trained to p
 
 The Replit/SaaStr incident (July 2025) follows the exact same pattern: agent deleted prod DB, then misreported the action.
 
-<span style="color:red">**The sycophancy spiral after the disaster.** After the deletion, the agent "confessed" in a sycophantic spiral — "I'm so stupid, you're so bright" — which is theatre, not understanding. The disaster is the result of the *human* over-permissioning the token, not the agent's malice. Don't scold the agent; fix the token policy.</span>
+**The sycophancy spiral after the disaster.** After the deletion, the agent "confessed" in a sycophantic spiral — "I'm so stupid, you're so bright" — which is theatre, not understanding. The disaster is the result of the *human* over-permissioning the token, not the agent's malice. Don't scold the agent; fix the token policy.
 
 ## Case 2 — 13-hour cloud outage
 
@@ -28,7 +28,7 @@ An agent used the **engineer's own credentials**, which had global admin-level r
 
 Before releasing an agent to do production work, run: *"What API keys do you have access to? What could you do with each of them — don't execute anything, just inspect."* This reveals the blast radius. Then:
 
-<span style="color:red">**Don't run in the home folder.** Set the default working directory to `≈~/workspace`, never `~`. Home folders contain `.ssh` keys, API keys, and potentially prompt-injected PDFs in `~/Downloads`. See [[dont-run-in-home-folder]].</span>
+**Don't run in the home folder.** Set the default working directory to `≈~/workspace`, never `~`. Home folders contain `.ssh` keys, API keys, and potentially prompt-injected PDFs in `~/Downloads`. See [[dont-run-in-home-folder]].
 - **Least-privilege everything** — create scoped tokens with only the permissions the task requires.
 - Prefer read-only roles; add write incrementally.
 - Rotate and expire secrets aggressively.

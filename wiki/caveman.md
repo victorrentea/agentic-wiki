@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-24
 ---
 
-
 Caveman is the anti-pattern of a tool that *decompresses* a model's terse output into long explanations — taxing the one resource you can least afford: your own attention.
 
 ## Why it's harmful

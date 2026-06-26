@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-11
 ---
 
-
 A tripwire is a scripted "kind requirement" — a booby-trap that *gently reminds* the agent when it does something you dislike, but lets the agent decide whether to comply — a softer, often better alternative to a [[claude-md]] hard rule.
 
 ## Just-in-time correction

@@ -5,10 +5,7 @@ tags: [code-review, sub-agents, pipeline, proof-of-life, sonar, multi-model-revi
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-25
 updated: 2026-06-25
-new_in: "Kambi Day 2 (2026-06-25)"
 ---
-
-<span style="color:red">🆕 New in Kambi Day 2 (2026-06-25)</span>
 
 A structured sequence of automated and human gates that every AI-generated diff must pass before a human reviewer sees it.
 

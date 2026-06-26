@@ -5,10 +5,7 @@ tags: [spec-driven, code-review, pair-programming, fatigue, decision-making]
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-25
 updated: 2026-06-25
-new_in: "Kambi Day 2 (2026-06-25)"
 ---
-
-<span style="color:red">🆕 New in Kambi Day 2 (2026-06-25)</span>
 
 A practice of reviewing architecture or spec documents with two or more humans present simultaneously, rather than asynchronously, to prevent fatigue-driven false approvals and anchor shared decisions.
 

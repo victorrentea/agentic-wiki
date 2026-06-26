@@ -5,10 +5,7 @@ tags: [hooks, claude-code, agent-control, pre-tool-use, post-tool-use, tripwire]
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-25
 updated: 2026-06-25
-new_in: "Kambi Day 2 (2026-06-25)"
 ---
-
-<span style="color:red">🆕 New in Kambi Day 2 (2026-06-25)</span>
 
 Programmable callbacks that tap into an AI agent's turn loop at defined points — before a tool runs, after it completes, when the agent stops, or when it is blocked — enabling inspection, enforcement, and side effects without modifying the agent's instructions.
 

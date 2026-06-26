@@ -5,10 +5,7 @@ tags: [testing, selenium, playwright, migration, mutation-testing, feature-files
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-25
 updated: 2026-06-25
-new_in: "Kambi Day 2 (2026-06-25)"
 ---
-
-<span style="color:red">🆕 New in Kambi Day 2 (2026-06-25)</span>
 
 A migration strategy for replacing Selenium-Java step definitions with Playwright-TypeScript equivalents while leaving Gherkin `.feature` files untouched as the immutable source of truth.
 

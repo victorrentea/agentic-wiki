@@ -2,28 +2,27 @@
 title: Multi-Model Review
 category: pattern
 tags: [code-review, sub-agents, attention-dilution, quorum, gpt, cloud-review]
-sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
+sources: ["[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]", "[[2026-06-26-ai-agentic-how]]"]
 created: 2026-06-11
-updated: 2026-06-25
+updated: 2026-06-26
 ---
-
 
 Multi-model review is a code-review pattern — the "quorum of mothers-in-law" — that runs one [[sub-agents|sub-agent]] per review concern across two model families, so each concern gets full attention and no single model's blind spots dominate.
 
 ## The full agentic review pipeline
 
-<span style="color:red">Before the human sees code, a full pipeline runs in order — see [[agentic-review-pipeline]]:
+Before the human sees code, a full pipeline runs in order — see [[agentic-review-pipeline]]:
 1. Coder agent writes code.
 2. Fresh "mother-in-law" reviewers on **different model families** in parallel (reuse → Sonnet, simplification → GPT, efficiency → Haiku).
 3. Static analysis (Sonar) at maximum aggression.
 4. Attempt the merge: pull dev into the branch, run all tests post-merge.
 5. Only then call the human ("the king").
 
-Persist the review verdict as a **committed `.md`** in the PR — not volatile chat — so it's sortable next to the code and survives conversation resets.</span>
+Persist the review verdict as a **committed `.md`** in the PR — not volatile chat — so it's sortable next to the code and survives conversation resets.
 
 ## Attention dilution
 
-A single prompt asking for clean code **and** repetition **and** performance **and** pen-testing **and** legal **and** ethics **and** UX *dilutes* the model — it attends to none of them well. The fix is to **split each concern into its own sub-agent**, and to spread them across model families (e.g. Opus plus GPT via the codex CLI) so their weaknesses don't overlap. Each reviewer is told which commits to look at and to **report only — don't act**, running in parallel.
+A single prompt asking for clean code **and** repetition **and** performance **and** pen-testing **and** legal **and** ethics **and** UX *dilutes* the model — it attends to none of them well. The fix is to **split each concern into its own sub-agent**, and to spread them across model families (e.g. Opus plus GPT via the codex CLI) so their weaknesses don't overlap. Each reviewer is told which commits to look at and to **report only — don't act**, running in parallel. <span style="color:red">For "extra blood," drive **Codex CLI** from within Claude to review Opus's diff — cross-model adversarial review where the *reviewer model* is invoked via the CLI of a competitor harness. The result is a review without any in-group bias from the same model family.</span>
 
 The full state-of-the-art workflow (seen in three companies): the coding agent implements via sub-agents, then hands off to a dedicated **review orchestrator** that spawns **≈3 sub-agents per concern** — clean code, security, performance — and runs each concern across **two model families (Opus + GPT)** ⇒ ≈6 reviewers combing the same diff.
 
@@ -62,3 +61,4 @@ The agents handle breadth; humans handle judgement. Review the [[acceptance-test
 - [[2026-06-11-ai-playtika]]
 - [[2026-06-22-ai-kambi]]
 - [[2026-06-23-ai-garmin]]
+- [[2026-06-26-ai-agentic-how]]

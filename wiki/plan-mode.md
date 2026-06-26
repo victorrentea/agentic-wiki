@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-24
 ---
 
-
 Plan mode (Shift-Tab in Claude Code) is a read-only thinking phase where the agent brainstorms and designs an approach *before* touching any code — single-threaded deep thinking that must not be parallelized.
 
 ## Single-threaded by design

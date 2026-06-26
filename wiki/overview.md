@@ -2,8 +2,8 @@
 title: Overview — the map of the concepts
 category: source
 tags: [overview, map, synthesis]
-sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]"]
-updated: 2026-06-25
+sources: ["[[2026-06-10-spring-ai-itkonekt]]", "[[2026-06-11-ai-playtika]]", "[[2026-06-22-ai-kambi]]", "[[2026-06-23-ai-garmin]]", "[[2026-06-26-ai-agentic-how]]"]
+updated: 2026-06-26
 ---
 
 # Overview — the map of the concepts
@@ -96,9 +96,9 @@ Day 2 assembled the full agentic development lifecycle into a single diagram who
 
 **The profession shift.** [[productionalize]] names what happens after vibe-coding: hardening the prototype. [[skills-benchmarking]] brings statistical rigor to skill evaluation. [[openapi-test-fixtures]] closes the contract-testing gap.
 
-## <span style="color:red">11. Frameworks, the full review pipeline, and containment (AI@Kambi Day 2)</span>
+## 11. Frameworks, the full review pipeline, and containment (AI@Kambi Day 2)
 
-<span style="color:red">Day 2 of the Kambi workshop ran the agentic craft from frameworks through the full review pipeline to hard security and lifecycle hooks.
+Day 2 of the Kambi workshop ran the agentic craft from frameworks through the full review pipeline to hard security and lifecycle hooks.
 
 **Framework interchangeability.** [[spec-driven-development]] adds the principle that GSD, Kiro, OpenSpec, and Specky all converge on the same backbone after 3–6 months; the framework's value comes from iterating on it via the agent, not from picking the "right" one. Never hand-edit framework markdown — prompt the agent to fix the flow.
 
@@ -110,7 +110,17 @@ Day 2 assembled the full agentic development lifecycle into a single diagram who
 
 **Data and observability.** [[data-quality-validator]] replaces agent eyeballing with a programmatic assertion (feed known input, check output conforms). [[observability-mcp]] adds the latency-metric pattern for incremental data pipelines — measure before optimizing.
 
-**Security and containment.** [[dont-run-in-home-folder]] closes the cwd attack surface: set the default working directory to `≈~/workspace`, add a ☢️ status-bar guard, never let the agent wander into `.ssh` or prompt-injected `~/Downloads`. [[agent-lifecycle-hooks]] maps the four hook points (PreToolUse, PostToolUse, Stop, Notification) — PreToolUse is the real guard, closer to an enforceable guardrail than a skippable git hook. [[agent-permissions]] gains the full Shift+Tab cycle (default → accept-edits → plan → auto/YOLO). [[jailbreak-ladder]] adds the escalation pattern: jailbreak a vendor chatbot to abuse its LLM token budget. [[docker-sandboxing]] adds the kernel-space key proxy: credentials live in kernel space, swapped for real ones only at network egress.</span>
+**Security and containment.** [[dont-run-in-home-folder]] closes the cwd attack surface: set the default working directory to `≈~/workspace`, add a ☢️ status-bar guard, never let the agent wander into `.ssh` or prompt-injected `~/Downloads`. [[agent-lifecycle-hooks]] maps the four hook points (PreToolUse, PostToolUse, Stop, Notification) — PreToolUse is the real guard, closer to an enforceable guardrail than a skippable git hook. [[agent-permissions]] gains the full Shift+Tab cycle (default → accept-edits → plan → auto/YOLO). [[jailbreak-ladder]] adds the escalation pattern: jailbreak a vendor chatbot to abuse its LLM token budget. [[docker-sandboxing]] adds the kernel-space key proxy: credentials live in kernel space, swapped for real ones only at network egress.
+
+## <span style="color:red">12. Anger-driven knowledge, self-improving wikis, and red-teaming (AI@agentic.how)</span>
+
+<span style="color:red">The sixth source — a compressed one-day version of the full workshop — sharpened three clusters: knowledge engineering, security discipline, and the human-competence guard.
+
+**Knowledge that repairs itself.** [[agents-md-discipline]] sharpened from "curate carefully" to "curate anger-driven" — every frustration with the agent is a diagnostic, not a failure; reverse-engineer the false assumption and encode it as a [[decision-context]] entry (one line per decision, replacing verbose ADRs). [[self-improving-knowledge]] automates this loop: a weekly background agent mines `~/.claude/*.jsonl` for frustration signals and files PRs to the central AI-knowledge repo, where a human's job is accepting or rejecting them. [[cross-repo-knowledge]] gained the parent-folder session trick and the `green-team-ai-central` symlink as the production-ready multi-repo alternative. The tripartite of knowledge stores — [[agent-skill]] (bounded procedural), [[rag]] (fuzzy semantic over large corpus), [[llm-wiki]] (pre-digested graph) — was articulated explicitly.
+
+**Security with teeth.** [[docker-sandboxing]] gained the "red-team your own sandbox" practice: ask the contained model to escape before you trust the container with production workloads — newer Opus refuses, Sonnet is weaker. [[prompt-injection-canary]] is the behavioral equivalent of [[review-by-images]]: embed a canary instruction in `AGENTS.md` to detect developers who rubber-stamp AI output without reading it. [[skill-marketplace-security]] names the community-skill supply chain as *"npm circa 2015"* and prescribes the same vetting discipline. [[elicitation]] clarified the crucial distinction: Claude Code's "do you want to run this?" is a harness-level gate that can be bypassed; only an MCP elicitation pause is structurally uncircumventable.
+
+**Keeping the human sharp.** [[skill-erosion]] gained [[grilling-in-reverse]] (AI quizzes you on existing code, one question at a time) and the calisthenics practice (vibe-code in an unfamiliar language to force outcome-judgement over code-aesthetics). [[cognitive-debt]] added the "yeah okay Claude" moment — rubber-stamping while your parallel-agent dumb zone is active. [[bug-heatmap]] (cyclomatic complexity × fan-in/out × commit count) gives a data-driven priority queue for vibe-code cleanup. [[multi-model-review]] added Codex CLI as a cross-model adversarial reviewer invoked from within Claude.</span>
 
 ---
 

@@ -7,7 +7,6 @@ created: 2026-06-23
 updated: 2026-06-25
 ---
 
-
 Memory layers are the four nested scopes an agent's rules come from — user, project, team, and company — loaded by the harness in order so the most specific context wins.
 
 ## The four layers
@@ -25,9 +24,9 @@ The cross-tool filename for the project layer is [[agents-md|AGENTS.md]]; loadin
 
 ## The two-layer split for personal style
 
-<span style="color:red">Within the user scope, the durable split is: **home `memory.md`** (personal communication style and challenge preferences — who you are, "always challenge me when I'm vague or contradictory," be concise, don't sycophant, match my language) vs **project `CLAUDE.md`** (domain rules and NFRs). Define both explicitly so the agent doesn't need re-prompting style every session. The `memory.md` at user scope is *selfish* (your personal taste); the project `CLAUDE.md` is the team's ground rules for that repo.
+Within the user scope, the durable split is: **home `memory.md`** (personal communication style and challenge preferences — who you are, "always challenge me when I'm vague or contradictory," be concise, don't sycophant, match my language) vs **project `CLAUDE.md`** (domain rules and NFRs). Define both explicitly so the agent doesn't need re-prompting style every session. The `memory.md` at user scope is *selfish* (your personal taste); the project `CLAUDE.md` is the team's ground rules for that repo.
 
-See [[two-layer-memory]] for the detailed breakdown.</span>
+See [[two-layer-memory]] for the detailed breakdown.
 
 ## See also
 - [[agents-md-discipline]]

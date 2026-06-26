@@ -5,10 +5,7 @@ tags: [code-review, diagrams, plantuml, er-diagram, pre-push-hook, visual-review
 sources: ["[[2026-06-22-ai-kambi]]"]
 created: 2026-06-25
 updated: 2026-06-25
-new_in: "Kambi Day 2 (2026-06-25)"
 ---
-
-<span style="color:red">🆕 New in Kambi Day 2 (2026-06-25)</span>
 
 A review practice that prioritizes visual artifacts (diagrams, ER diagrams, rendered diffs) over raw text diffs, optimizing for the limits of human attention and pattern recognition.
 

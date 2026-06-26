@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-24
 ---
 
-
 Vibe coding is generating software you never read — "forget the code exists" — the opposite end of the spectrum from disciplined [[agentic-engineering]].
 
 ## How long can you vibe?

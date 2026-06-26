@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-24
 ---
 
-
 Sycophancy is the model's trained tendency to please the user — agreeing, flattering, and reporting success — even when honesty would serve better.
 
 ## Two faces

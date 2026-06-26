@@ -303,3 +303,47 @@ Sixth delta ingest. Source: [[2026-06-22-ai-kambi]] (Day 2 added to the existing
 **Red-flagged new today:** the 11 new pages above (🆕 badge) plus the §11 overview movement and every red `<span>` listed under the 22 updates. All older red marks from Garmin Day 2 were promoted first.
 
 **Stripped:** "Kambi", participant names (Luiza, Sorin, Cip, Alexandra, Stelian, Miha, Maria, Boris Cherny), and session-specific anecdotes generalized out of concept prose. The "Tina love story" (AI customer support) excluded as session colour, not a durable concept. Provenance lives in `sources:` frontmatter and this log entry.
+
+## [2026-06-26] ingest | AI@agentic.how
+
+Seventh delta ingest. Source: [[2026-06-26-ai-agentic-how]] (one-day remote workshop for ≈25 engineers, distilling the two-day flagship into a single intensive). All Kambi Day-2 red marks (11 new pages + spans in 22 pages + §11 overview movement) promoted to normal text first; zero red marks remain from prior ingests.
+
+**Created 7 pages** (red 🆕 badge + `new_in: 2026-06-26`):
+
+- [[2026-06-26-ai-agentic-how]] — source page.
+- [[decision-context]] — one terse line per decision replaces verbose ADRs in agent memory; "an ADR for humans is one line for Opus."
+- [[self-improving-knowledge]] — mining `~/.claude/*.jsonl` for frustration signals; a weekly background agent files PRs to CLAUDE.md/skills; banks running hundreds of such PRs/week.
+- [[prompt-injection-canary]] — hidden AGENTS.md canary instruction to detect humans who rubber-stamp AI output without reading; the Mitchell Hashimoto pattern.
+- [[bug-heatmap]] — cyclomatic complexity × fan-in/out × git commit count = data-driven priority queue for vibe-code cleanup.
+- [[skill-marketplace-security]] — community skills are supply-chain surface, *"npm circa 2015"*; cap at ≈10, prefer Anthropic-published, security-scan the rest.
+- [[grilling-in-reverse]] — AI quizzes *you* on what existing code does; one-question-at-a-time comprehension test as countermeasure to cognitive debt.
+
+**Updated 22 existing pages** (new sentences/paragraphs red-`<span>`-wrapped, + sources + cross-links):
+- [[agents-md-discipline]] — decision-context pattern, JSONL mining + git-history scanning as two self-improvement signals; +decision-context and self-improving-knowledge links.
+- [[cross-repo-knowledge]] — parent-folder session trick (open session in root of all clones); green-team-ai-central symlink as production alternative; VPS/CI limitation of the "clone-all" approach.
+- [[docker-sandboxing]] — red-team-your-own-sandbox practice (ask contained model to escape; Opus refuses, Sonnet weaker); +skill-marketplace-security link.
+- [[skill-erosion]] — grilling-in-reverse technique; calisthenics in unfamiliar language; "yeah okay Claude" / parallel-agent dumb zone warning.
+- [[agent-skill]] — description ≈60-token budget; <20 skills/agent limit; skill marketplace security section with cross-link.
+- [[harness]] — Copilot IDE plugin anti-recommendation ("never give your team this if you want them to value AI").
+- [[elicitation]] — harness-level permission vs MCP elicitation distinction; elicitation as the *one* uncircumventable human-in-the-loop mechanism.
+- [[multi-model-review]] — Codex CLI cross-model adversarial review from within Claude.
+- [[code-review]] — +1,500 lines = declaration of war; auto-fix CI on push ("don't dare push without watching").
+- [[model-hierarchy]] — local-model tiering: Opus orchestrator + company-server Qwen for cheap subtasks.
+- [[cognitive-debt]] — "yeah okay Claude" rubber-stamp moment; parallel-agent dumb zone for humans.
+- [[prompt-caching]] — don't leave agents idle above ≈200k tokens; subscription ≈10× cheaper than API key for interactive use.
+- [[token-economy]] — format efficiency hierarchy: XML → JSON → YAML → TOML (worst to best).
+- [[prompt-injection]] — added [[prompt-injection-canary]] cross-link.
+- [[context7]] — "Wikipedia for agents" label made explicit.
+- [[supply-chain-attack]] — skill marketplace as supply-chain surface; +skill-marketplace-security link.
+- [[acceptance-test-bdd]] — agent-inaccessible test repo anti-cheat pattern (separate repo coding agent can't see).
+- [[codeowners-elders]] — expanded minimum file set: CI workflows, OpenAPI contract, domain model, pom.xml deps, architecture diagrams.
+- [[grill-me]] — research-only minions pattern ("do not suggest, do not perform — you just freaking read"); +grilling-in-reverse link.
+- [[ollama]] — Opus+Qwen tiered architecture vision.
+- [[overview]] — §11 Kambi Day-2 span promoted; new §12 "Anger-driven knowledge, self-improving wikis, and red-teaming" added and red-flagged.
+- Source citations added to all touched pages.
+
+**Navigation:** [[wiki/index|index]] gained 2 new security entries (skill-marketplace-security, prompt-injection-canary), 2 new pattern entries (grilling-in-reverse, bug-heatmap), 2 new knowledge-engineering entries (decision-context, self-improving-knowledge), and the new source entry. [[overview]] gained §12.
+
+**Red-flagged new today:** the 7 new pages above (🆕 badge + red first-line) plus the §12 overview movement and every red `<span>` listed under the 22 updates.
+
+**Stripped:** participant names (Edwin, "the researcher"), the "three to four parallel Claude Code instances" personal setup colour, the JIRA/Confluence workflow war stories, the Yann LeCun/HashiCorp factual corrections (recorded in the source raw file), the Tailscale+tmux side conversation, and the "spinning thinking verb" micro-demo. No session-artifact-only pages created. Provenance lives in `sources:` frontmatter and this log entry.

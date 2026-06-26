@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-11
 ---
 
-
 TOON (Token-Oriented Object Notation) is a "CSV-for-AI" data format that encodes structured data far more compactly than JSON by not repeating field names — saving input tokens on large collections.
 
 ## Where it shines

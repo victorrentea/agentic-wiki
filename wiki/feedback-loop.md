@@ -7,7 +7,6 @@ created: 2026-06-23
 updated: 2026-06-24
 ---
 
-
 A feedback loop is any mechanism that lets the agent *observe the result of its own work* and iterate without a human in the middle — the single most important thing to set up before handing off a task.
 
 ## The core rule

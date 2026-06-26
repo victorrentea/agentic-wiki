@@ -36,9 +36,9 @@ Expose a metric for any production fact you'd otherwise paste into the prompt (r
 
 ## Latency metric for incremental pipelines
 
-<span style="color:red">For data pipelines, emit a metric for the **latency between a row appearing in production** (its timestamp) and **landing in the output table**. Measure this before optimizing a slow incremental merge. This is the observability prerequisite for [[optimize-then-measure-subset]]: you can't responsibly parallelize what you haven't measured.
+For data pipelines, emit a metric for the **latency between a row appearing in production** (its timestamp) and **landing in the output table**. Measure this before optimizing a slow incremental merge. This is the observability prerequisite for [[optimize-then-measure-subset]]: you can't responsibly parallelize what you haven't measured.
 
-**Data-quality validator companion:** rather than having an agent eyeball code for data-quality conformance, build a programmatic validator — feed known input, assert the output conforms to the schema/standards. See [[data-quality-validator]].</span>
+**Data-quality validator companion:** rather than having an agent eyeball code for data-quality conformance, build a programmatic validator — feed known input, assert the output conforms to the schema/standards. See [[data-quality-validator]].
 
 ## See also
 

@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-24
 ---
 
-
 A field-reality diagram is a sequence diagram *generated from real execution traces* rather than hand-drawn — so it shows the actual flow of a system and **cannot [[drift]]**, because it is regenerated on every run.
 
 ## The pipeline

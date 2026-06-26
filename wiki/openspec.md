@@ -7,7 +7,6 @@ created: 2026-06-11
 updated: 2026-06-24
 ---
 
-
 OpenSpec is a tool that scaffolds opinionated [[spec-driven-development]] markdown into `.claude/skills` and enforces the spec workflow in waves through a backing CLI.
 
 ## How it works
