@@ -1,0 +1,12 @@
+@use "./base.scss";
+
+// Obsidian opens the graph as a full pane, not a small floating card.
+.graph > .global-graph-outer > .global-graph-container {
+  width: 96vw;
+  height: 92vh;
+  border-radius: 8px;
+}
+
+.graph > .graph-outer {
+  height: 300px;
+}

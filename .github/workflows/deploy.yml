@@ -27,13 +27,24 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Build with Quartz
-        uses: konstfish/quartz-build-action@v7
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          source: . # repo root: includes wiki/ and raw/ so [[wikilinks]] resolve
-          page_title: "Agentic Engineering Wiki"
-          quartz_config: .github/quartz/quartz.config.ts
-          quartz_layout: .github/quartz/quartz.layout.ts
+          node-version: 22
+
+      # Built directly (not via a build action) so the graph renderer can be patched
+      - name: Build with Quartz
+        run: |
+          git clone --depth 1 --branch v4 https://github.com/jackyzha0/quartz.git "$RUNNER_TEMP/quartz"
+          cd "$RUNNER_TEMP/quartz"
+          npm ci
+          cp "$GITHUB_WORKSPACE"/.github/quartz/quartz.config.ts "$GITHUB_WORKSPACE"/.github/quartz/quartz.layout.ts .
+          cp "$GITHUB_WORKSPACE"/.github/quartz/custom.scss quartz/styles/custom.scss
+          python3 "$GITHUB_WORKSPACE"/.github/quartz/patch-graph.py quartz/components/scripts/graph.inline.ts
+          # repo root: includes wiki/ and raw/ so [[wikilinks]] resolve
+          rm -rf content && mkdir content
+          cp -r "$GITHUB_WORKSPACE"/* content/
+          npx quartz build -o "$GITHUB_WORKSPACE/_site"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

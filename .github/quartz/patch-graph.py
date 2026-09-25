@@ -1,0 +1,59 @@
+"""Make Quartz's graph look like Obsidian's graph view.
+
+Quartz exposes forces and font size as options, but not node size, label
+placement or colours, so this edits its renderer before the build. Every
+replacement must match exactly once: if Quartz changes the code upstream,
+the build fails here instead of silently shipping the old look.
+"""
+import pathlib
+import sys
+
+path = pathlib.Path(sys.argv[1])
+src = path.read_text()
+
+PATCHES = [
+    # Obsidian keeps hubs only a bit larger than leaves; sqrt made index/log/overview giant.
+    ("return 2 + Math.sqrt(numLinks)",
+     "return 3 + Math.log2(1 + numLinks)"),
+    # One neutral node colour like Obsidian, no teal "visited" nodes; current page keeps the accent.
+    ("""    } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
+      return computedStyleMap["--tertiary"]
+    } else {
+      return computedStyleMap["--gray"]
+    }""",
+     """    } else {
+      return computedStyleMap["--darkgray"]
+    }"""),
+    # Labels visible from the start and hanging under the node, not floating above it.
+    ("""      alpha: 0,
+      anchor: { x: 0.5, y: 1.2 },""",
+     """      alpha: 1,
+      anchor: { x: 0.5, y: 0 },"""),
+    ("""      color: color(n),
+      alpha: 1,
+      active: false,
+    }
+
+    nodeRenderData.push(nodeRenderDatum)""",
+     """      color: color(n),
+      alpha: 1,
+      active: false,
+      radius: nodeRadius(n),
+    }
+
+    nodeRenderData.push(nodeRenderDatum)"""),
+    ("n.label.position.set(x + width / 2, y + height / 2)",
+     "n.label.position.set(x + width / 2, y + height / 2 + n.radius + 2)"),
+    # Labels stay fully visible at normal zoom and fade out only when zoomed far out.
+    ("let scaleOpacity = Math.max((scale - 1) / 3.75, 0)",
+     "let scaleOpacity = Math.min(Math.max((scale - 0.5) / 0.5, 0), 1)"),
+]
+
+for old, new in PATCHES:
+    count = src.count(old)
+    if count != 1:
+        sys.exit(f"patch-graph: expected 1 match, found {count}:\n{old}")
+    src = src.replace(old, new)
+
+path.write_text(src)
+print(f"patch-graph: applied {len(PATCHES)} patches to {path}")

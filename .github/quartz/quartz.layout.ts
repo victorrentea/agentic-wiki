@@ -43,12 +43,12 @@ export const defaultContentPageLayout: PageLayout = {
   right: [
     Component.Graph({
       // Tag nodes doubled the node count and turned the global view into a hairball.
+      // Node size, label placement and colours are patched in by patch-graph.py.
       localGraph: {
         showTags: false,
-        repelForce: 0.8,
-        linkDistance: 40,
+        repelForce: 1,
+        linkDistance: 45,
         fontSize: 0.5,
-        opacityScale: 2,
       },
       globalGraph: {
         showTags: false,
@@ -56,9 +56,7 @@ export const defaultContentPageLayout: PageLayout = {
         repelForce: 2,
         centerForce: 0.1,
         linkDistance: 60,
-        fontSize: 0.45,
-        // labels fade in only once you zoom in, instead of piling on top of each other
-        opacityScale: 3,
+        fontSize: 0.6,
       },
     }),
     Component.DesktopOnly(Component.TableOfContents()),
