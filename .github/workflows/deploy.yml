@@ -32,6 +32,8 @@ jobs:
         with:
           source: . # repo root: includes wiki/ and raw/ so [[wikilinks]] resolve
           page_title: "Agentic Engineering Wiki"
+          quartz_config: .github/quartz/quartz.config.ts
+          quartz_layout: .github/quartz/quartz.layout.ts
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
