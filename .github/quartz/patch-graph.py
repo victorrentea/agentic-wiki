@@ -44,6 +44,9 @@ PATCHES = [
     nodeRenderData.push(nodeRenderDatum)"""),
     ("n.label.position.set(x + width / 2, y + height / 2)",
      "n.label.position.set(x + width / 2, y + height / 2 + n.radius + 2)"),
+    # Keep a margin around each node for its label, so neighbouring labels don't collide.
+    ("forceCollide<NodeData>((n) => nodeRadius(n))",
+     "forceCollide<NodeData>((n) => nodeRadius(n) + 14)"),
     # Labels stay fully visible at normal zoom and fade out only when zoomed far out.
     ("let scaleOpacity = Math.max((scale - 1) / 3.75, 0)",
      "let scaleOpacity = Math.min(Math.max((scale - 0.5) / 0.5, 0), 1)"),
