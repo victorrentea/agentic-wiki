@@ -47,6 +47,10 @@ PATCHES = [
     # Keep a margin around each node for its label, so neighbouring labels don't collide.
     ("forceCollide<NodeData>((n) => nodeRadius(n))",
      "forceCollide<NodeData>((n) => nodeRadius(n) + 14)"),
+    # Hairline edges that stay the same thickness on screen at any zoom, like Obsidian:
+    # the stage scales by the zoom factor k, so divide the width by k.
+    (".stroke({ alpha: l.alpha, width: 1, color: l.color })",
+     ".stroke({ alpha: l.alpha * 0.6, width: 0.6 / currentTransform.k, color: l.color })"),
     # Labels stay fully visible at normal zoom and fade out only when zoomed far out.
     ("let scaleOpacity = Math.max((scale - 1) / 3.75, 0)",
      "let scaleOpacity = Math.min(Math.max((scale - 0.5) / 0.5, 0), 1)"),
