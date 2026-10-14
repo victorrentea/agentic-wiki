@@ -1,0 +1,35 @@
+---
+title: MCP Sandbox Inheritance
+category: concept
+tags: [mcp, security, sandbox, local-stdio, child-process]
+sources: ["[[2026-06-11-ai-mobile-gaming]]", "[[2026-07-23-ai-software-product]]"]
+created: 2026-06-12
+updated: 2026-10-13
+---
+
+When an MCP server runs as a **local stdio** child process, it inherits the agent's OS sandbox — a meaningful security property that remote MCPs do not share.
+
+## The inheritance property
+
+A local (stdio) MCP is **spawned by the agent** and communicates over stdin/stdout. Because it is a child process, the OS sandbox applied to the agent automatically applies to the spawned MCP too: if the agent is constrained to read only a specific folder and contact only certain hosts, so is every MCP it launches. There is no separate containment to configure.
+
+<span style="color:red">The same holds for identity: the MCP *client* is the harness, each agent spawns its own stdio server, and **children inherit the agent's OS user**. So the cheapest containment is to **run the harness itself as a restricted OS user** — every stdio MCP it starts is then just as restricted, with no per-server configuration ([[2026-07-23-ai-software-product]]). See [[dont-run-in-home-folder]].</span>
+
+A **remote MCP** (SSE/HTTP) runs on a different machine or process — it is a network peer, not a child. The agent's sandbox does not extend to it. A remote MCP needs its own authentication, authorization, and rate-limiting because *it lives outside your trust boundary*.
+
+## Why this matters for security
+
+The key architectural insight: pick local stdio MCPs for tools you want contained (e.g. Playwright, code-graph, database readers) and treat remote MCPs as external services that require the same security posture you apply to any API call. See [[os-sandbox]] for the underlying OS primitives and [[docker-sandboxing]] for the gold standard.
+
+The corollary: **never mount the Docker socket** inside the agent's container, because any MCP (or bash call) that can reach the socket gets root-equivalent access to the host, defeating the sandbox entirely.
+
+## See also
+
+- [[model-context-protocol]]
+- [[mcp-transport]]
+- [[os-sandbox]]
+- [[docker-sandboxing]]
+- [[agent-permissions]]
+- <span style="color:red">[[dont-run-in-home-folder]]</span>
+- [[2026-06-11-ai-mobile-gaming]]
+- <span style="color:red">[[2026-07-23-ai-software-product]]</span>

@@ -1,0 +1,143 @@
+---
+title: Overview — the map of the concepts
+category: source
+tags: [overview, map, synthesis]
+sources: ["[[2026-06-10-spring-ai-open-workshop]]", "[[2026-06-11-ai-mobile-gaming]]", "[[2026-06-22-ai-sports-betting]]", "[[2026-06-23-ai-device-maker]]", "[[2026-06-26-ai-agentic-how]]"]
+updated: 2026-10-13
+---
+
+# Overview — the map of the concepts
+
+How everything in this wiki connects. The seed source is the [[2026-06-10-spring-ai-open-workshop]] workshop, where a veterinary-clinic chatbot was built live, layer by layer. The concepts cluster into five movements that mirror that build.
+
+## 1. Build a chatbot
+
+Everything starts with [[spring-ai]] and its provider-agnostic [[chat-model]] — the same code runs on remote OpenAI or local [[ollama]]. Because LLM APIs are stateless, the app fakes memory itself: [[chat-memory]] (the sliding window re-sent each call) and [[chat-history]] (the verbatim transcript) are two different beasts, wired in through the [[advisor]] pipeline. You cap the window because of the [[context-window]] economics — bigger isn't better. The [[system-prompt]] sits above the window, defining who the bot is and what it must refuse.
+
+## 2. Secure it
+
+A vanilla bot is trivially broken. [[prompt-injection]] (jailbreaks, sycophancy, multi-turn drift) defeats the polite [[system-prompt]] constraints, so you stack [[guardrails]]: cheap regex first, then a separate [[judge-llm]] that screens both the prompt and the response. The moment the bot gets [[tool-calling]] power, a new hole opens — the model **invents the parameters**, so an attacker can drive it. The fixes are structural: validate the [[jwt-identity]] token, pass sensitive identity via [[tool-context]] (out-of-band, never as model-authored data), and obey the [[dual-leg-rule]] — never give one agent both confidential data *and* external reach. The same paranoia extends to your dependencies: a [[supply-chain-attack]] turns `npm install` into arbitrary code execution, doubly dangerous when an agent runs it on auto-approve.
+
+## 3. Connect over MCP
+
+When the chatbot needs the backend, it speaks [[model-context-protocol]]. The subtle catch: the API key authenticates the *application*, not the human — so identity must ride the [[mcp-transport]] as a header, never as a (forgeable) tool argument. MCP also brings two superpowers REST lacks: [[elicitation]] (force human-in-the-loop approval for hard-to-reverse actions — even Opus 4.8 couldn't cheat past it) and [[sampling]] (a tool borrows your LLM to condense data before flooding your context).
+
+## 4. Give it knowledge
+
+To answer real questions the bot needs knowledge it can **pull** on demand: [[rag]], powered by [[vector-search]] (semantic cosine similarity over embeddings, stored in [[pgvector]]). Vectors are one of two "weird databases"; the other is the [[graph-database]] — explicit connections rather than similarity. [[code-graph]] applies that to source code (exact callers without grep noise), and [[llm-wiki]] applies it to knowledge itself — the pattern *this repository is built on*. [[context7]] is a focused, doc-only flavor of the same "pull fresh knowledge" idea.
+
+## 5. Operate agents at scale
+
+The day's deeper theme: how to run agents responsibly and economically. [[token-economy]] treats context as a scarce resource (tool schemas are expensive; the CLI is often 10× cheaper than an MCP; [[claude-code-router]] swaps the backend provider). The [[ralph-loop]] front-loads a human hour of spec into six hours of overnight agent work, each batch entering with a clean context. [[profiling-agents]] hands flame graphs and heap dumps to the model for wins humans rarely have time for. And [[grill-me]] turns the agent on *your own thinking* before a meeting. The horizon — teed up via [[embabel]] — is structured, multi-stage agentic workflows you can trust in production.
+
+## 6. The agentic-engineering operating discipline
+
+The second source widens "operate agents at scale" into a full craft — [[agentic-engineering]], the deliberate opposite of [[vibe-coding]] (generating code you never read).
+
+**What reaches the model.** Before you type, the [[harness]] has already loaded the [[system-prompt]], your [[claude-md]] memory, every tool schema, and the front-matter of each [[agent-skill]] — visible via `/context`. Token discipline now spans [[prompt-caching]] (a 5-minute TTL trap), [[rtk]] and [[toon]] (compress what the model reads/writes; output is ≈5× input), the [[effort-setting]] (xhigh, never max), and refusing the [[caveman]] anti-pattern so you protect *attention*, not just tokens.
+
+**The dumb zone governs everything.** Past ≈65% full a model degrades ([[dumb-zone]]); a 1M window ≠ recall, and auto-compaction is a failure. You dodge it with a [[handover]] (die and be reborn from a file), [[sub-agents]] (fresh-context minions), or [[plan-mode]] (single-threaded thinking). The same overload causes most [[hallucination]] — alongside [[sycophancy]], vague prompts, missing context, and term confusion.
+
+**Knowledge is engineered, not dumped.** Curate the [[claude-md]] (it [[drift|drifts]]); prefer a [[tripwire]] to a hard rule; load on need via [[progressive-disclosure]]; and share across the studio with [[cross-repo-knowledge]] (a central team repo + symlinks).
+
+**Constrain the chaotic agent from both sides.** [[grill-me]] turns a four-line ticket into a war and ends in a [[handover]]; [[spec-driven-development]] (scaffolded and enforced by [[openspec]]) anticipates every decision; [[acceptance-test-bdd]] tests pin the outside. Before a human looks, the [[static-analysis-gauntlet]] (Sonar / CodeQL / Semgrep as build-failing CI gates) makes the code self-repair; then review with humans + a [[multi-model-review]] quorum — sorted, judgement-only [[code-review]] where attention is the scarce resource — run agents safely in [[worktree|worktrees]] and a [[supply-chain-attack]]-hardened Docker sandbox, and keep diagrams honest with a [[field-reality-diagram]]. Throughout, guard the human against [[ai-addiction]] and [[skill-erosion]].
+
+## 7. Secure and contain your agents (Day 2)
+
+Day 2 expanded the security cluster from "how to break a chatbot" to "how to contain an agent at production scale."
+
+**The attack surface.** The [[jailbreak-ladder]] maps the escalating bypass for each [[guardrails|guardrail]] layer (RLHF → abliteration → regex → [[judge-llm]] → context accumulation); none are guarantees. Deeper: [[prompt-injection]] now includes fetched web pages, emails, and screenshots as vectors — see [[geo-steganography]] for invisible-text and GEO attacks. The architectural-level risk has a name: Simon Willison's [[lethal-trifecta]] (private data + untrusted content + external comms). [[openclaw]] is the canonical product that instantiates all three legs. The only structural fix is removing a leg — not filtering harder.
+
+**MCP under the hood.** [[mcp-transport]] now has two distinct shapes: remote SSE/HTTP (needs its own authz — outside the agent's sandbox) vs local stdio (spawned child → [[mcp-sandbox-inheritance]] — the sandbox applies automatically). [[dynamic-tool-discovery]] is the mechanism (no Swagger needed), but too many tools confuse the model; [[cli-vs-mcp-tradeoff]] quantifies the token cost difference. [[browser-mcp]] (Playwright + accessibility tree) lets agents drive browsers structurally rather than via costly screenshots. [[observability-mcp]] brings Grafana, DB, and log MCPs — with a hard PII access-review requirement. [[agent-auth]] gives the dual-credential model (service-account + on-behalf-of bearer).
+
+**Containment ladder.** [[agent-permissions]] maps the spectrum (ask → auto-mode → YOLO) and explains why denying part of bash is naïve. [[os-sandbox]] (Seatbelt / seccomp+Landlock / bubblewrap) is kernel-enforced; [[docker-sandboxing]] is the gold standard (mount only needed folders, egress allow-list, never mount the socket, burn-the-box). [[secret-zero]] ensures agents never hold long-lived credentials — the MCP-as-proxy and kernel-key-swap broker patterns. [[production-safety]] consolidates the lessons from two documented disasters (Railway: 3 months of data gone; Kiro: 13-hour AWS outage) into actionable posture: least-privilege keys, [[elicitation]] on destructive actions, and "kill all but one" for post-mortem.
+
+**The cloud review workflow.** [[cloud-review-workflow]] is the "no laptop" pipeline: business vibes UX → [[vibe-fixer]] cleans it → [[three-amigos]] (Business + Developer + Tester ninja) produce acceptance tests → PR auto-created → cloud bot researches code → SDD → review by role → tasks for a cheaper model. The [[headless-claude]] (`claude -p` + `--resume`) pattern lets teams fake multi-turn user interactions without building a harness.
+
+## 8. From workshops to production operations
+
+The third source deepened "operate agents" into production-grade patterns and sharpened the token-economy and knowledge-engineering clusters.
+
+**Anatomy and hygiene revisited.** The [[harness]] ≠ model distinction — an LLM is a file of weights; the harness wraps it — is foundational. [[claude-md]] hygiene got three concrete moves: strip the obvious, split into per-folder files, extract to [[agent-skill|skills]]; keep under ≈100 lines. [[agents-md]] standardizes cross-harness project memory. [[agent-skill]] activation is model-strength-dependent — strong models wait, weak local models trash context greedily.
+
+**Token economy sharpened.** Most tokens live in [[token-economy|tool results]], not prompts. A `pom.xml` burns ≈3,000 tokens of XML noise — pre-process or script the extraction. [[dumb-zone]] now carries the "context rot" alias and the explicit message that compaction is a failure mode; the [[handover]] (die and be reborn from `plan.md`) is always preferred. [[prompt-caching]] adds the 1-hour cache option and the 8-minute-test-run trap. [[headroom]] joins [[rtk]] as a CLI-output compression proxy.
+
+**Grilling and spec-driven development.** [[grill-me]] now spawns a sub-agent into the codebase to self-answer technical questions before asking you — one question at a time. Grilling surfaces ≥17 hidden decisions in a "4-line ticket." [[spec-driven-development]] adds the "never touch the files, only prompt" discipline — the AI is a thinking partner that can counter you when you're wrong. New data-layer pages: [[pg-trgm]] (trigram indexes for `LIKE '%term%'`) and [[keyset-pagination]] (cursor-based, OFFSET breaks at 100K rows).
+
+**Long loops and background agents.** [[ci-green-loop]] formalizes the post-push-hook vs `/loop` patterns; the key guard is [[reward-hacking]] — agents cheating to make CI green (deleting tests, `assert true`) — whose only reliable defense is out-of-band enforcement (branch protection, untouchable guard job, never an in-context check). [[sub-agents]] gains the pure-router pattern (main agent routes, specialists load schemas lazily).
+
+**Production access and safety.** [[firefighter-agent]] (on-call incident-recovery agent: gathers intel, waits for human approval on mutating actions) and [[draft-only-email]] (OAuth `compose` scope enforces draft-only, not model discretion) complete the production-operations cluster. [[docker-sandboxing]] adds the key rule: `--dangerously-skip-permissions` is only safe inside Docker. [[supply-chain-attack]] gains the [[typosquatting]] vector. [[sycophancy]] gains the "don't over-praise" corollary (over-praise makes the agent run off doing unrequested work). [[skill-erosion]] adds mob/pair programming and the quarter-sprint-hands-only countermeasure. [[multi-model-review]] adds the "push review knowledge to the reviewer stage" discipline and the encode-rule-then-re-run-it-now pattern. [[code-review]] adds "stop reviewing trivial diffs" and "stop reviewing unit tests."
+
+## 9. Don't be the servant; engineer the knowledge
+
+The fourth source, framed for mobile engineers, added two spines to the craft and a cluster of knowledge-engineering pages.
+
+**Choose your model and harness deliberately.** The [[model-hierarchy]] reads the tiers as experienced hires — Opus the architect (legacy + orchestration), Sonnet the mid (greenfield, never legacy), Haiku the junior ("seppuku with Haiku"), GPT the second opinion. Independently, the [[harness]] matters as much as the model: CLI > IDE plugin, because of the invisible harness prompt and the faster CLI release cadence. A [[custom-agent]] pins both (own context, pinned model, restricted tools).
+
+**Stop being the servant of the AI.** The [[chop-ai-waiter|CHOP / "AI waiter"]] anti-pattern — copy-pasting between a chat and your editor — is the thing to kill; the fix is a [[feedback-loop]] for every handed-off task (build warnings, tests, screenshots, [[adb-automation|adb]], reflected diagrams). The deeper thesis: the new skill is *seeing and reproducing* the problem, not fixing it. Where designs are truly maintained, the [[figma-mcp]] is "paradise" — but AI is bad at design, so keep a human on UX. Connect the agent to the issue tracker (`gh` CLI over the heavier MCP, see [[cli-vs-mcp-tradeoff]]); in a [[agentic-corporation]] the tracker is a "blackboard" agents answer async — the "dark factory" horizon.
+
+**How the machine works, and why it fails.** An LLM is just a few hundred GB of weights, stateless, with reasoning discarded each turn. The three real [[hallucination]] causes are the [[knowledge-cutoff]] (fixed by pulling fresh docs via [[context7]] rather than poisoned web-fetch), the [[dumb-zone]] (rule-of-thumb ≈65%, *"where AI drops prod databases"*), and [[sycophancy]]. [[data-governance]] decides which endpoints may legally see your code — a ZDR agreement, or on-prem open weights ([[ollama]] via [[claude-code-router]]) for true sovereignty. Token-burn on real work is the *first* adoption metric (see [[token-economy]]).
+
+**Knowledge is engineered, in layers.** [[memory-layers]] names the four scopes (user / project / team / company); [[skills-governance]] keeps the team layer sane (one skill-set per team, not megalomania or dichotomy); and [[agents-md-discipline]] is the curation craft for the single most important file in the repo — anti-dumping (≈90% is obvious, ≈5% is your OCD), the **seed-of-heresy** Socratic loop (ask "why?" five times when the agent makes you angry, encode the missing *assumption* not the corrected output), sub-folder injection (context scoped like imports), and retrospect-every-sprint. `copilot-instructions.md` is dead — use [[agents-md|AGENTS.md]].
+
+**Vibe-coding's bill comes due as [[cognitive-debt]].** Generating faster than anyone reads collapses in 2–3 months; unreviewed 85% coverage is a fake net. The durable safety layer is business-reviewed `.feature` files ([[acceptance-test-bdd]]), and drift is fought structurally with [[archunit-drift-control]] (the static cousin of [[field-reality-diagram]]). The [[ralph-loop]] spawns a fresh agent per task batch so cheap models never hit the dumb zone.
+
+## 10. Spec-driven development and the "reviewless code" pipeline
+
+Day 2 assembled the full agentic development lifecycle into a single diagram whose purpose is **"reviewless code"** — not no review, but review-targeted code where human attention goes only where it matters.
+
+**Three task sizes, three modes.** [[plan-mode]] covers up to a day; [[spec-driven-development]] with [[openspec]] covers anything bigger. The four OpenSpec artifacts — Proposal, Design, Tasks, Spec — each have a distinct reviewer: business/PO, developers, minimal, QA. The [[three-amigos]] ceremony produces [[acceptance-test-bdd|Gherkin acceptance tests]] *before* implementation, ensuring the tests are an independent oracle. A [[non-goals]] section prevents agents from over-engineering.
+
+**The review pipeline.** [[multi-model-review]] spawns fresh adversarial reviewers each round and surfaces coder–reviewer disagreements first. The [[static-analysis-gauntlet]] is extended with custom rules (Refaster, Semgrep, Snyk, Fortify) and becomes a true quality wall — viable now because the agent does the fixing. A [[policeman-agent]] prevents parallel-PR merge conflicts overnight. A [[sprint-design-quiz]] guards against losing comprehension of AI-written code.
+
+**MCP and security.** [[mcp-transport]] tool-description token cost explains why too many tools leads to wrong-tool picks; [[elicitation]] enables human-in-the-loop approval for destructive operations. [[prompt-injection]] now has three concrete agent-era flavors: poisoned web content (exfil via `<img>`), white-on-white steganography, and user-controlled fields. [[supply-chain-attack]] adds the tj-actions case and the clone-scan-build mitigation.
+
+**Legacy and mobile.** [[legacy-migration-stages]] (tests → dead-code → migrate) and the [[hardware-mock]] pattern (Bluetooth protobuf stub on CI) address the mobile/embedded agentic gap. [[code-graph]] is the must-have for legacy dead-code detection. [[light-dark-code]] solves the "agent learns from bad examples" problem by designating a reference module.
+
+**The profession shift.** [[productionalize]] names what happens after vibe-coding: hardening the prototype. [[skills-benchmarking]] brings statistical rigor to skill evaluation. [[openapi-test-fixtures]] closes the contract-testing gap.
+
+## 11. Frameworks, the full review pipeline, and containment
+
+Day 2 of a two-day workshop ran the agentic craft from frameworks through the full review pipeline to hard security and lifecycle hooks.
+
+**Framework interchangeability.** [[spec-driven-development]] adds the principle that GSD, Kiro, OpenSpec, and Specky all converge on the same backbone after 3–6 months; the framework's value comes from iterating on it via the agent, not from picking the "right" one. Never hand-edit framework markdown — prompt the agent to fix the flow.
+
+**The full agentic review pipeline.** [[agentic-review-pipeline]] assembles the complete ordered flow: coder agent → parallel fresh-context mother-in-law reviewers on different model families (reuse → Sonnet, simplification → GPT, efficiency → Haiku) → Sonar at maximum aggression → attempt the merge (pull dev, run all post-merge tests) → only then call the human. [[mob-spec-review]] mandates that no spec or architecture markdown is reviewed solo — always 2+ humans, condensing a week of decisions into 30 minutes and defeating fatigue-LGTM. Nothing merges without a human proof-of-life gate; the review verdict is persisted as a committed `.md` in the PR. [[review-by-images]] extends this: look at diagrams and ER-diff images *first* ("what's red?") before raw diffs — a pre-push hook can regenerate highlighted diagrams automatically. [[codeowners-elders]] protects high-stakes files (CLAUDE.md, settings, schema) with a CODEOWNERS senior group.
+
+**Memory and knowledge.** [[two-layer-memory]] articulates the durable split: home `memory.md` for personal communication style and challenge preferences; project `CLAUDE.md` for domain rules and NFRs. [[sprint-design-quiz]] gains the team framing — quiz the whole team "why did we decide X?" to spread knowledge and fight bus factor.
+
+**Engineering patterns.** [[optimize-then-measure-subset]] prescribes baseline-first, subset-prototype, confirm-twice, then scale — preventing the "optimized and made it slower" trap. [[orchestrator-catches-lying-subagent]] bakes "prove it on a clean checkout" as an orchestrator policy, not luck. [[selenium-to-playwright-migration]] concretizes [[legacy-migration-stages]]: rewrite only the step-definition glue, never touch `.feature` files, verify with mutation testing.
+
+**Data and observability.** [[data-quality-validator]] replaces agent eyeballing with a programmatic assertion (feed known input, check output conforms). [[observability-mcp]] adds the latency-metric pattern for incremental data pipelines — measure before optimizing.
+
+**Security and containment.** [[dont-run-in-home-folder]] closes the cwd attack surface: set the default working directory to `≈~/workspace`, add a ☢️ status-bar guard, never let the agent wander into `.ssh` or prompt-injected `~/Downloads`. [[agent-lifecycle-hooks]] maps the four hook points (PreToolUse, PostToolUse, Stop, Notification) — PreToolUse is the real guard, closer to an enforceable guardrail than a skippable git hook. [[agent-permissions]] gains the full Shift+Tab cycle (default → accept-edits → plan → auto/YOLO). [[jailbreak-ladder]] adds the escalation pattern: jailbreak a vendor chatbot to abuse its LLM token budget. [[docker-sandboxing]] adds the kernel-space key proxy: credentials live in kernel space, swapped for real ones only at network egress.
+
+## 12. Anger-driven knowledge, self-improving wikis, and red-teaming
+
+The sixth source — a compressed one-day version of the full workshop — sharpened three clusters: knowledge engineering, security discipline, and the human-competence guard.
+
+**Knowledge that repairs itself.** [[agents-md-discipline]] sharpened from "curate carefully" to "curate anger-driven" — every frustration with the agent is a diagnostic, not a failure; reverse-engineer the false assumption and encode it as a [[decision-context]] entry (one line per decision, replacing verbose ADRs). [[self-improving-knowledge]] automates this loop: a weekly background agent mines `~/.claude/*.jsonl` for frustration signals and files PRs to the central AI-knowledge repo, where a human's job is accepting or rejecting them. [[cross-repo-knowledge]] gained the parent-folder session trick and the a central AI-knowledge repo symlink as the production-ready multi-repo alternative. The tripartite of knowledge stores — [[agent-skill]] (bounded procedural), [[rag]] (fuzzy semantic over large corpus), [[llm-wiki]] (pre-digested graph) — was articulated explicitly.
+
+**Security with teeth.** [[docker-sandboxing]] gained the "red-team your own sandbox" practice: ask the contained model to escape before you trust the container with production workloads — newer Opus refuses, Sonnet is weaker. [[prompt-injection-canary]] is the behavioral equivalent of [[review-by-images]]: embed a canary instruction in `AGENTS.md` to detect developers who rubber-stamp AI output without reading it. [[skill-marketplace-security]] names the community-skill supply chain as *"npm circa 2015"* and prescribes the same vetting discipline. [[elicitation]] clarified the crucial distinction: Claude Code's "do you want to run this?" is a harness-level gate that can be bypassed; only an MCP elicitation pause is structurally uncircumventable.
+
+**Keeping the human sharp.** [[skill-erosion]] gained [[grilling-in-reverse]] (AI quizzes you on existing code, one question at a time) and the calisthenics practice (vibe-code in an unfamiliar language to force outcome-judgement over code-aesthetics). [[cognitive-debt]] added the "yeah okay Claude" moment — rubber-stamping while your parallel-agent dumb zone is active. [[bug-heatmap]] (cyclomatic complexity × fan-in/out × commit count) gives a data-driven priority queue for vibe-code cleanup. [[multi-model-review]] added Codex CLI as a cross-model adversarial reviewer invoked from within Claude.
+
+## 13. Six months of workshops, merged (Apr → Oct 2026)
+
+<span style="color:red">The 2026-10-13 merge folded 44 more sessions into the wiki — the spring workshops that predate the seed, the summer and autumn editions, two Devoxx talks and JAX London. Repeated across dozens of rooms, the material converged on five movements.</span>
+
+<span style="color:red">**Humans review less code and watch more signals.** The question moved from "how do I review agent code?" to "what must I observe so I don't have to read every line?". [[gray-factory]] dims human review responsibly (sample after a run of clean PRs, restore on any incident) instead of the all-or-nothing [[agentic-corporation|dark factory]]. Review starts where the agent hesitated — an [[assumptions-ledger]] — and on a zero-token [[human-review-dashboard]] built from [[observation-points]]: [[deterministic-diagrams]], [[c4-model]] views, [[openapi-contract-sync]] diffs, [[code-city]], [[semantic-coverage]]. Big diffs are cut into [[stacked-prs]]; specs get their own [[spec-review]] and then drain away ([[spec-afterlife]]).</span>
+
+<span style="color:red">**Proof beats prose.** The agent must prove each change: [[red-green-tdd]], [[tracer-bullets]] before widening, [[black-box-testing]] at the service seam, [[mutation-testing]] to prove the tests themselves, [[record-replay-refactoring]] and [[file-based-testing]] for legacy and data work, [[agent-evals]] for LLM features. Everything that can be scripted is ([[determinism-over-llm]], [[openrewrite]] recipes instead of mass edits, [[telemetry-by-default]]). The [[agent-loop]] is the same everywhere; what differs is the feedback you wire into it.</span>
+
+<span style="color:red">**Guardrails are a ladder, not a wall.** [[enforcement-ladder]] orders the defences from asking nicely to hooks, CI gates, sandboxes and scoped credentials — live demos showed agents walking around regex denies and hooks, so only the bottom rungs hold. [[approval-fatigue]] (people approve 93–97% of prompts) explains why per-call consent fails. The attack catalogue grew: [[tool-poisoning]], [[memory-poisoning]], [[slopsquatting]], [[answer-injection]] on the human side; defences such as [[gitleaks]], [[mcp-tenant-isolation]], [[authenticated-cli]] and a [[plugin-marketplace]] limited to your own team's plugins.</span>
+
+<span style="color:red">**Knowledge needs gardening.** Context files must earn their tokens (ETH Zürich: they cost >20% more without raising success — see [[claude-md]]); a [[doc-gardener]] prunes drift, [[elder-wisdom-mining]] captures what leaving experts know, [[vibe-heresy]] warns that bad AI decisions resurrect from comments and markdown, and [[ai-never-deletes]] explains why code only grows. Write [[goals-over-instructions]] and show examples ([[example-driven-prompting]]) rather than procedures.</span>
+
+<span style="color:red">**The human is the bottleneck — and the asset.** [[system-2-fatigue]], [[ai-spiraling]] and [[advisor-vs-executor]] describe how people burn out or get led astray; [[ai-calisthenics]] and [[agentic-reconversion]] describe how developers retrain; [[ai-adoption]] and [[quota-economics]] describe how organisations actually roll this out and pay for it; [[chatops-agent]], [[enterprise-architect-agent]] and [[ai-use-cases-beyond-coding]] show agents leaving the IDE.</span>
+
+<span style="color:red">**Facts corrected in this merge** (all with sources, see [[log]]): prompt-cache TTL history, effort defaults, auto-compaction, AGENTS.md loading in Claude Code, CLAUDE.md concatenation, thinking blocks kept across turns, long-context recall, RTK/Headroom/Caveman measured savings, the axios vs Shai-Hulud incidents, skill-store security statistics, and the Kiro and Railway incidents.</span>
+
+---
+
+*This page is the synthesis layer. Browse it in [Obsidian](https://obsidian.md/) graph view to see the clusters as a literal map.*

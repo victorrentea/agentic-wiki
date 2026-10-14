@@ -1,0 +1,23 @@
+---
+title: "Source: AI-Assisted Coding @ a device maker (2026-06-23..24)"
+category: source
+tags: [source, workshop, agentic-engineering, agents-md, skills, feedback-loops, spec-driven-development, mcp, security, review]
+sources: []
+created: 2026-06-23
+updated: 2026-06-24
+---
+
+Day 1 of a 2-day AI-Assisted / Agentic Coding workshop for mobile/Android engineers, run remotely. Morning: AI war stories, the model & harness hierarchy, "how the machine actually works" (statelessness, hallucination, the dumb zone), privacy/data-governance. Afternoon: a hands-on deep-dive into `AGENTS.md` discipline, skills, feedback loops, and grilling a vague ticket. Driven through GitHub Copilot CLI as the contracted harness, with Claude Code shown for contrast.
+
+Day 2 covered: [[spec-driven-development]] with [[openspec]] (three task sizes → three modes, four artifacts and who reviews each), a hands-on breakout on real projects, the "reviewless code" review pipeline, [[agent-orchestration-patterns|orchestration]] patterns (policeman agent, sprint design quiz), [[mcp-transport|MCP architecture]] (local stdio vs remote HTTP/SSE, tool-description token cost), and AI security (supply-chain, prompt injection flavors, OWASP LLM Top-10).
+
+The recurring spine: **stop being the servant of the AI** — give the agent a feedback loop and the tools to check its own work — and **protect your context window** (the dumb zone is where slop, forgetting, and dropped prod databases happen).
+
+Key concepts introduced or reinforced on Day 1: [[model-hierarchy]], [[harness]] (CLI > IDE plugin), [[chop-ai-waiter]] anti-pattern, [[cognitive-debt]], [[archunit-drift-control]], [[multi-model-review]], [[skills-governance]], [[memory-layers]], [[agents-md-discipline]], [[custom-agent]], [[data-governance]], [[knowledge-cutoff]], [[context7]], [[headroom]], [[rtk]], [[prompt-caching]], [[dumb-zone]], [[sycophancy]], [[feedback-loop]], [[agentic-corporation]], [[figma-mcp]], [[adb-automation]], [[cli-vs-mcp-tradeoff]], [[grill-me]], [[ralph-loop]], [[acceptance-test-bdd]], [[wispr-flow]], [[agent-skill]].
+
+Key concepts introduced or reinforced on Day 2: [[spec-driven-development]], [[openspec]], [[plan-mode]], [[three-amigos]], [[multi-model-review]] (adversarial, fresh-reviewers), [[static-analysis-gauntlet]], [[mcp-transport]], [[browser-mcp]], [[prompt-injection]], [[supply-chain-attack]], [[code-graph]], [[prompt-caching]] (5-min TTL cost), [[vibe-coding]] / [[vibe-fixer]], [[hardware-mock]], [[skills-benchmarking]], [[light-dark-code]], [[legacy-migration-stages]], [[non-goals]].
+
+## See also
+- [[2026-06-10-spring-ai-open-workshop]]
+- [[2026-06-11-ai-mobile-gaming]]
+- [[2026-06-22-ai-sports-betting]]
