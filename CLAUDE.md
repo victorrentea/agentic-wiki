@@ -56,3 +56,8 @@ events (agentic.how, Devoxx, JAX London) and public authors may be named; so may
 ## Browse
 
 Open the repo folder in [Obsidian](https://obsidian.md/) (free) to navigate links and see the **graph view** — the best way to see the shape of the wiki. It's a plain git repo of markdown, so you also get version history for free.
+
+## Memoria lui Claude
+
+Memoria generală (cine e Victor, cum vrea să lucrezi) e în repo-ul privat `victorrentea/assistant`.
+Într-o sesiune din cloud, atașează-l la sesiune și urmează-i `CLAUDE.md`-ul. Pe Mac se încarcă singură.
